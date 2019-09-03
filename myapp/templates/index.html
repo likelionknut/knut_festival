@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ko">
+{% load staticfiles %}
+
+<head>
+  <!-- meta -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Folio - Personal Portfolio Template</title>
+  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=c0hyt6dx6d"></script>
+
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Playfair+Display:400,400i,700,700i,900,900i"
+    rel="stylesheet">
+
+
+  <!-- Bootstrap CSS File -->
+  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/hover/hover.min.css' %}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+  <!-- Responsive css -->
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="images/favicon.png">
+
+  <!-- =======================================================
+    Theme Name: Folio
+    Theme URL: https://bootstrapmade.com/folio-bootstrap-portfolio-template/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+</head>
+
+<body>
+
+  <!-- start section navbar -->
+  <nav id="main-nav">
+    <div class="row">
+      <div class="container">
+
+        <div class="logo">
+          <a href="#home"><img src="{% static 'logo1.png'%}" alt="logo"></a>
+        </div>
+
+        <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
+
+        <ul class="nav-menu list-unstyled">
+          <li><a href="#header" class="smoothScroll">Home</a></li>
+          <li><a href="#about" class="smoothScroll">About</a></li>
+          <li><a href="#portfolio" class="smoothScroll">Photo Zone</a></li>
+          <li><a href="#journal" class="smoothScroll">대중교통 시간표</a></li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+  <!-- End section navbar -->
+
+
+  <!-- start section header -->
+  <div id="header" class="home">
+
+    <div class="container">
+      <div class="header-content">
+        <h1>한국교통대학교 <span class="typed"></span></h1>
+        <p>청춘이 빛나는 축제, 함께 만드는 대동제, 축제의 시작!</p>
+
+        <ul class="list-unstyled list-social">
+          <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+          <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+          <li><a href="#"><i class="ion-social-instagram"></i></a></li>
+          <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
+          <li><a href="#"><i class="ion-social-tumblr"></i></a></li>
+          <li><a href="#"><i class="ion-social-dribbble"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End section header -->
+
+
+  <!-- start section about us -->
+  <div id="about" class="paddsection">
+    <div class="container">
+      <div class="row justify-content-between">
+
+        <div class="col-lg-4 ">
+          <div class="div-img-bg">
+            <div class="about-img">
+              <img src="{% static '대충대동제홍보사진.jpg'%}" class="img-responsive" alt="me">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="about-descr">
+
+            <p class="p-heading">기존의 축제와는 다르다! 대동제! </p>
+            <p class="separator">다양한 동아리의 퍼포먼스!<br>
+              기대 이상의 학과 주점!<br>
+              축제에서 빠질수 없는 푸드트럭!<br>
+              <<= 이건 나중에 바꿔야하는 포스터!</p> </div> </div> </div> </div> </div> <!-- end section about us -->
+
+                <!-- start section services -->
+                <div id="services">
+                  <div class="container">
+
+                    <div class="services-carousel owl-theme">
+
+                      <div class="services-block">
+
+                        <i class="ion-ios-browsers-outline"></i>
+                        <span>소프트웨어학과 주관 다트던지기! </span>
+                        <p class="separator"><br>재미도 찾고 상품도 받고! </p>
+
+                      </div>
+
+                      <div class="services-block">
+
+                        <i class="ion-ios-lightbulb-outline"></i>
+                        <span>컴퓨터공학과 주관 색판 뒤집기</span>
+                        <p class="separator">빠른 시간안에 색판을 뒤집어 다른팀을 이기면 상품이! </p>
+
+                      </div>
+
+                      <div class="services-block">
+
+                        <i class="ion-ios-color-wand-outline"></i>
+                        <span>전자공학과 주관 몸으로 말해요</span>
+                        <p class="separator">사실 이건 옆에서 구경하는게 더 재밌죠 ㅋㅋ</p>
+
+                      </div>
+
+                      <div class="services-block">
+
+                        <i class="ion-social-android-outline"></i>
+                        <span>전기공학과 주관 고깔게임</span>
+                        <p class="separator">고깔을 통해 보이는 시야로 물건을 맞춰라! </p>
+
+                      </div>
+
+                      <div class="services-block">
+
+                        <i class="ion-ios-analytics-outline"></i>
+                        <span>영어영문학과 의자뺏기</span>
+                        <p class="separator">순발력이 빠른사람이 승자~</p>
+
+                      </div>
+
+                      <div class="services-block">
+
+                        <i class="ion-ios-camera-outline"></i>
+                        <span>식품공학과 주관 짜장면 빨리먹기게임</span>
+                        <p class="separator">아 배고파</p>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <!-- end section services -->
+
+                <div id="map" style="width:50%;height:400px;margin:0 auto;text-align:center"></div>
+
+                <script>
+                  var HOME_PATH = window.HOME_PATH || '.';
+
+                  var cityhall = new naver.maps.LatLng(36.967999, 127.8710230),
+                    map = new naver.maps.Map('map', {
+                      center: cityhall.destinationPoint(0, 500),
+                      zoom: 12
+                    }),
+                    marker = new naver.maps.Marker({
+                      map: map,
+                      position: cityhall
+                    });
+
+                  var contentString = [
+                    '<div class="iw_inner">',
+                    '   <h3>노천극장</h3>',
+                    '   <p>한국교통대학교 노천극장<br />',
+                    '       <img src="{% static '노천극장1.jpg'%}" width="55" height="55" alt="노천극장" class="thumb" /><br />',
+                    '       공연 장소',
+                    '       ',
+                    '   </p>',
+                    '</div>'
+                  ].join('');
+
+                  var infowindow = new naver.maps.InfoWindow({
+                    content: contentString
+                  });
+
+                  naver.maps.Event.addListener(marker, "click", function (e) {
+                    if (infowindow.getMap()) {
+                      infowindow.close();
+                    } else {
+                      infowindow.open(map, marker);
+                    }
+                  });
+
+                  infowindow.open(map, marker);
+                </script>
+
+                <!-- start section portfolio -->
+                <div id="portfolio" class="text-center paddsection">
+
+                  <div class="container">
+                    <div class="section-title text-center">
+                      <h2>Photo Zone</h2>
+                    </div>
+                  </div>
+
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-12">
+
+                        <div class="portfolio-list">
+
+                          <ul class="nav list-unstyled" id="portfolio-flters">
+                            <li class="filter filter-active" data-filter=".all">all</li>
+                            <li class="filter" data-filter=".초대가수">초대 가수</li>
+                            <li class="filter" data-filter=".노천극장">노천극장은?!</li>
+                            <li class="filter" data-filter=".1부">1부 8시</li>
+                            <li class="filter" data-filter=".2부">2부 9시</li>
+                            <li class="filter" data-filter=".3부">3부 10시</li>
+                          </ul>
+
+                        </div>
+
+                        <div class="portfolio-container">
+
+                          <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 1부 webdesign">
+                            <a class="popup-img" href="{% static '선미.jpg'%}">
+                              <img src="{% static '선미.jpg'%}" alt="img">
+                            </a>
+                          </div>
+
+                          <div class="col-lg-4 col-md-6 portfolio-thumbnail all 노천극장 1부 3부">
+                            <a class="popup-img" href="{% static '학교약도.png'%}">
+                              <img src="{% static '학교약도.png'%}" alt="img">
+                            </a>
+                          </div>
+
+                          <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 2부 ">
+                            <a class="popup-img" href="{% static 'IU.jpg'%}">
+                              <img src="{% static 'IU.jpg'%}" alt="img">
+                            </a>
+                          </div>
+
+                          <div class="col-lg-4 col-md-6 portfolio-thumbnail all 노천극장 2부 3부">
+                            <a class="popup-img" href="{% static '노천극장.jpg'%}">
+                              <img src="{% static '노천극장.jpg'%}" alt="img">
+                            </a>
+                          </div>
+
+                          <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 3부">
+                            <a class="popup-img" href="{% static '폴킴.jpg'%}">
+                              <img src="{% static '폴킴.jpg'%}" alt="img">
+                            </a>
+                          </div>
+
+                          <div class="col-lg-4 col-md-6 portfolio-thumbnail all 노천극장 1부 2부">
+                            <a class="popup-img" href="{% static '증캠축제.jpg'%}">
+                              <img src="{% static '증캠축제.jpg'%}" alt="img">
+                            </a>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <!-- End section portfolio -->
+
+
+                <!-- start section journal -->
+                <div id="journal" class="text-left paddsection">
+
+                  <div class="container">
+                    <div class="section-title text-center">
+                      <h2>대중교통 시간표</h2>
+                    </div>
+                  </div>
+
+                  <div class="container">
+                    <div class="journal-block">
+                      <div class="row">
+
+                        <div class="col-lg-4 col-md-6">
+                          <div class="journal-info">
+
+                            <a class="popup-img" href="{% static '터미널to교통대.png'%}"><img src="{% static '터미널to교통대.png'%}"
+                                class="img-responsive" alt="img" height=500></a>
+
+                            <div class="journal-txt">
+
+                              <h4><a href="blog-single.html">터미널to교통대</a></h4>
+                              <p class="separator">터미널에서 교통대 가는 버스 시간표입니다
+                              </p>
+
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                          <div class="journal-info">
+
+                            <a class="popup-img" href="{% static '교통대to터미널.png'%}"><img src="{% static '교통대to터미널.png'%}"
+                                class="img-responsive" alt="img" height=500></a>
+
+                            <div class="journal-txt">
+
+                              <h4><a href="#blog-single.html">교통대to터미널</a></h4>
+                              <p class="separator">교통대에서 터미널 가는 버스 시간표입니다
+                              </p>
+
+                            </div>
+
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="journal-info">
+
+                            <a class="popup-img" href="{% static '999노선.jpg' %}"><img src="{% static '999노선.jpg'%}"
+                                class="img-responsive" alt="img" height=500 width=300></a>
+
+                            <div class="journal-txt">
+
+                              <h4><a href="#blog-single.html">999노선</a></h4>
+                              <p class="separator">999노선입니다
+                              </p>
+
+                            </div>
+
+                          </div>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+
+                  
+
+                </div>
+                <!-- End section journal -->
+
+
+                <!-- start sectoion contact -->
+
+                <!--여기에 댓글기능 추가 -->
+                <div class="col-md-12">
+                  <div class="comments text-left padDiv mb-30">
+                    <div class="entry-comments-item">
+                      {% for comment in comments %}
+                      <div class="entry-comments-body">
+                        <span class="entry-comments-author"><a href="#">{{ comment.user }}</a></span>
+                        <small>{{ comment.created_at }}</small>
+                        <p class="mb-10">{{ comment.text|linebreaks }}</p>
+                      </div>
+                      {% empty %}
+                      <div class="comment-list">
+                        <p class="mb-10">작성된 댓글이 없습니다.</p>
+                      </div>
+                      {% endfor %}
+                    </div>
+
+                    <form id="comment-form" action="{% url 'comment_write' %}" method="POST">
+                      {% csrf_token %}
+                      <input id="form_message" type="text" name="text" placeholder="댓글을 입력하세요">
+                      <input id="form_name" type="text" name="user" placeholder="작성자">
+                      <button type="submit">댓글 쓰기</button>
+                    </form>
+                  </div>
+                </div>
+
+                <!-- start sectoion contact -->
+
+
+                <!-- start section footer -->
+                <div id="footer" class="text-center">
+                  <div class="container">
+                    <div class="socials-media text-center">
+
+                      <ul class="list-unstyled">
+                        <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                        <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                        <li><a href="#"><i class="ion-social-instagram"></i></a></li>
+                        <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
+                        <li><a href="#"><i class="ion-social-tumblr"></i></a></li>
+                        <li><a href="#"><i class="ion-social-dribbble"></i></a></li>
+                      </ul>
+
+                    </div>
+
+                    <p>&copy; Copyrights Folio. All rights reserved.</p>
+
+                    <div class="credits">
+                      <!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Folio
+        -->
+                      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                    </div>
+
+                  </div>
+                </div>
+                <!-- End section footer -->
+
+                <!-- JavaScript Libraries -->
+                <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+                <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+                <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+                <script src="{% static 'lib/typed/typed.js' %}"></script>
+                <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+                <script src="{% static 'lib/magnific-popup/magnific-popup.min.js' %}"></script>
+                <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+
+                <!-- Contact Form JavaScript File -->
+                <script src="{% static 'contactform/contactform.js' %}"></script>
+
+                <!-- Template Main Javascript File -->
+                <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
