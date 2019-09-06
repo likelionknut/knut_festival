@@ -120,9 +120,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'app', 'static')
-] #static 파일들이 어디에 있는지 쓰는곳
-
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'app', 'static')
+# ] #static 파일들이 어디에 있는지 쓰는곳
+#
+# STATIC_ROOT = os.path.join(BASE_DIR,'static')
 # static 파일들이 어디로 모일 것인지 쓰는곳

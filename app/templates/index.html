@@ -1,6 +1,6 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
-{% load staticfiles %}
 
 <head>
   <!-- meta -->
@@ -20,19 +20,19 @@
 
 
   <!-- Bootstrap CSS File -->
-  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'app/lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
-  <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
-  <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
-  <link href="{% static 'lib/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
-  <link href="{% static 'lib/hover/hover.min.css' %}" rel="stylesheet">
+  <link href="{% static 'app/lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'app/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'app/lib/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+  <link href="{% static 'app/lib/hover/hover.min.css' %}" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'app/css/style.css' %}" rel="stylesheet">
 
   <!-- Responsive css -->
-  <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+  <link href="{% static 'app/css/responsive.css' %}" rel="stylesheet">
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="images/favicon.png">
@@ -53,7 +53,7 @@
       <div class="container">
 
         <div class="logo">
-          <a href="#home"><img src="{% static 'logo1.png'%}" alt="logo"></a>
+          <a href="#home"><img src="{% static 'app/logo1.png' %}" alt="logo"></a>
         </div>
 
         <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
@@ -101,7 +101,7 @@
         <div class="col-lg-4 ">
           <div class="div-img-bg">
             <div class="about-img">
-              <img src="{% static '대충대동제홍보사진.jpg'%}" class="img-responsive" alt="me">
+              <img src="{% static 'app/대충대동제홍보사진.jpg' %}" class="img-responsive" alt="me">
             </div>
           </div>
         </div>
@@ -195,7 +195,7 @@
                     '<div class="iw_inner">',
                     '   <h3>노천극장</h3>',
                     '   <p>한국교통대학교 노천극장<br />',
-                    '       <img src="{% static '노천극장1.jpg'%}" width="55" height="55" alt="노천극장" class="thumb" /><br />',
+                    '       <img src="{% static 'app/노천극장1.jpg'%}" width="55" height="55" alt="노천극장" class="thumb" /><br />',
                     '       공연 장소',
                     '       ',
                     '   </p>',
@@ -246,38 +246,38 @@
                         <div class="portfolio-container">
 
                           <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 1부 webdesign">
-                            <a class="popup-img" href="{% static '선미.jpg'%}">
-                              <img src="{% static '선미.jpg'%}" alt="img">
+                            <a class="popup-img" href="{% static 'app/선미.jpg' %}">
+                              <img src="{% static 'app/선미.jpg' %}" alt="img">
                             </a>
                           </div>
 
                           <div class="col-lg-4 col-md-6 portfolio-thumbnail all 노천극장 1부 3부">
-                            <a class="popup-img" href="{% static '학교약도.png'%}">
-                              <img src="{% static '학교약도.png'%}" alt="img">
+                            <a class="popup-img" href="{% static 'app/학교약도.PNG' %}">
+                              <img src="{% static 'app/학교약도.PNG' %}" alt="img">
                             </a>
                           </div>
 
                           <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 2부 ">
-                            <a class="popup-img" href="{% static 'IU.jpg'%}">
-                              <img src="{% static 'IU.jpg'%}" alt="img">
+                            <a class="popup-img" href="{% static 'app/IU.jpg' %}">
+                              <img src="{% static 'app/IU.jpg' %}" alt="img">
                             </a>
                           </div>
 
                           <div class="col-lg-4 col-md-6 portfolio-thumbnail all 노천극장 2부 3부">
-                            <a class="popup-img" href="{% static '노천극장.jpg'%}">
-                              <img src="{% static '노천극장.jpg'%}" alt="img">
+                            <a class="popup-img" href="{% static 'app/노천극장.jpg' %}">
+                              <img src="{% static 'app/노천극장.jpg' %}" alt="img">
                             </a>
                           </div>
 
                           <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 3부">
-                            <a class="popup-img" href="{% static '폴킴.jpg'%}">
-                              <img src="{% static '폴킴.jpg'%}" alt="img">
+                            <a class="popup-img" href="{% static 'app/폴킴.jpg' %}">
+                              <img src="{% static 'app/폴킴.jpg' %}" alt="img">
                             </a>
                           </div>
 
                           <div class="col-lg-4 col-md-6 portfolio-thumbnail all 노천극장 1부 2부">
-                            <a class="popup-img" href="{% static '증캠축제.jpg'%}">
-                              <img src="{% static '증캠축제.jpg'%}" alt="img">
+                            <a class="popup-img" href="{% static 'app/증캠축제.jpg' %}">
+                              <img src="{% static 'app/증캠축제.jpg' %}" alt="img">
                             </a>
                           </div>
 
@@ -306,8 +306,8 @@
                         <div class="col-lg-4 col-md-6">
                           <div class="journal-info">
 
-                            <a class="popup-img" href="{% static '터미널to교통대.png'%}"><img src="{% static '터미널to교통대.png'%}"
-                                class="img-responsive" alt="img" height=500></a>
+                            <a class="popup-img" href="{% static 'app/터미널to교통대.png' %}"><img src="{% static 'app/터미널to교통대.png' %}"
+                                                                                             class="img-responsive" alt="img" height=500></a>
 
                             <div class="journal-txt">
 
@@ -323,8 +323,8 @@
                         <div class="col-lg-4 col-md-6">
                           <div class="journal-info">
 
-                            <a class="popup-img" href="{% static '교통대to터미널.png'%}"><img src="{% static '교통대to터미널.png'%}"
-                                class="img-responsive" alt="img" height=500></a>
+                            <a class="popup-img" href="{% static 'app/교통대to터미널.png' %}"><img src="{% static 'app/교통대to터미널.png' %}"
+                                                                                             class="img-responsive" alt="img" height=500></a>
 
                             <div class="journal-txt">
 
@@ -339,8 +339,8 @@
                         <div class="col-lg-4 col-md-6">
                           <div class="journal-info">
 
-                            <a class="popup-img" href="{% static '999노선.jpg' %}"><img src="{% static '999노선.jpg'%}"
-                                class="img-responsive" alt="img" height=500 width=300></a>
+                            <a class="popup-img" href="{% static 'app/999노선.jpg' %}"><img src="{% static 'app/999노선.jpg' %}"
+                                                                                          class="img-responsive" alt="img" height=500 width=300></a>
 
                             <div class="journal-txt">
 
@@ -428,19 +428,19 @@
                 <!-- End section footer -->
 
                 <!-- JavaScript Libraries -->
-                <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
-                <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
-                <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-                <script src="{% static 'lib/typed/typed.js' %}"></script>
-                <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
-                <script src="{% static 'lib/magnific-popup/magnific-popup.min.js' %}"></script>
-                <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+                <script src="{% static 'app/lib/jquery/jquery.min.js' %}"></script>
+                <script src="{% static 'app/lib/jquery/jquery-migrate.min.js' %}"></script>
+                <script src="{% static 'app/lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+                <script src="{% static 'app/lib/typed/typed.js' %}"></script>
+                <script src="{% static 'app/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+                <script src="{% static 'app/lib/magnific-popup/magnific-popup.min.js' %}"></script>
+                <script src="{% static 'app/lib/isotope/isotope.pkgd.min.js' %}"></script>
 
                 <!-- Contact Form JavaScript File -->
-                <script src="{% static 'contactform/contactform.js' %}"></script>
+                <script src="{% static 'app/contactform/contactform.js' %}"></script>
 
                 <!-- Template Main Javascript File -->
-                <script src="{% static 'js/main.js' %}"></script>
+                <script src="{% static 'app/js/main.js' %}"></script>
 
 </body>
 
