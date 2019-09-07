@@ -1,41 +1,10 @@
 var HOME_PATH = window.HOME_PATH || '.';
 var MARKER_SPRITE_X_OFFSET = 29,
-    MARKER_SPRITE_Y_OFFSET = 50,
-    MARKER_SPRITE_POSITION = {
-        "A0": [0, 0],
-        "B0": [MARKER_SPRITE_X_OFFSET, 0],
-        "C0": [MARKER_SPRITE_X_OFFSET*2, 0],
-        "D0": [MARKER_SPRITE_X_OFFSET*3, 0],
-        "E0": [MARKER_SPRITE_X_OFFSET*4, 0],
-        "F0": [MARKER_SPRITE_X_OFFSET*5, 0],
-        "G0": [MARKER_SPRITE_X_OFFSET*6, 0],
-        "H0": [MARKER_SPRITE_X_OFFSET*7, 0],
-        "I0": [MARKER_SPRITE_X_OFFSET*8, 0],
-
-        "A1": [0, MARKER_SPRITE_Y_OFFSET],
-        "B1": [MARKER_SPRITE_X_OFFSET, MARKER_SPRITE_Y_OFFSET],
-        "C1": [MARKER_SPRITE_X_OFFSET*2, MARKER_SPRITE_Y_OFFSET],
-        "D1": [MARKER_SPRITE_X_OFFSET*3, MARKER_SPRITE_Y_OFFSET],
-        "E1": [MARKER_SPRITE_X_OFFSET*4, MARKER_SPRITE_Y_OFFSET],
-        "F1": [MARKER_SPRITE_X_OFFSET*5, MARKER_SPRITE_Y_OFFSET],
-        "G1": [MARKER_SPRITE_X_OFFSET*6, MARKER_SPRITE_Y_OFFSET],
-        "H1": [MARKER_SPRITE_X_OFFSET*7, MARKER_SPRITE_Y_OFFSET],
-        "I1": [MARKER_SPRITE_X_OFFSET*8, MARKER_SPRITE_Y_OFFSET],
-
-        "A2": [0, MARKER_SPRITE_Y_OFFSET*2],
-        "B2": [MARKER_SPRITE_X_OFFSET, MARKER_SPRITE_Y_OFFSET*2],
-        "C2": [MARKER_SPRITE_X_OFFSET*2, MARKER_SPRITE_Y_OFFSET*2],
-        "D2": [MARKER_SPRITE_X_OFFSET*3, MARKER_SPRITE_Y_OFFSET*2],
-        "E2": [MARKER_SPRITE_X_OFFSET*4, MARKER_SPRITE_Y_OFFSET*2],
-        "F2": [MARKER_SPRITE_X_OFFSET*5, MARKER_SPRITE_Y_OFFSET*2],
-        "G2": [MARKER_SPRITE_X_OFFSET*6, MARKER_SPRITE_Y_OFFSET*2],
-        "H2": [MARKER_SPRITE_X_OFFSET*7, MARKER_SPRITE_Y_OFFSET*2],
-        "I2": [MARKER_SPRITE_X_OFFSET*8, MARKER_SPRITE_Y_OFFSET*2]
-    };
+    MARKER_SPRITE_Y_OFFSET = 50;
 
 var map = new naver.maps.Map('map', {
-    center: new naver.maps.LatLng(37.3595704, 127.105399),
-    zoom: 10
+    center: new naver.maps.LatLng(36.967999, 127.8710230),
+    zoom: 12
 });
 
 var bounds = map.getBounds(),
@@ -47,27 +16,39 @@ var bounds = map.getBounds(),
 var markers = [],
     infoWindows = [];
 
-for (var key in MARKER_SPRITE_POSITION) {
+var positions = [
+    new naver.maps.LatLng(36.967099, 127.8710230),
+    new naver.maps.LatLng(36.967199, 127.8711230),
+    new naver.maps.LatLng(36.967299, 127.8712230),
+    new naver.maps.LatLng(36.967399, 127.8713230),
+    new naver.maps.LatLng(36.967499, 127.8714230),
+    new naver.maps.LatLng(36.967599, 127.8715230),
+    new naver.maps.LatLng(36.967699, 127.8716230),
+    new naver.maps.LatLng(36.967799, 127.8717230),
+    new naver.maps.LatLng(36.967899, 127.8718230),
+    new naver.maps.LatLng(36.967999, 127.8719230),
+]
 
-    var position = new naver.maps.LatLng(
-        southWest.lat() + latSpan * Math.random(),
-        southWest.lng() + lngSpan * Math.random());
+for (var i=0; i<positions.length; i++) {
+
+    var position = positions[i];
 
     var marker = new naver.maps.Marker({
         map: map,
         position: position,
-        title: key,
+        title: i+1,
         icon: {
             url: HOME_PATH +'/img/example/sp_pins_spot_v3.png',
             size: new naver.maps.Size(24, 37),
             anchor: new naver.maps.Point(12, 37),
-            origin: new naver.maps.Point(MARKER_SPRITE_POSITION[key][0], MARKER_SPRITE_POSITION[key][1])
+            origin: new naver.maps.Point(MARKER_SPRITE_X_OFFSET, MARKER_SPRITE_Y_OFFSET)
         },
-        zIndex: 100
+        zIndex: 100,
+        animation: naver.maps.Animation.BOUNCE
     });
 
     var infoWindow = new naver.maps.InfoWindow({
-        content: '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'+ key.substr(0, 1) +'"</b>.</div>'
+        content: '<div style="width:150px;text-align:center;padding:10px;">여기는 <b>"'+ (i+1).toString() +'"</b> 입니다.</div>'
     });
 
     markers.push(marker);
