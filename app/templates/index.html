@@ -178,43 +178,8 @@
 
                 <div id="map" style="width:50%;height:400px;margin:0 auto;text-align:center"></div>
 
-                <script>
-                  var HOME_PATH = window.HOME_PATH || '.';
+                <script type="text/javascript" src="{% static 'app/js/naver_map_api/map.js' %}">
 
-                  var cityhall = new naver.maps.LatLng(36.967999, 127.8710230),
-                    map = new naver.maps.Map('map', {
-                      center: cityhall.destinationPoint(0, 500),
-                      zoom: 12
-                    }),
-                    marker = new naver.maps.Marker({
-                      map: map,
-                      position: cityhall
-                    });
-
-                  var contentString = [
-                    '<div class="iw_inner">',
-                    '   <h3>노천극장</h3>',
-                    '   <p>한국교통대학교 노천극장<br />',
-                    '       <img src="{% static 'app/노천극장1.jpg'%}" width="55" height="55" alt="노천극장" class="thumb" /><br />',
-                    '       공연 장소',
-                    '       ',
-                    '   </p>',
-                    '</div>'
-                  ].join('');
-
-                  var infowindow = new naver.maps.InfoWindow({
-                    content: contentString
-                  });
-
-                  naver.maps.Event.addListener(marker, "click", function (e) {
-                    if (infowindow.getMap()) {
-                      infowindow.close();
-                    } else {
-                      infowindow.open(map, marker);
-                    }
-                  });
-
-                  infowindow.open(map, marker);
                 </script>
 
                 <!-- start section portfolio -->
