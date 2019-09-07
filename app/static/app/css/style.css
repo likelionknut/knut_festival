@@ -263,6 +263,14 @@ nav ul li a {
   color: #fff;
 }
 
+.header-content h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
 .header-content p {
   font-size: 13px;
   letter-spacing: 5px;
