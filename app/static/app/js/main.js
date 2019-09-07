@@ -79,8 +79,8 @@ $(document).ready(function() {
 
   $(function() {
     typed.typed({
-      strings: ["with 멋쟁이사자처럼", "대 동 제", "X월 X일"],
-      typeSpeed: 100,
+      strings: ["대 동 제", "9월 25일 ~ 26일", "with 멋쟁이사자처럼"],
+      typeSpeed: 150,
       loop: true,
     });
   });
