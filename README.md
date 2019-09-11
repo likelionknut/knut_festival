@@ -17,7 +17,7 @@
     - Bootstrap Theme
     - Plain HTML/CSS/js
     
-#### 스크린샷
+### 스크린샷
 
 ***
 
