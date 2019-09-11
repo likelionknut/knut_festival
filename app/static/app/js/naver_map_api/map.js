@@ -2,9 +2,22 @@ var HOME_PATH = window.HOME_PATH || '.';
 var MARKER_SPRITE_X_OFFSET = 29,
     MARKER_SPRITE_Y_OFFSET = 50;
 
+//지도 생성 시에 옵션을 지정 가능
 var map = new naver.maps.Map('map', {
-    center: new naver.maps.LatLng(36.967999, 127.8710230),
-    zoom: 12
+    center: new naver.maps.LatLng(36.967999, 127.8710230), //지도의 초기 중심 좌표
+    zoom: 12, //지도의 초기 줌 레벨
+    minZoom: 1 //지도의 최소 줌 레벨
+});
+
+//지도 인터랙션 끄기
+map.setOptions({ 
+    draggable: false, //지도 드래그 이동 사용 여부
+    pinchZoom: false, //핀치 줌 사용 여부
+    scrollWheel: false, //마우스 휠로 확대 축소 사용 여부
+    keyboardShortcuts: false, //키보드 단축키 사용 여부
+    disableDoubleTapZoom: true,
+    disableDoubleClickZoom: true, //더블클릭 중심으로 확대 사용 여부
+    disableTwoFingerTapZoom: true
 });
 
 var bounds = map.getBounds(),
