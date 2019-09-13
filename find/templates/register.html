@@ -1,0 +1,11 @@
+<!-- 분실물 등록 템플릿 -->
+<div class='container'>
+    <form method='POST'  enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{forms.as_table}}
+    </table>
+    <br>
+        <input class="btn btn-dark" type="submit" value="제출하기">
+    </form>
+</div>
