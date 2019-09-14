@@ -11,8 +11,10 @@ media
 db.sqlite3-journal
 
 # Environments
+.myvenv
 .env
 .venv
+myvenv/
 env/
 venv/
 ENV/
