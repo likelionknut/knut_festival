@@ -10,15 +10,15 @@ var map = new naver.maps.Map('map', {
 });
 
 //지도 인터랙션 끄기
-map.setOptions({ 
-    draggable: false, //지도 드래그 이동 사용 여부
-    pinchZoom: true, //핀치 줌 사용 여부
-    scrollWheel: false, //마우스 휠로 확대 축소 사용 여부
-    keyboardShortcuts: false, //키보드 단축키 사용 여부
-    disableDoubleTapZoom: true,
-    disableDoubleClickZoom: true, //더블클릭 중심으로 확대 사용 여부
-    disableTwoFingerTapZoom: true
-});
+// map.setOptions({ 
+//     draggable: false, //지도 드래그 이동 사용 여부
+//     pinchZoom: true, //핀치 줌 사용 여부
+//     scrollWheel: false, //마우스 휠로 확대 축소 사용 여부
+//     keyboardShortcuts: false, //키보드 단축키 사용 여부
+//     disableDoubleTapZoom: true,
+//     disableDoubleClickZoom: true, //더블클릭 중심으로 확대 사용 여부
+//     disableTwoFingerTapZoom: true
+// });
 
 var bounds = map.getBounds(),
     southWest = bounds.getSW(),

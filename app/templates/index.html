@@ -43,10 +43,41 @@
     Author: BootstrapMade.com
     Author URL: https://bootstrapmade.com
   ======================================================= -->
-</head>
+
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+  $(document).ready(function(){
+    var height = $(".notice").height();
+    var num = $(".rolling li").length;
+    var max = height * num;
+    var move = 0;
+    function noticeRolling(){
+      move += height;
+      $(".rolling").animate({"top":-move},600,function(){
+        if(move >= max){
+          $(this).css("top",0);
+          move = 0;
+        };
+      });
+    };
+    noticeRollingOff = setInterval(noticeRolling,2000);
+    $(".rolling").append($(".rolling li").first().clone());
+  });
+</script>
+
+<style type="text/css">
+  .notice{width:100%; height:50px; overflow:hidden; background-color:#fff;}
+  .rolling{position:relative; width:100%; height:auto;}
+  .rolling li{width:100%; height:50px; line-height:50px;}
+</style>
+
+</head>  
+
+
 
 <body>
-
+{% load socialaccount %}
+{% providers_media_js %}
   <!-- start section navbar -->
   <nav id="main-nav">
     <div class="row">
@@ -63,6 +94,19 @@
           <li><a href="#about" class="smoothScroll">About</a></li>
           <li><a href="#portfolio" class="smoothScroll">Photo Zone</a></li>
           <li><a href="#journal" class="smoothScroll">대중교통 시간표</a></li>
+
+          <!-- 로그인 안하고 글쓰려고하면 로그인안내창 -->
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'register' %}" class="lost">분실물등록</a></li>
+          {% else %}
+          <li><a href="#" onclick="alert('로그인 후 이용해주세요')">분실물등록</a></li>
+          {% endif %}
+          <li><a href="{% url 'lost' %}" class="lost">분실물 찾기</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="/accounts/logout" class="smoothScroll">로그아웃</a></li>
+          {% else %}
+          <li><a href="{% provider_login_url 'google' %}" class="smoothScroll">로그인</a></li>
+          {% endif %}
         </ul>
 
       </div>
@@ -330,7 +374,7 @@
                 <!-- End section journal -->
 
 
-                <!-- start sectoion contact -->
+                <!-- start section contact -->
 
                 <!--여기에 댓글기능 추가 -->
                 <div class="col-md-12">
@@ -347,19 +391,40 @@
                         <p class="mb-10">작성된 댓글이 없습니다.</p>
                       </div>
                       {% endfor %}
+                    
                     </div>
 
+                    <!-- 로그인안되있을때 댓글 쓰려고 하면 로그인안내창 띄움 -->
+                    {% if user.is_authenticated %}
                     <form id="comment-form" action="{% url 'comment_write' %}" method="POST">
                       {% csrf_token %}
                       <input id="form_message" type="text" name="text" placeholder="댓글을 입력하세요">
-                      <input id="form_name" type="text" name="user" placeholder="작성자">
                       <button type="submit">댓글 쓰기</button>
                     </form>
+                    {% else %}
+                    <form id="comment-form" action="{% url 'comment_write' %}" method="POST">
+                      {% csrf_token %}
+                      <input id="form_message" type="text" name="text" placeholder="댓글을 입력하세요">
+                      <button type="button" onclick="alert('로그인 후 이용해주세요')">댓글 쓰기</button>
+                    </form>
+                    {% endif %}
+                    <br><br>
+                    
+                    <!-- 분실물 title rolling -->
+                    <div class="notice">
+                      <ul class="rolling">
+                          {% for lost in losts %}
+                          <li>
+                                <a>{{lost.title}}</p>
+                          </li>
+                          {% endfor %}
+                      </ul>
+                    </div>  
+                                      
                   </div>
                 </div>
-
-                <!-- start sectoion contact -->
-
+                
+                <!-- start section contact -->
 
                 <!-- start section footer -->
                 <div id="footer" class="text-center">
