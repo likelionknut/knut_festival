@@ -21,4 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', app.views.home, name="home"),
     path('1/', app.views.comment_write, name="comment_write"),
+    path('board/', app.views.board, name="board"),
+    path('board/<int:board_id>/', app.views.detail, name="detail")
 ]
