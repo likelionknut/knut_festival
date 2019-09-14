@@ -22,6 +22,7 @@
   <!-- Bootstrap CSS File -->
   <link href="{% static 'app/lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
+
   <!-- Libraries CSS Files -->
   <link href="{% static 'app/lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
   <link href="{% static 'app/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
@@ -46,15 +47,15 @@
 </head>
 
 <body>
-
   <!-- start section navbar -->
   <nav id="main-nav">
     <div class="row">
       <div class="container">
 
         <div class="logo">
-          <a href="#home"><img src="{% static 'app/logo1.png' %}" alt="logo"></a>
+          <a href="#home"><img src="{% static 'app/logo1.png' %}" alt="logo"> KNUT festival</a>
         </div>
+        
 
         <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
 
@@ -63,12 +64,14 @@
           <li><a href="#about" class="smoothScroll">About</a></li>
           <li><a href="#portfolio" class="smoothScroll">Photo Zone</a></li>
           <li><a href="#journal" class="smoothScroll">대중교통 시간표</a></li>
+          <li><a href="#board" class="smoothScroll">분실물 게시판</a></li>
         </ul>
 
       </div>
     </div>
   </nav>
   <!-- End section navbar -->
+
 
 
   <!-- start section header -->
@@ -176,8 +179,13 @@
 
                 </div>
                 <!-- end section services -->
-
-                <div id="map" style="width:90%;height:400px;margin:0 auto;text-align:center"></div>
+                <br><br><br>
+                <div class="container">
+                  <div class="section-title text-center">
+                    <h2>찾아가기</h2>
+                  </div>
+                </div>
+                <div id="map" style="width:50%;height:400px;margin:0 auto;text-align:center"></div>
 
                 <script type="text/javascript" src="{% static 'app/js/naver_map_api/map.js' %}">
 
@@ -329,37 +337,38 @@
                 </div>
                 <!-- End section journal -->
 
+                <!-- start section Board -->
+                <div id="board" class="text-left paddsection">
 
-                <!-- start sectoion contact -->
-
-                <!--여기에 댓글기능 추가 -->
-                <div class="col-md-12">
-                  <div class="comments text-left padDiv mb-30">
-                    <div class="entry-comments-item">
-                      {% for comment in comments %}
-                      <div class="entry-comments-body">
-                        <span class="entry-comments-author"><a href="#">{{ comment.user }}</a></span>
-                        <small>{{ comment.created_at }}</small>
-                        <p class="mb-10">{{ comment.text|linebreaks }}</p>
-                      </div>
-                      {% empty %}
-                      <div class="comment-list">
-                        <p class="mb-10">작성된 댓글이 없습니다.</p>
-                      </div>
-                      {% endfor %}
+                  <div class="container">
+                    <div class="section-title text-center">
+                      <h2> 분실물 게시판 </h2>
                     </div>
-
-                    <form id="comment-form" action="{% url 'comment_write' %}" method="POST">
-                      {% csrf_token %}
-                      <input id="form_message" type="text" name="text" placeholder="댓글을 입력하세요">
-                      <input id="form_name" type="text" name="user" placeholder="작성자">
-                      <button type="submit">댓글 쓰기</button>
-                    </form>
                   </div>
-                </div>
-
-                <!-- start sectoion contact -->
-
+                  <table class="table table-hover" style="width:50%; margin:0px auto;">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">이름</th>
+                        <th scope="col" style="align-content: center;">제목</th>
+                        <th scope="col">날짜</th>
+                      </tr>
+                    </thead>
+                    {% for board in boards.all %}
+                    <tbody>
+                      <tr>
+                        <th scope="row">{{ board.id }}</th>
+                        <td>{{board.user}}</td>
+                        <td>{{board.title}}</td>
+                        <td>{{board.created_at}}</td>
+                      </tr>
+                    </tbody>
+                    {% endfor %}
+                    <!-- 게시물 역순 출력, 페이지네이션, 글쓰기 버튼, 게시물 댓글, sns 인증 로그인 구현해야함.-->
+                  </table>
+                      <input type="submit" class="btn btn-outline-primary" value="글쓰기"/>
+                  </div>
+                  <!-- end section Board -->
 
                 <!-- start section footer -->
                 <div id="footer" class="text-center">
@@ -393,6 +402,7 @@
                 </div>
                 <!-- End section footer -->
 
+
                 <!-- JavaScript Libraries -->
                 <script src="{% static 'app/lib/jquery/jquery.min.js' %}"></script>
                 <script src="{% static 'app/lib/jquery/jquery-migrate.min.js' %}"></script>
@@ -401,12 +411,14 @@
                 <script src="{% static 'app/lib/owlcarousel/owl.carousel.min.js' %}"></script>
                 <script src="{% static 'app/lib/magnific-popup/magnific-popup.min.js' %}"></script>
                 <script src="{% static 'app/lib/isotope/isotope.pkgd.min.js' %}"></script>
+                
 
                 <!-- Contact Form JavaScript File -->
                 <script src="{% static 'app/contactform/contactform.js' %}"></script>
 
                 <!-- Template Main Javascript File -->
                 <script src="{% static 'app/js/main.js' %}"></script>
+
 
 </body>
 
