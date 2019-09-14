@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Comment
+from .models import Board, Comment
 
 # Register your models here.
+myModels = [Board, Comment]
+admin.site.register(myModels)
 
-admin.site.register(Comment)
