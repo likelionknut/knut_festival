@@ -40,23 +40,26 @@
 
         <div class="container">
             <div class="section-title text-center" style="margin-top:5%;">
-                <h2> <caption>분실물 게시판</caption> </h2>
+                <h2>
+                    <caption>분실물 게시판</caption>
+                </h2>
             </div>
             <table class="table table-hover">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">이름</th>
-                    <th scope="col" style="align-content: center;">제목</th>
+                    <th scope="col">작성자</th>
+                    <th scope="col">제목</th>
                     <th scope="col">날짜</th>
                 </tr>
                 </thead>
                 {% for board in boards.all %}
                     <tbody>
                     <tr>
+
                         <th scope="row">{{ board.id }}</th>
                         <td>{{ board.user }}</td>
-                        <td>{{ board.title }}</td>
+                        <td><a href="{% url 'detail' board.id %}">{{ board.title }}</a></td>
                         <td>{{ board.created_at }}</td>
                     </tr>
                     </tbody>
@@ -70,43 +73,4 @@
     </div>
     <!-- end section Board -->
 
-
-    <div class="container">
-        <div class="section-title text-center" style="margin-top:5%;">
-            <h2>
-                <caption>분실물 게시판</caption>
-            </h2>
-        </div>
-
-        <table class="table table-hover">
-            <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">이름</th>
-                <th scope="col">제목</th>
-                <th scope="col">날짜</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
 {% endblock %}
