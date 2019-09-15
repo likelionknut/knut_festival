@@ -27,23 +27,23 @@
                 </ul>
 
             </div>
-
-            <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
-
-
-            <!-- 로그인 안하고 글쓰려고하면 로그인안내창 -->
-            {% if user.is_authenticated %}
-                <li><a href="{% url 'register' %}" class="lost">분실물등록</a></li>
-            {% else %}
-                <li><a href="#" onclick="alert('로그인 후 이용해주세요')">분실물등록</a></li>
-            {% endif %}
-            <li><a href="{% url 'lost' %}" class="lost">분실물 찾기</a></li>
-            {% if user.is_authenticated %}
-                <li><a href="/accounts/logout" class="smoothScroll">로그아웃</a></li>
-            {% else %}
-                <li><a href="{% provider_login_url 'google' %}" class="smoothScroll">로그인</a></li>
-            {% endif %}
-            </ul>
+{##}
+{#            <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>#}
+{##}
+{##}
+{#            <!-- 로그인 안하고 글쓰려고하면 로그인안내창 -->#}
+{#            {% if user.is_authenticated %}#}
+{#                <li><a href="{% url 'register' %}" class="lost">분실물등록</a></li>#}
+{#            {% else %}#}
+{#                <li><a href="#" onclick="alert('로그인 후 이용해주세요')">분실물등록</a></li>#}
+{#            {% endif %}#}
+{#            <li><a href="{% url 'lost' %}" class="lost">분실물 찾기</a></li>#}
+{#            {% if user.is_authenticated %}#}
+{#                <li><a href="/accounts/logout" class="smoothScroll">로그아웃</a></li>#}
+{#            {% else %}#}
+{#                <li><a href="{% provider_login_url 'google' %}" class="smoothScroll">로그인</a></li>#}
+{#            {% endif %}#}
+{#            </ul>#}
 
         </div>
 
@@ -167,9 +167,7 @@
     </div>
     <div id="map" style="width:50%;height:400px;margin:0 auto;text-align:center"></div>
 
-    <script type="text/javascript" src="{% static 'app/js/naver_map_api/map.js' %}">
-
-    </script>
+    <script type="text/javascript" src="{% static 'app/js/naver_map_api/map.js' %}"></script>
 
     <!-- start section portfolio -->
     <div id="portfolio" class="text-center paddsection">
@@ -317,54 +315,54 @@
 
 
                 <!-- start section contact -->
-
-                <!--여기에 댓글기능 추가 -->
-                <div class="col-md-12">
-                    <div class="comments text-left padDiv mb-30">
-                        <div class="entry-comments-item">
-                            {% for comment in comments %}
-                                <div class="entry-comments-body">
-                                    <span class="entry-comments-author"><a href="#">{{ comment.user }}</a></span>
-                                    <small>{{ comment.created_at }}</small>
-                                    <p class="mb-10">{{ comment.text|linebreaks }}</p>
-                                </div>
-                            {% empty %}
-                                <div class="comment-list">
-                                    <p class="mb-10">작성된 댓글이 없습니다.</p>
-                                </div>
-                            {% endfor %}
-
-                        </div>
-
-                        <!-- 로그인안되있을때 댓글 쓰려고 하면 로그인안내창 띄움 -->
-                        {% if user.is_authenticated %}
-                            <form id="comment-form" action="{% url 'comment_write' %}" method="POST">
-                                {% csrf_token %}
-                                <input id="form_message" type="text" name="text" placeholder="댓글을 입력하세요">
-                                <button type="submit">댓글 쓰기</button>
-                            </form>
-                        {% else %}
-                            <form id="comment-form" action="{% url 'comment_write' %}" method="POST">
-                                {% csrf_token %}
-                                <input id="form_message" type="text" name="text" placeholder="댓글을 입력하세요">
-                                <button type="button" onclick="alert('로그인 후 이용해주세요')">댓글 쓰기</button>
-                            </form>
-                        {% endif %}
-                        <br><br>
-
-                        <!-- 분실물 title rolling -->
-                        <div class="notice">
-                            <ul class="rolling">
-                                {% for lost in losts %}
-                                    <li>
-                                        <p>{{ lost.title }}</p>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
+{##}
+{#                <!--여기에 댓글기능 추가 -->#}
+{#                <div class="col-md-12">#}
+{#                    <div class="comments text-left padDiv mb-30">#}
+{#                        <div class="entry-comments-item">#}
+{#                            {% for comment in comments %}#}
+{#                                <div class="entry-comments-body">#}
+{#                                    <span class="entry-comments-author"><a href="#">{{ comment.user }}</a></span>#}
+{#                                    <small>{{ comment.created_at }}</small>#}
+{#                                    <p class="mb-10">{{ comment.text|linebreaks }}</p>#}
+{#                                </div>#}
+{#                            {% empty %}#}
+{#                                <div class="comment-list">#}
+{#                                    <p class="mb-10">작성된 댓글이 없습니다.</p>#}
+{#                                </div>#}
+{#                            {% endfor %}#}
+{##}
+{#                        </div>#}
+{##}
+{#                        <!-- 로그인안되있을때 댓글 쓰려고 하면 로그인안내창 띄움 -->#}
+{#                        {% if user.is_authenticated %}#}
+{#                            <form id="comment-form" action="{% url 'comment_write' %}" method="POST">#}
+{#                                {% csrf_token %}#}
+{#                                <input id="form_message" type="text" name="text" placeholder="댓글을 입력하세요">#}
+{#                                <button type="submit">댓글 쓰기</button>#}
+{#                            </form>#}
+{#                        {% else %}#}
+{#                            <form id="comment-form" action="{% url 'comment_write' %}" method="POST">#}
+{#                                {% csrf_token %}#}
+{#                                <input id="form_message" type="text" name="text" placeholder="댓글을 입력하세요">#}
+{#                                <button type="button" onclick="alert('로그인 후 이용해주세요')">댓글 쓰기</button>#}
+{#                            </form>#}
+{#                        {% endif %}#}
+{#                        <br><br>#}
+{##}
+{#                        <!-- 분실물 title rolling -->#}
+{#                        <div class="notice">#}
+{#                            <ul class="rolling">#}
+{#                                {% for lost in losts %}#}
+{#                                    <li>#}
+{#                                        <p>{{ lost.title }}</p>#}
+{#                                    </li>#}
+{#                                {% endfor %}#}
+{#                            </ul>#}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{#                </div>#}
 
                 <!-- start section contact -->
 
