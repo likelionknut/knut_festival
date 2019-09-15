@@ -1,0 +1,83 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %} 분실물 게시판 {% endblock %}
+{% block content %}
+<!-- start section navbar -->
+{% block head %}
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type ="text/javascript">
+    
+
+    $(document).ready(function() {
+        $('#main-nav').slideDown(500);
+    });
+
+    $('#main-nav').off();
+
+    //scroll 속성 (app/static/js/main.js 54 line~) 대체어케없애냐???????? 하.. ㅡㅡ off() 해도 안없어짐;;
+
+</script>
+
+
+{% endblock %}
+
+<nav id="main-nav" style="position: absolute;">
+    <div class="row">
+        <div class="container">
+
+            <div class="logo">
+                <a href="#"><img src="{% static 'app/logo1.png' %}" alt="logo"> KNUT festival</a>
+            </div>
+
+
+            <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
+
+            <!-- 홈으로 이동이안됨. url 손봐야할듯 -->
+            <ul class="nav-menu list-unstyled">
+                <li><a href="home/index.html" class="smoothScroll">Home</a></li>
+                <li><a href="/index.html#about" class="smoothScroll">About</a></li>
+                <li><a href="/index.html#portfolio" class="smoothScroll">Photo Zone</a></li>
+                <li><a href="/index.html#journal" class="smoothScroll">대중교통 시간표</a></li>
+                <li><a href="#board" class="smoothScroll">분실물 게시판</a></li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<!-- End section navbar -->
+
+<!-- start section Board -->
+<div id="board" class="text-left paddsection">
+
+    <div class="container">
+        <div class="section-title text-center" style="margin-top:5%;">
+            <h2> 분실물 게시판 </h2>
+        </div>
+    </div>
+    <table class="table table-hover" style="width:50%; margin:0px auto;">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">이름</th>
+                <th scope="col" style="align-content: center;">제목</th>
+                <th scope="col">날짜</th>
+            </tr>
+        </thead>
+        {% for board in boards.all %}
+        <tbody>
+            <tr>
+                <th scope="row">{{ board.id }}</th>
+                <td>{{board.user}}</td>
+                <td>{{board.title}}</td>
+                <td>{{board.created_at}}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+        <!-- 게시물 역순 출력, 페이지네이션, 글쓰기 버튼, 게시물 댓글, sns 인증 로그인 구현해야함.-->
+    </table>
+    <input type="submit" class="btn btn-outline-primary" value="글쓰기" />
+</div>
+<!-- end section Board -->
+
+{% endblock %}
