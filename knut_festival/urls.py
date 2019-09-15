@@ -28,4 +28,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('lost/', find.views.lost, name ="lost"),
     path('register/', find.views.newlost, name = "register"),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('board/', app.views.board, name="board"),
+    path('board/<int:board_id>/', app.views.detail, name="detail"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
