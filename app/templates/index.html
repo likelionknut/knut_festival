@@ -7,9 +7,10 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>한국교통대학교 대동제 축제페이지</title>
+  <title>{% block title %}한국교통대학교 대동제 축제페이지{% endblock %}</title>
   <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=b5vxfjjnnc"></script>
 
+  {% block head %}{% endblock %}
   <meta content="" name="keywords">
   <meta content="" name="description">
 
@@ -47,6 +48,7 @@
 </head>
 
 <body>
+  {% block content %}
   <!-- start section navbar -->
   <nav id="main-nav">
     <div class="row">
@@ -64,7 +66,7 @@
           <li><a href="#about" class="smoothScroll">About</a></li>
           <li><a href="#portfolio" class="smoothScroll">Photo Zone</a></li>
           <li><a href="#journal" class="smoothScroll">대중교통 시간표</a></li>
-          <li><a href="#board" class="smoothScroll">분실물 게시판</a></li>
+          <li><a href="{% url 'board' %}" class="smoothScroll">분실물 게시판</a></li>
         </ul>
 
       </div>
@@ -369,7 +371,7 @@
                       <input type="submit" class="btn btn-outline-primary" value="글쓰기"/>
                   </div>
                   <!-- end section Board -->
-
+{% endblock %}
                 <!-- start section footer -->
                 <div id="footer" class="text-center">
                   <div class="container">
