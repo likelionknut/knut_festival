@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from .models import Comment, Board
-from .forms import CommentForm
+from .forms import CommentForm, BoardForm
 from django.core.paginator import Paginator
 import requests
 
@@ -132,4 +132,6 @@ def oauth(request):
     # board.photo = request.FILES('photo')
     # board.save()
 
-    return render(request, 'new.html')
+    form = BoardForm()
+
+    return render(request, 'new.html', {'form': form})
