@@ -8,7 +8,8 @@ from django.core.paginator import Paginator
 
 def home(request):
     comments = Comment.objects.all()
-    return render(request, 'index.html', {'comments':comments})
+    boards_list = Board.objects.all().order_by('-created_at')
+    return render(request, 'index.html', {'comments':comments, 'boards_list':boards_list})
 
 
 def comment_write(request):
@@ -40,13 +41,12 @@ def detail(request, board_id):
 
 def board(request):
 
-    boards = Board.objects
     boards_list = Board.objects.all().order_by('-created_at')
     paginator = Paginator(boards_list, 5) # 게시물 5개를 기준으로 페이지네이션 전개
     page = request.GET.get('page')        # request 된 페이지를 변수에 담음
     posts = paginator.get_page(page)
 
-    return render(request, 'board.html', {'boards':boards, 'posts':posts})
+    return render(request, 'board.html', {'posts':posts})
 
 def new(request):
     return render(request, 'new.html')
