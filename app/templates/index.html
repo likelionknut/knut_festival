@@ -194,8 +194,25 @@
         </div>
     </div>
     <div id="map" style="width:70%;height:400px;margin:0 auto;text-align:center"></div>
-
     <script type="text/javascript" src="{% static 'app/js/naver_map_api/map.js' %}"></script>
+
+    <!-- start section auto rolling -->
+    <br><br><br>
+    <div class="container" style="text-align: center;">
+        <div class="section-title text-center">
+            <h2>혹시 제물건 못보셨나요..? (분실물 배너)</h2>
+        </div>
+        <div class="notice">
+            <ul class="rolling" style="list-style: none">
+                {% for board in boards_list %}
+                <li>
+                    <p>{{board.user}}님의 게시물 : <a href="{% url 'detail' board.id %}">{{board.title}}</a></p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- end section auto rolling -->
 
     <!-- start section portfolio -->
     <div id="portfolio" class="text-center paddsection">
@@ -397,16 +414,7 @@
                 <!-- start section contact -->
 
             </div>
-            <!-- End section journal -->
-            <div class="notice">
-                <ul class="rolling">
-                    {% for board in boards_list %}
-                    <li>
-                          <a href="{% url 'detail' board.id %}">{{board.title}}</p>
-                    </li>
-                    {% endfor %}
-                </ul>
-              </div> 
+            <!-- End section journal --> 
         </div>
 
     </div>
