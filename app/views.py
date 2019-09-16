@@ -69,16 +69,39 @@ def new(request):
 # 제출 버튼을 누른뒤 작성한 게시글 detail로 보내기 위한 함수
 def create(request):
 
-    board = Board()
-    board.title = request.GET['title']
-    board.body = request.GET['body']
-    board.created_at = timezone.datetime.now()
-    board.user = request.session.get('user')
+    # board = Board()
+    # board.title = request.GET['title']
+    # board.body = request.GET['body']
+    # board.created_at = timezone.datetime.now()
+    # board.user = request.session.get('user')
     # print("title = "+board.title)
     # print("body = "+board.body)
     # print("user = "+board.user)
-    board.photo = request.FILES.get('photo')
-    board.save()
+    # board.photo = request.FILES.get('photo')
+    # board.save()
+
+    if request.method == 'POST':
+        form = BoardForm(request.POST, request.FILES)
+
+        if form.is_valid():
+
+            # board.user = request.session.get('user')
+            # board.created_at = timezone.datetime.now()
+            # board.save()
+            # form.user = request.session.get('user')
+
+            # form.user = str('djdjddj')
+            post = form.save(commit=False)
+
+            post.user = request.session.get('user')
+            post.save()
+
+            return redirect('board')
+        else:
+            return redirect('board')
+    else:
+        form = BoardForm()
+        return render(request, 'new.html', {'form': form})
 
     # request.session['title'] = str(title)
     # request.session['body'] = str(body)
@@ -132,6 +155,7 @@ def oauth(request):
     # board.photo = request.FILES('photo')
     # board.save()
 
-    form = BoardForm()
+    # form = BoardForm()
 
-    return render(request, 'new.html', {'form': form})
+    # return render(request, 'new.html', {'form': form})
+    return redirect('create')
