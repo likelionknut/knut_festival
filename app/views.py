@@ -54,12 +54,15 @@ def new(request):
 
 # 제출 버튼을 누른뒤 작성한 게시글 detail로 보내기 위한 함수
 def create(request):
-    board = Board()
-    board.title = request.GET['title']
-    board.body = request.GET['body']
-    board.user = request.GET['user']
-    board.created_at = timezone.datetime.now()
-    board.save()
+
+    title = request.GET['title']
+    body = request.GET['body']
+    created_at = timezone.datetime.now()
+
+    request.session['title'] = str(title)
+    request.session['body'] = str(body)
+    request.session['created_at'] = str(created_at)
+
 
     login_request_uri = 'https://kauth.kakao.com/oauth/authorize?'
 
@@ -97,5 +100,25 @@ def oauth(request):
     json_data = access_token_request_uri_data.json()
     access_token = json_data['access_token']
     print(access_token)
+
+    user_profile_info_uri = "https://kapi.kakao.com/v1/api/talk/profile?access_token="
+    user_profile_info_uri += str(access_token)
+
+    user_profile_info_uri_data = requests.get(user_profile_info_uri)
+    user_json_data = user_profile_info_uri_data.json()
+    nickName = user_json_data['nickName']
+    profileImageURL = user_json_data['profileImageURL']
+    thumbnailURL = user_json_data['thumbnailURL']
+
+    print("nickName = " + str(nickName))
+    print("profileImageURL = " + str(profileImageURL))
+    print("thumbnailURL = " + str(thumbnailURL))
+
+    board = Board()
+    board.title = request.session.get('title')
+    board.body = request.session.get('body')
+    board.user = nickName
+    board.created_at = request.session.get('created_at')
+    board.save()
 
     return redirect('board')
