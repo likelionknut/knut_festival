@@ -21,9 +21,9 @@ class BoardForm(forms.ModelForm):
             'title': forms.TextInput(
                 attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': '제목을 입력하세요.'}
             ),
-            'user': forms.TextInput(
-                attrs={'readonly': 'readonly'}
-            ),
+            # 'user': forms.TextInput(
+            #     attrs={'readonly': 'readonly'}
+            # ),
             'body': forms.Textarea(
                 attrs={'class': 'form-control', 'cols': 80, 'rows': 20}
             ),
