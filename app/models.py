@@ -14,7 +14,7 @@ class Board(models.Model):
     user = models.CharField(max_length=10)
     body = models.TextField()
     created_at = models.DateTimeField('date published')
-    photo = models.ImageField(upload_to='images/')
+    photo = models.ImageField(upload_to='images/', blank=True, null=True)
 
     def __str__(self):
         return self.title
