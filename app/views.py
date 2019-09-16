@@ -2,19 +2,15 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from .models import Comment, Board
 from .forms import CommentForm
-from find.models import Lost
 
 # Create your views here.
 
 def home(request):
     comments = Comment.objects.all()
 
-    losts = Lost.objects.all()
-    # return render(request, 'index.html', {'comments':comments, 'losts':losts})
-
     boards = Board.objects.all()
 
-    return render(request, 'index.html', {'comments':comments, 'boards':boards, 'losts':losts})
+    return render(request, 'index.html', {'comments':comments, 'boards':boards})
 
 
 def comment_write(request):

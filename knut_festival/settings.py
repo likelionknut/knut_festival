@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'app.apps.AppConfig',
-    'find.apps.FindConfig',
 
     #allauth
     'allauth',

@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import app.views
-import find.views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -26,8 +25,6 @@ urlpatterns = [
     path('1/', app.views.comment_write, name="comment_write"),
     path('2/', app.views.login, name="login"),
     path('accounts/', include('allauth.urls')),
-    path('lost/', find.views.lost, name ="lost"),
-    path('register/', find.views.newlost, name = "register"),
     path('board/', app.views.board, name="board"),
     path('board/<int:board_id>/', app.views.detail, name="detail"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
