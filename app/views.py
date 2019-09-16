@@ -60,3 +60,8 @@ def create(request):
     board.created_at = timezone.datetime.now()
     board.save()
     return redirect('/board/')
+
+
+# 카카오톡 oauth
+def oauth(request):
+    return redirect('board')
