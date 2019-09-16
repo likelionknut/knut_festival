@@ -3,7 +3,7 @@ from django.utils import timezone
 from .models import Comment, Board
 from .forms import CommentForm, BoardForm
 from django.core.paginator import Paginator
-import requests
+import requests, math
 
 # Create your views here.
 
@@ -43,10 +43,17 @@ def board(request):
 
     boards_list = Board.objects.all().order_by('-created_at')
     paginator = Paginator(boards_list, 5) # 게시물 5개를 기준으로 페이지네이션 전개
-    page = request.GET.get('page')        # request 된 페이지를 변수에 담음
+    page = request.GET.get('page', 1)        # request 된 페이지를 변수에 담음
     posts = paginator.get_page(page)
+    page_range = 5
+    current_block = math.ceil(int(page)/page_range)
+    start_block = (current_block-1) * page_range
+    end_block = start_block + page_range
+    p_range = paginator.page_range[start_block:end_block]
 
-    return render(request, 'board.html', {'posts':posts})
+    return render(request, 'board.html', {'posts':posts, 'p_range':p_range})
+
+    
 
 # 글쓰기 버튼
 def new(request):
