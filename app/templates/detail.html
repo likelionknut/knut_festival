@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %} 분실물 게시판 {% endblock %}
+{% block title %} {{board.title}} {% endblock %}
 
 {% block javascriptHead %}
     <script src="{% static 'app/js/board_main.js' %}"></script>
