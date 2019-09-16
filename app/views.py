@@ -56,6 +56,7 @@ def create(request):
     board = Board()
     board.title = request.GET['title']
     board.body = request.GET['body']
+    board.user = request.GET['user']
     board.created_at = timezone.datetime.now()
     board.save()
     return redirect('/board/')
