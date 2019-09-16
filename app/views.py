@@ -59,9 +59,23 @@ def create(request):
     board.user = request.GET['user']
     board.created_at = timezone.datetime.now()
     board.save()
-    return redirect('/board/')
+
+    login_request_uri = 'https://kauth.kakao.com/oauth/authorize?'
+
+    client_id = 'd9079dbac88fca9754d091a7af0366ed'
+    redirect_uri = 'http://127.0.0.1:8000/oauth'
+
+    login_request_uri += 'client_id=' + client_id
+    login_request_uri += '&redirect_uri=' + redirect_uri
+    login_request_uri += '&response_type=code'
+
+    return redirect(login_request_uri)
+    # return redirect('board')
 
 
 # 카카오톡 oauth
 def oauth(request):
+    code = request.GET['code']
+    print('code = ' + str(code))
+
     return redirect('board')
