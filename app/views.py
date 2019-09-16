@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Comment, Board
 from .forms import CommentForm
 from django.core.paginator import Paginator
+import requests
 
 # Create your views here.
 
@@ -91,5 +92,10 @@ def oauth(request):
     access_token_request_uri += "&code=" + code
 
     print(access_token_request_uri)
+
+    access_token_request_uri_data = requests.get(access_token_request_uri)
+    json_data = access_token_request_uri_data.json()
+    access_token = json_data['access_token']
+    print(access_token)
 
     return redirect('board')
