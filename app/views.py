@@ -34,7 +34,6 @@ def comment_write(request):
 #     return render(request, 'index.html')
 
 
-
 # primary key 값을 부여해서 게시글 마다 고유한 번호를 가질수 있게 설계 (게시글 구분)
 def detail(request, board_id):
     board_detail = get_object_or_404(Board, pk=board_id)
@@ -49,20 +48,8 @@ def board(request):
 
     return render(request, 'board.html', {'posts':posts})
 
+# 글쓰기 버튼
 def new(request):
-    return render(request, 'new.html')
-
-# 제출 버튼을 누른뒤 작성한 게시글 detail로 보내기 위한 함수
-def create(request):
-
-    title = request.GET['title']
-    body = request.GET['body']
-    created_at = timezone.datetime.now()
-
-    request.session['title'] = str(title)
-    request.session['body'] = str(body)
-    request.session['created_at'] = str(created_at)
-
 
     login_request_uri = 'https://kauth.kakao.com/oauth/authorize?'
 
@@ -77,6 +64,28 @@ def create(request):
     request.session['redirect_uri'] = redirect_uri
 
     return redirect(login_request_uri)
+    # return render(request, 'new.html')
+
+# 제출 버튼을 누른뒤 작성한 게시글 detail로 보내기 위한 함수
+def create(request):
+
+    board = Board()
+    board.title = request.GET['title']
+    board.body = request.GET['body']
+    board.created_at = timezone.datetime.now()
+    board.user = request.session.get('user')
+    # print("title = "+board.title)
+    # print("body = "+board.body)
+    # print("user = "+board.user)
+    board.photo = request.FILES.get('photo')
+    board.save()
+
+    # request.session['title'] = str(title)
+    # request.session['body'] = str(body)
+    # request.session['created_at'] = str(created_at)
+    # request.session['photo'] = photo
+
+    return redirect('board')
     # return redirect('board')
 
 
@@ -114,11 +123,13 @@ def oauth(request):
     print("profileImageURL = " + str(profileImageURL))
     print("thumbnailURL = " + str(thumbnailURL))
 
-    board = Board()
-    board.title = request.session.get('title')
-    board.body = request.session.get('body')
-    board.user = nickName
-    board.created_at = request.session.get('created_at')
-    board.save()
+    request.session['user'] = nickName
+    # board = Board()
+    # board.title = request.session.get('title')
+    # board.body = request.session.get('body')
+    # board.user = nickName
+    # board.created_at = request.session.get('created_at')
+    # board.photo = request.FILES('photo')
+    # board.save()
 
-    return redirect('board')
+    return render(request, 'new.html')
