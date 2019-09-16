@@ -53,10 +53,9 @@
                     <th scope="col">날짜</th>
                 </tr>
                 </thead>
-                {% for board in boards.all %}
+                {% for board in posts %}
                     <tbody>
                     <tr>
-
                         <th scope="row">{{ board.id }}</th>
                         <td>{{ board.user }}</td>
                         <td><a href="{% url 'detail' board.id %}">{{ board.title }}</a></td>
@@ -64,11 +63,26 @@
                     </tr>
                     </tbody>
                 {% endfor %}
-                <!-- 게시물 역순 출력, 페이지네이션, 글쓰기 버튼, 게시물 댓글, sns 인증 로그인 구현해야함.-->
+                <!-- 게시물 댓글, *sns 인증 로그인* 구현해야함.-->
             </table>
 
             <br><br>
-            <input type="submit" class="btn btn-outline-primary center" value="글쓰기"/>
+            <a href="{% url 'new' %}"><input type="#" class="btn btn-outline-primary center" value="글쓰기" /></a>
+
+            <!-- pagination section -->
+            {%if posts.has_previous%}
+                <a href="?page=1">First</a>
+                <a href="?page={{posts.previous_page_number}}">Previous</a>
+            {%endif%}
+
+            <span>{{posts.number}}</span>
+            <span>of</span>
+            <span>{{posts.paginator.num_pages}}</span>
+
+            {%if posts.has_next%}
+                <a href="?page={{posts.next_page_number}}">Next</a>
+                <a href="?page={{posts.paginator.num_pages}}">Last</a>
+            {%endif%}
         </div>
     </div>
     <!-- end section Board -->
