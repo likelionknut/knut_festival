@@ -215,18 +215,19 @@
 
                             <!-- start section auto rolling -->
                             <br><br><br>
-                            <div class="container" style="text-align: center;">
+                            <div class="container">
                                 <div class="section-title text-center">
                                     <h2>혹시 제물건 못보셨나요..? (분실물 배너)</h2>
                                 </div>
-                                <div class="container card w-50 border-success mb-3" style="border:2px dashed;">
+                                <div class="container card w-75 border-success mb-3 text-center" style="border:2px dashed; height:20%">
                                     <div class="card-body">
                                         <div class="notice">
                                             <ul class="rolling" style="list-style: none">
                                                 {% for board in boards_list %}
                                                 <li>
-                                                    <p>{{board.user}}님의 게시물 : <a
+                                                    <p style="margin-right:5%">{{board.user}}님의 게시물 : <a
                                                             href="{% url 'detail' board.id %}">{{board.title}}</a></p>
+                                                            <!-- title 길이 확 줄여야할듯. mobile 인터페이스에서 짤림 -->
                                                 </li>
                                                 {% endfor %}
                                             </ul>
