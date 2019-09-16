@@ -13,7 +13,7 @@ class Board(models.Model):
     title = models.CharField(max_length=20)
     user = models.CharField(max_length=10)
     body = models.TextField()
-    created_at = models.DateTimeField('date published')
+    created_at = models.DateTimeField(auto_now_add=True)
     photo = models.ImageField(upload_to='images/', blank=True, null=True)
 
     def __str__(self):
