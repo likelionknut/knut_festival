@@ -69,6 +69,9 @@ def create(request):
     login_request_uri += '&redirect_uri=' + redirect_uri
     login_request_uri += '&response_type=code'
 
+    request.session['client_id'] = client_id
+    request.session['redirect_uri'] = redirect_uri
+
     return redirect(login_request_uri)
     # return redirect('board')
 
@@ -77,5 +80,16 @@ def create(request):
 def oauth(request):
     code = request.GET['code']
     print('code = ' + str(code))
+
+    client_id = request.session.get('client_id')
+    redirect_uri = request.session.get('redirect_uri')
+
+    access_token_request_uri = "https://kauth.kakao.com/oauth/token?grant_type=authorization_code&"
+
+    access_token_request_uri += "client_id=" + client_id
+    access_token_request_uri += "&redirect_uri=" + redirect_uri
+    access_token_request_uri += "&code=" + code
+
+    print(access_token_request_uri)
 
     return redirect('board')
