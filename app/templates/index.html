@@ -366,59 +366,8 @@
 
                 <!-- start section contact -->
 
-                <!-- start section footer -->
-                <div id="footer" class="text-center">
-                    <div class="container">
-                        <div class="socials-media text-center">
-
-                            <ul class="list-unstyled">
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                                <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                                <li><a href="#"><i class="ion-social-tumblr"></i></a></li>
-                                <li><a href="#"><i class="ion-social-dribbble"></i></a></li>
-                            </ul>
-
-                        </div>
-                    </div>
-                </div>
-
             </div>
             <!-- End section journal -->
-
-            <!-- start section Board -->
-            <div id="board" class="text-left paddsection">
-
-                <div class="container">
-                    <div class="section-title text-center">
-                        <h2> 분실물 게시판 </h2>
-                    </div>
-                </div>
-                <table class="table table-hover" style="width:50%; margin:0px auto;">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">이름</th>
-                        <th scope="col" style="align-content: center;">제목</th>
-                        <th scope="col">날짜</th>
-                    </tr>
-                    </thead>
-                    {% for board in boards.all %}
-                        <tbody>
-                        <tr>
-                            <th scope="row">{{ board.id }}</th>
-                            <td>{{ board.user }}</td>
-                            <td>{{ board.title }}</td>
-                            <td>{{ board.created_at }}</td>
-                        </tr>
-                        </tbody>
-                    {% endfor %}
-                    <!-- 게시물 역순 출력, 페이지네이션, 글쓰기 버튼, 게시물 댓글, sns 인증 로그인 구현해야함.-->
-                </table>
-                <input type="submit" class="btn btn-outline-primary" value="글쓰기"/>
-            </div>
-            <!-- end section Board -->
         </div>
     </div>
 {% endblock %}
