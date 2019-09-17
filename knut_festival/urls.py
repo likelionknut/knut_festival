@@ -30,15 +30,17 @@ urlpatterns = [
     path('board/<int:board_id>/', app.views.detail, name="detail"),
     path('board/new/', app.views.new, name="new"),
     path('board/create/', app.views.create, name="create"),
+
     path('oauth/', app.views.oauth, name="oauth"),
 
     path('board/boothPromotion', app.views.boothPromotion, name="boothPromotion"),
-    path('board/friends', app.views.friends, name="friends"),
-
     path('board/boothPromotionNew', app.views.boothPromotionNew, name="boothPromotionNew"),
-    path('board/friendsNew', app.views.friendsNew, name="friendsNew"),
-
     path('board/boothPromotionCreate', app.views.boothPromotionCreate, name="boothPromotionCreate"),
+    path('board/boothPromotion/<int:board_id>/', app.views.boothPromotionDetail, name="boothPromotionDetail"),
+
+    path('board/friends', app.views.friends, name="friends"),
+    path('board/friendsNew', app.views.friendsNew, name="friendsNew"),
     path('board/friendsCreate', app.views.friendsCreate, name="friendsCreate"),
+    path('board/friends/<int:board_id>/', app.views.friendsDetail, name="friendsDetail"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
