@@ -90,12 +90,6 @@ def create(request):
 
         if form.is_valid():
 
-            # board.user = request.session.get('user')
-            # board.created_at = timezone.datetime.now()
-            # board.save()
-            # form.user = request.session.get('user')
-
-            # form.user = str('djdjddj')
             post = form.save(commit=False)
 
             post.user = request.session.get('user')

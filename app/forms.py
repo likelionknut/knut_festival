@@ -1,6 +1,5 @@
 from django import forms
-from .models import Comment
-from .models import Board
+from .models import *
 
 
 class CommentForm(forms.ModelForm):
@@ -13,7 +12,9 @@ class BoardForm(forms.ModelForm):
     class Meta:
         model = Board
 
-        fields = ['title', 'user', 'body', 'photo']
+        tag = forms.ChoiceField(choices=tag_choices)
+
+        fields = ['title', 'tag', 'user', 'body', 'photo',]
 
         exclude = ['user']
 
