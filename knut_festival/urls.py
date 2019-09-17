@@ -34,4 +34,11 @@ urlpatterns = [
 
     path('board/boothPromotion', app.views.boothPromotion, name="boothPromotion"),
     path('board/friends', app.views.friends, name="friends"),
+
+    path('board/boothPromotionNew', app.views.boothPromotionNew, name="boothPromotionNew"),
+    path('board/friendsNew', app.views.friendsNew, name="friendsNew"),
+
+    path('board/boothPromotionCreate', app.views.boothPromotionCreate, name="boothPromotionCreate"),
+    path('board/friendsCreate', app.views.friendsCreate, name="friendsCreate"),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
