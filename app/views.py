@@ -43,7 +43,7 @@ def detail(request, board_id):
 def board(request):
 
     boards_list = Board.objects.all().order_by('-created_at')
-    paginator = Paginator(boards_list, 5) # 게시물 5개를 기준으로 페이지네이션 전개
+    paginator = Paginator(boards_list, 6) # 게시물 5개를 기준으로 페이지네이션 전개
     page = request.GET.get('page', 1)        # request 된 페이지를 변수에 담음
     posts = paginator.get_page(page)
     page_range = 5                          # 5개의 페이지 블럭 (범위)
@@ -160,6 +160,7 @@ def oauth(request):
 
 # 동아리 홍보 게시판 메인
 def boothPromotion(request):
+
     boards_list = BoothPromotionBoard.objects.all().order_by('-created_at')
     paginator = Paginator(boards_list, 5)  # 게시물 5개를 기준으로 페이지네이션 전개
     page = request.GET.get('page', 1)  # request 된 페이지를 변수에 담음
@@ -175,8 +176,9 @@ def boothPromotion(request):
 
 # 술 친구 게시판 메인
 def friends(request):
+
     boards_list = FriendsBoard.objects.all().order_by('-created_at')
-    paginator = Paginator(boards_list, 5)  # 게시물 5개를 기준으로 페이지네이션 전개
+    paginator = Paginator(boards_list, 6)  # 게시물 5개를 기준으로 페이지네이션 전개
     page = request.GET.get('page', 1)  # request 된 페이지를 변수에 담음
     posts = paginator.get_page(page)
     page_range = 5  # 5개의 페이지 블럭 (범위)
