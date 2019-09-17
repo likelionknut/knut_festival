@@ -41,7 +41,6 @@ def detail(request, board_id):
 
 
 def board(request):
-
     boards_list = Board.objects.all().order_by('-created_at')
     paginator = Paginator(boards_list, 6) # 게시물 5개를 기준으로 페이지네이션 전개
     page = request.GET.get('page', 1)        # request 된 페이지를 변수에 담음
@@ -258,3 +257,13 @@ def friendsCreate(request):
         return render(request, 'boards/friendsNew.html', {'form': form})
 
     return redirect('board')
+
+
+def boothPromotionDetail(request, board_id):
+    board_detail = get_object_or_404(BoothPromotionBoard, pk=board_id)
+    return render(request, 'boards/boothPromotionDetail.html', {'board' : board_detail})
+
+
+def friendsDetail(request, board_id):
+    board_detail = get_object_or_404(FriendsBoard, pk=board_id)
+    return render(request, 'boards/frinedsDetail.html', {'board' : board_detail})
