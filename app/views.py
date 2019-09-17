@@ -198,7 +198,7 @@ def boothPromotionNew(request):
 
 # 술 친구 글쓰기 누르면
 def friendsNew(request):
-    request.session['friendsNew'] = 'friendsNew'
+    request.session['friendsNew'] = str('friendsNew')
     return redirect('new')
 
 
@@ -221,9 +221,9 @@ def boothPromotionCreate(request):
 
             post.save()
 
-            return redirect('board')
+            return redirect('boothPromotion')
         else:
-            return redirect('board')
+            return redirect('boothPromotion')
     else:
         form = BoothPromotionForm()
         return render(request, 'boards/boardPromotionNew.html', {'form': form})
@@ -250,9 +250,9 @@ def friendsCreate(request):
 
             post.save()
 
-            return redirect('board')
+            return redirect('friends')
         else:
-            return redirect('board')
+            return redirect('friends')
     else:
         form = FriendsForm()
         return render(request, 'boards/friendsNew.html', {'form': form})
