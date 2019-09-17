@@ -266,4 +266,4 @@ def boothPromotionDetail(request, board_id):
 
 def friendsDetail(request, board_id):
     board_detail = get_object_or_404(FriendsBoard, pk=board_id)
-    return render(request, 'boards/frinedsDetail.html', {'board' : board_detail})
+    return render(request, 'boards/friendsDetail.html', {'board' : board_detail})
