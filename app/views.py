@@ -51,7 +51,7 @@ def board(request):
     end_block = start_block + page_range
     p_range = paginator.page_range[start_block:end_block]
 
-    return render(request, 'board.html', {'posts':posts, 'p_range':p_range})
+    return render(request, 'boards/board.html', {'posts':posts, 'p_range':p_range})
 
 # 글쓰기 버튼
 def new(request):
