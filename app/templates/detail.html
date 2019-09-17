@@ -36,17 +36,19 @@
     <!-- End section navbar -->
     <br><br><br><br><br><br><br>
     <div class="container card w-75 border-secondary mb-3">
-        <div class="card-body">
-            <h3>{{board.title}}</h3><br>
-            <img src="{{board.profile}}">{{board.user}} - {{ board.created_at|date:"y/m/d A h:i" }}
-            <hr>
+        <div class="card-body" style="margin:3%">
+            <img src="{{board.profile}}" height="50" width="50" style="border-radius: 50%">&nbsp;
+            <font size="4">{{board.user}}</font>
+            <font size="2" color="gray"> - {{ board.created_at|date:"y/m/d A h:i" }}</font>
+            <br><br><br><h1>{{board.title}}</h1><br>
+
             {{board.body}}<br><br>
             {% if board.photo %}
                 <img src="{{board.photo.url}}">
             {% endif %}
         </div>
-        <hr>
-        <h2>댓글자리</h2><br><br><br>
+        <hr style="margin:3%">
+        <h2 style="margin:3%">댓글자리</h2><br><br><br>
         <div class="text-center">
             <a href="{% url 'board' %}"><input type="#" class="btn btn-outline-primary center" value="게시판으로" /></a>
             <a href="{% url 'home' %}"><input type="#" class="btn btn-outline-primary center" value="홈으로" /></a>
