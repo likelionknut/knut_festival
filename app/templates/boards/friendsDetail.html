@@ -4,53 +4,33 @@
 {% block title %} {{board.title}} {% endblock %}
 
 {% block javascriptHead %}
-    <script src="{% static 'app/js/board_main.js' %}"></script>
+<script src="{% static 'app/js/board_main.js' %}"></script>
 
 {% endblock %}
 
 {% block content %}
 
-    <!-- start section navbar -->
-    <nav id="main-nav">
-        <div class="row">
-            <div class="container">
+{% include 'boards/board_nav.html' %}
+<br><br><br><br><br><br><br>
+<div class="container card w-75 border-secondary mb-3">
+    <div class="card-body" style="margin:3%">
+        <img src="{{board.profile}}" height="50" width="50" style="border-radius: 50%">&nbsp;
+        <font size="4">{{board.user}}</font>
+        <font size="2" color="gray"> - {{ board.created_at|date:"y/m/d A h:i" }}</font>
+        <br><br><br>
+        <h1>{{board.title}}</h1><br>
 
-                <div class="logo">
-                    <a href="{% url 'home' %}"><img src="{% static 'app/logo1.png' %}" alt="logo"> KNUT festival</a>
-                </div>
-
-
-                <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
-
-                <ul class="nav-menu list-unstyled">
-                    <li><a href="{% url 'home' %}" class="smoothScroll">Home</a></li>
-                    <li><a href="{% url 'home' %}#about" class="smoothScroll">About</a></li>
-                    <li><a href="{% url 'home' %}#portfolio" class="smoothScroll">Photo Zone</a></li>
-                    <li><a href="{% url 'home' %}#journal" class="smoothScroll">대중교통 시간표</a></li>
-                    <li><a href="{% url 'board' %}" class="smoothScroll">분실물 게시판</a></li>
-                </ul>
-
-            </div>
-        </div>
-    </nav>
-    <!-- End section navbar -->
-    <br><br><br><br><br><br><br>
-    <div class="container card w-75 border-secondary mb-3">
-        <div class="card-body">
-            <h3>{{board.title}}</h3><br>
-            <img src="{{board.profile}}">{{board.user}} - {{ board.created_at|date:"y/m/d A h:i" }}
-            <hr>
-            {{board.body}}<br><br>
-            {% if board.photo %}
-                <img src="{{board.photo.url}}">
-            {% endif %}
-        </div>
-        <hr>
-        <h2>댓글자리</h2><br><br><br>
-        <div class="text-center">
-            <a href="{% url 'friends' %}"><input type="#" class="btn btn-outline-primary center" value="게시판으로" /></a>
-            <a href="{% url 'home' %}"><input type="#" class="btn btn-outline-primary center" value="홈으로" /></a>
-        </div>
-        <br><br>
+        {{board.body}}<br><br>
+        {% if board.photo %}
+        <img src="{{board.photo.url}}">
+        {% endif %}
     </div>
+    <hr style="margin:3%">
+    <h2 style="margin:3%">댓글자리</h2><br><br><br>
+    <div class="text-center">
+        <a href="{% url 'friends' %}"><input type="#" class="btn btn-outline-primary center" value="게시판으로" /></a>
+        <a href="{% url 'home' %}"><input type="#" class="btn btn-outline-primary center" value="홈으로" /></a>
+    </div>
+    <br><br>
+</div>
 {% endblock %}
