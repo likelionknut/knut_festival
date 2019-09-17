@@ -174,8 +174,7 @@ def boothPromotion(request):
     end_block = start_block + page_range
     p_range = paginator.page_range[start_block:end_block]
 
-    return render(request, 'boards/board.html', {'posts': posts, 'p_range': p_range})
-    return render(request, 'boards/boothPromotion.html')
+    return render(request, 'boards/boothPromotion.html', {'posts': posts, 'p_range': p_range})
 
 
 # 술 친구
@@ -190,5 +189,4 @@ def friends(request):
     end_block = start_block + page_range
     p_range = paginator.page_range[start_block:end_block]
 
-    return render(request, 'boards/board.html', {'posts': posts, 'p_range': p_range})
-    return render(request, 'boards/friends.html')
+    return render(request, 'boards/friends.html', {'posts': posts, 'p_range': p_range})
