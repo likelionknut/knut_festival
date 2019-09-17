@@ -169,5 +169,3 @@ def circlesPromotion(request):
 def friends(request):
     return render(request, 'boards/friends.html')
 
-def tests(request):
-    return render(request, 'boards/board_test.html')
