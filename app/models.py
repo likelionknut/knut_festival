@@ -9,7 +9,7 @@ class Comment(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
 
 
-
+# 분실물 게시판
 class Board(models.Model):
     title = models.CharField(max_length=20)
     user = models.CharField(max_length=10)
@@ -21,6 +21,32 @@ class Board(models.Model):
     )
 
     tag = models.CharField(max_length=6, choices=tag_choices, default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    photo = models.ImageField(upload_to='images/', blank=True, null=True)
+    profile = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.title
+
+# 부스 홍보 게시판
+class PromotionBoard(models.Model):
+    title = models.CharField(max_length=20)
+    user = models.CharField(max_length=10)
+    body = models.TextField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    photo = models.ImageField(upload_to='images/', blank=True, null=True)
+    profile = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.title
+
+# 술 친구 게시판
+class FriendsBoard(models.Model):
+    title = models.CharField(max_length=20)
+    user = models.CharField(max_length=10)
+    body = models.TextField()
+
     created_at = models.DateTimeField(auto_now_add=True)
     photo = models.ImageField(upload_to='images/', blank=True, null=True)
     profile = models.CharField(max_length=150)
