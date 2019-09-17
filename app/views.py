@@ -164,3 +164,11 @@ def oauth(request):
 
     # return render(request, 'new.html', {'form': form})
     return redirect('create')
+
+# 동아리 홍보
+def circlesPromotion(request):
+    return render(request, 'boards/circlesPromotion.html')
+
+# 술 친구
+def friends(request):
+    return render(request, 'boards/friends.html')
