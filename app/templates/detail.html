@@ -38,7 +38,7 @@
     <div class="container card w-75 border-secondary mb-3">
         <div class="card-body">
             <h3>{{board.title}}</h3><br>
-            {{board.user}} - {{ board.created_at|date:"y/m/d A h:i" }}
+            <img src="{{board.profile}}">{{board.user}} - {{ board.created_at|date:"y/m/d A h:i" }}
             <hr>
             {{board.body}}<br><br>
             <img src="{{board.photo.url}}">
