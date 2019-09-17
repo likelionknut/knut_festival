@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %} 부스 홍보 게시판 {% endblock %}
+{% block title %} 홍보 게시판 {% endblock %}
 
 {% block javascriptHead %}
 <script src="{% static 'app/js/board_main.js' %}"></script>
@@ -14,25 +14,31 @@
 
 <div id="board" class="paddsection">
 
-    <div class="container">
-        <div class="section-title text-center" style="margin-top:5%;">
-            <h2>
-                <caption>홍보 게시판</caption>
-            </h2>
-        </div>
-        {% for board in posts %}
-        <div class="card" style="width: 18rem; margin: 10px; display: inline-block;">
-            {% if board.photo %}
-            <img src="{{board.photo.url}}" class="card-img-top" alt="..." height="300" width="300">
-            {% endif %}
-            <div id="contents" class="card-body" style=" text-align:left;">
-                <h2 class="card-title">{{board.title}} <h5 style="font-size: 10">- {{board.get_tag_display}}</h5></h2>
-                <hr>
-                <p class="card-text"><img src="{{board.profile}}" height="25" width="25">  {{board.user}} - {{ board.created_at|date:"y/m/d A h:i" }}</p>
-                <a href="{% url 'boothPromotionDetail' board.id %}"><button type="button" class="btn btn-outline-success">보러가기</button></a>
+        <div class="container" style="text-align: center">
+            <div class="section-title text-center" style="margin-top:5%;">
+                <h2>
+                    <caption>홍보 게시판</caption>
+                </h2>
             </div>
-        </div>
-        {% endfor %}
+            {% for board in posts %}
+            <div class="card" style="width: 18rem; margin: 10px; display: inline-block;">
+                {% if board.photo %}
+                <img src="{{board.photo.url}}" class="card-img-top" alt="..." height="300" width="300">
+                {% endif %}
+                <div id="contents" class="card-body" style=" text-align:left;">
+                    <h6><img src="{{board.profile}}" height="30" width="30" style="border-radius: 50%">&nbsp;{{board.user}}</h6>
+                    <font size="2" color="gray">{{ board.created_at|date:"y/m/d A h:i" }}</font>
+                    <hr>
+        
+                    <h3 class="card-title">{{board.title}}</h3>
+                    <div class="text-right">
+                        <a href="{% url 'boothPromotionDetail' board.id %}"><button type="button"
+                                class="btn btn-outline-success">보러가기</button></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        
 
         <!-- login & logout section-->
         <div class="text-right">
