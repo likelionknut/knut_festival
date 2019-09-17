@@ -38,9 +38,9 @@ class BoardForm(forms.ModelForm):
         }
 
 # 부스 홍보 게시판
-class PromotionForm(forms.ModelForm):
+class BoothPromotionForm(forms.ModelForm):
     class Meta:
-        model = PromotionBoard
+        model = BoothPromotionBoard
 
         fields = ['title', 'profile', 'user', 'body', 'photo',]
 
@@ -64,6 +64,7 @@ class PromotionForm(forms.ModelForm):
             ),
 
         }
+
 
 # 술 친구 게시판
 class FriendsForm(forms.ModelForm):
