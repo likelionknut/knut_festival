@@ -226,7 +226,7 @@ def boothPromotionCreate(request):
             return redirect('boothPromotion')
     else:
         form = BoothPromotionForm()
-        return render(request, 'boards/boardPromotionNew.html', {'form': form})
+        return render(request, 'boards/boothPromotionNew.html', {'form': form})
 
     return redirect('board')
 
