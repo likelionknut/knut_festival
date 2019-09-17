@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %} 분실물 게시판 {% endblock %}
+{% block title %} 부스 홍보 게시판 {% endblock %}
 
 {% block javascriptHead %}
 <script src="{% static 'app/js/board_main.js' %}"></script>
@@ -12,65 +12,64 @@
 
 {% include 'boards/board_nav.html' %}
 
-{#<div id="board" class="paddsection">#}
-{##}
-{#    <div class="container">#}
-{#        <div class="section-title text-center" style="margin-top:5%;">#}
-{#            <h2>#}
-{#                <caption>분실물 게시판</caption>#}
-{#            </h2>#}
-{#        </div>#}
-{#        <table class="table table-hover text-center" style="margin-left: 5%;">#}
-{#            <thead>#}
-{#                <tr>#}
-{#                    <th scope="col">#</th>#}
-{#                    <th scope="col">작성자</th>#}
-{#                    <th scope="col">제목</th>#}
-{#                    <th scope="col">날짜</th>#}
-{#                </tr>#}
-{#            </thead>#}
-{#            {% for board in posts %}#}
-{#            <tbody>#}
-{#                <tr>#}
-{#                    <th scope="row">{{ board.id }}</th>#}
-{#                    <td>{{ board.user }}</td>#}
-{#                    <td><a href="{% url 'detail' board.id %}">{{ board.title }}</a></td>#}
-{#                    <td>{{ board.created_at|date:"y/m/d A h:i" }}</td>#}
-{#                </tr>#}
-{#            </tbody>#}
-{#            {% endfor %}#}
-{#            <!-- 게시물 댓글, *sns 인증 로그인*, 게시물당 주웠어요, 찾아주세요 태그, 제목값 일정이상 넘어가면 ... 으로, 작성자란에 설명(게시할시 카카오톡 별명으로) 구현해야함.-->#}
-{#        </table>#}
-{##}
-{#        <!-- login & logout section-->#}
-{#        <div class="text-right">#}
-{#            <a href="{% url 'new' %}"><input type="#" class="btn btn-outline-primary center" value="카카오 계정으로 글쓰기" /></a>#}
-{#        </div>#}
-{#        <!-- login & logout section -->#}
-{##}
-{#        <!-- pagination section -->#}
-{#        <div class="text-center">#}
-{#            <ul class="pagination justify-content-center">#}
-{#                <li class="page-item">#}
-{#                    {%if posts.has_previous%}#}
-{#                    <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="Previous">&laquo;</a>#}
-{#                    {%endif%}#}
-{#                </li>#}
-{#                {% for current_num in p_range %}#}
-{#                <li class="page-item"><a class="page-link" href="?page={{current_num}}">{{current_num}}</a></li>#}
-{#                {% endfor %}#}
-{#                <li class="page-item">#}
-{#                    {%if posts.has_next%}#}
-{#                    <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="Next">&raquo;</a>#}
-{#                    {%endif%}#}
-{#                </li>#}
-{#            </ul>#}
-{#        </div>#}
-{#        <!-- pagination section -->#}
-{#    </div>#}
-{#</div>#}
-{#<!-- end section Board -->#}
-{##}
-{##}
+<div id="board" class="paddsection">
+
+    <div class="container">
+        <div class="section-title text-center" style="margin-top:5%;">
+            <h2>
+                <caption>홍보 게시판</caption>
+            </h2>
+        </div>
+        <table class="table table-hover text-center" style="margin-left: 5%;">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">작성자</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">날짜</th>
+                </tr>
+            </thead>
+            {% for board in posts %}
+            <tbody>
+                <tr>
+                    <th scope="row">{{ board.id }}</th>
+                    <td>{{ board.user }}</td>
+                    <td><a href="{% url 'detail' board.id %}">{{ board.title }}</a></td>
+                    <td>{{ board.created_at|date:"y/m/d A h:i" }}</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+            <!-- 게시물 댓글, *sns 인증 로그인*, 게시물당 주웠어요, 찾아주세요 태그, 제목값 일정이상 넘어가면 ... 으로, 작성자란에 설명(게시할시 카카오톡 별명으로) 구현해야함.-->
+        </table>
+
+        <!-- login & logout section-->
+        <div class="text-right">
+            <a href="{% url 'new' %}"><input type="#" class="btn btn-outline-primary center" value="카카오 계정으로 글쓰기" /></a>
+        </div>
+        <!-- login & logout section -->
+
+        <!-- pagination section -->
+        <div class="text-center">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    {%if posts.has_previous%}
+                    <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="Previous">&laquo;</a>
+                    {%endif%}
+                </li>
+                {% for current_num in p_range %}
+                <li class="page-item"><a class="page-link" href="?page={{current_num}}">{{current_num}}</a></li>
+                {% endfor %}
+                <li class="page-item">
+                    {%if posts.has_next%}
+                    <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="Next">&raquo;</a>
+                    {%endif%}
+                </li>
+            </ul>
+        </div>
+        <!-- pagination section -->
+    </div>
+</div>
+<!-- end section Board -->
+
 
 {% endblock %}

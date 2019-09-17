@@ -93,6 +93,7 @@ def create(request):
             post = form.save(commit=False)
 
             post.user = request.session.get('user')
+            post.profile = request.session.get('profile')
             post.save()
 
             return redirect('board')
@@ -146,6 +147,7 @@ def oauth(request):
     print("thumbnailURL = " + str(thumbnailURL))
 
     request.session['user'] = nickName
+    request.session['profile'] = thumbnailURL
     # board = Board()
     # board.title = request.session.get('title')
     # board.body = request.session.get('body')

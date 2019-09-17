@@ -36,7 +36,7 @@
                     <th scope="row">{{ board.id }}</th>
                     <td>{{ board.get_tag_display }}</td>
                     <td>{{ board.user }}</td>
-                    <td><a href="{% url 'detail' board.id %}">{{ board.title }}</a></td>
+                    <td><a href="{% url 'detail' board.id %}">{{ board.tag }}{{ board.title }}</a></td>
                     <td>{{ board.created_at|date:"y/m/d A h:i" }}</td>
                 </tr>
             </tbody>

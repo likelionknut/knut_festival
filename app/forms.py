@@ -14,11 +14,9 @@ class BoardForm(forms.ModelForm):
 
 
 
-        fields = ['title', 'tag', 'user', 'body', 'photo',]
+        fields = ['title', 'tag', 'profile', 'user', 'body', 'photo',]
 
-        # tag = forms.ChoiceField(choices=model.tag_choices)
-
-        exclude = ['user']
+        exclude = ['user', 'profile']
 
         widgets = {
             'title': forms.TextInput(
