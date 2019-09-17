@@ -162,8 +162,8 @@ def oauth(request):
     return redirect('create')
 
 # 동아리 홍보
-def circlesPromotion(request):
-    return render(request, 'boards/circlesPromotion.html')
+def boothPromotion(request):
+    return render(request, 'boards/boothPromotion.html')
 
 # 술 친구
 def friends(request):
