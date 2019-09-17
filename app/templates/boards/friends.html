@@ -29,14 +29,14 @@
                 <h2 class="card-title">{{board.title}} <h5 style="font-size: 10">- {{board.get_tag_display}}</h5></h2>
                 <hr>
                 <p class="card-text"><img src="{{board.profile}}" height="25" width="25">  {{board.user}} - {{ board.created_at|date:"y/m/d A h:i" }}</p>
-                <a href="{% url 'detail' board.id %}"><button type="button" class="btn btn-outline-success">보러가기</button></a>
+                <a href="{% url 'friendsDetail' board.id %}"><button type="button" class="btn btn-outline-success">보러가기</button></a>
             </div>
         </div>
         {% endfor %}
 
         <!-- login & logout section-->
         <div class="text-right">
-            <a href="{% url 'new' %}"><input type="#" class="btn btn-outline-primary center" value="카카오 계정으로 글쓰기" /></a>
+            <a href="{% url 'friendsNew' %}"><input type="#" class="btn btn-outline-primary center" value="카카오 계정으로 글쓰기" /></a>
         </div>
         <!-- login & logout section -->
 

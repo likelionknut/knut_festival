@@ -28,8 +28,9 @@ class Board(models.Model):
     def __str__(self):
         return self.title
 
+
 # 부스 홍보 게시판
-class PromotionBoard(models.Model):
+class BoothPromotionBoard(models.Model):
     title = models.CharField(max_length=20)
     user = models.CharField(max_length=10)
     body = models.TextField()
@@ -40,6 +41,7 @@ class PromotionBoard(models.Model):
 
     def __str__(self):
         return self.title
+
 
 # 술 친구 게시판
 class FriendsBoard(models.Model):
