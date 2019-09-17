@@ -42,7 +42,7 @@ class PromotionBoard(models.Model):
         return self.title
 
 # 술 친구 게시판
-class PromotionBoard(models.Model):
+class FriendsBoard(models.Model):
     title = models.CharField(max_length=20)
     user = models.CharField(max_length=10)
     body = models.TextField()
