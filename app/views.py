@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from .models import Comment, Board, PromotionBoard, FriendsBoard
-from .forms import CommentForm, BoardForm
+from .models import Comment, Board, BoothPromotionBoard, FriendsBoard
+from .forms import CommentForm, BoardForm, BoothPromotionForm, FriendsForm
 from django.core.paginator import Paginator
 import requests, math
 
@@ -39,6 +39,7 @@ def detail(request, board_id):
     board_detail = get_object_or_404(Board, pk=board_id)
     return render(request, 'detail.html', {'board' : board_detail})
 
+
 def board(request):
 
     boards_list = Board.objects.all().order_by('-created_at')
@@ -52,6 +53,7 @@ def board(request):
     p_range = paginator.page_range[start_block:end_block]
 
     return render(request, 'boards/board.html', {'posts':posts, 'p_range':p_range})
+
 
 # 글쓰기 버튼
 def new(request):
@@ -69,21 +71,10 @@ def new(request):
     request.session['redirect_uri'] = redirect_uri
 
     return redirect(login_request_uri)
-    # return render(request, 'new.html')
+
 
 # 제출 버튼을 누른뒤 작성한 게시글 detail로 보내기 위한 함수
 def create(request):
-
-    # board = Board()
-    # board.title = request.GET['title']
-    # board.body = request.GET['body']
-    # board.created_at = timezone.datetime.now()
-    # board.user = request.session.get('user')
-    # print("title = "+board.title)
-    # print("body = "+board.body)
-    # print("user = "+board.user)
-    # board.photo = request.FILES.get('photo')
-    # board.save()
 
     if request.method == 'POST':
         form = BoardForm(request.POST, request.FILES)
@@ -94,6 +85,11 @@ def create(request):
 
             post.user = request.session.get('user')
             post.profile = request.session.get('profile')
+
+            request.session['user'] = {}
+            request.session['profile'] = {}
+            request.session.modified = True
+
             post.save()
 
             return redirect('board')
@@ -103,13 +99,7 @@ def create(request):
         form = BoardForm()
         return render(request, 'new.html', {'form': form})
 
-    # request.session['title'] = str(title)
-    # request.session['body'] = str(body)
-    # request.session['created_at'] = str(created_at)
-    # request.session['photo'] = photo
-
     return redirect('board')
-    # return redirect('board')
 
 
 # 카카오톡 oauth
@@ -148,23 +138,29 @@ def oauth(request):
 
     request.session['user'] = nickName
     request.session['profile'] = thumbnailURL
-    # board = Board()
-    # board.title = request.session.get('title')
-    # board.body = request.session.get('body')
-    # board.user = nickName
-    # board.created_at = request.session.get('created_at')
-    # board.photo = request.FILES('photo')
-    # board.save()
 
-    # form = BoardForm()
+    if request.session.get('boothPromotionNew') == 'boothPromotionNew':
 
-    # return render(request, 'new.html', {'form': form})
-    return redirect('create')
+        request.session['boothPromotionNew'] = {}
+        request.session.modified = True
+
+        return redirect('boothPromotionCreate')
+
+    elif request.session.get('friendsNew') == 'friendsNew':
+
+        request.session['friendsNew'] = {}
+        request.session.modified = True
+
+        return redirect('friendsCreate')
+
+    else:
+        request.session.modified = True
+        return redirect('create')
 
 
-# 동아리 홍보
+# 동아리 홍보 게시판 메인
 def boothPromotion(request):
-    boards_list = PromotionBoard.objects.all().order_by('-created_at')
+    boards_list = BoothPromotionBoard.objects.all().order_by('-created_at')
     paginator = Paginator(boards_list, 5)  # 게시물 5개를 기준으로 페이지네이션 전개
     page = request.GET.get('page', 1)  # request 된 페이지를 변수에 담음
     posts = paginator.get_page(page)
@@ -177,7 +173,7 @@ def boothPromotion(request):
     return render(request, 'boards/boothPromotion.html', {'posts': posts, 'p_range': p_range})
 
 
-# 술 친구
+# 술 친구 게시판 메인
 def friends(request):
     boards_list = FriendsBoard.objects.all().order_by('-created_at')
     paginator = Paginator(boards_list, 5)  # 게시물 5개를 기준으로 페이지네이션 전개
@@ -190,3 +186,73 @@ def friends(request):
     p_range = paginator.page_range[start_block:end_block]
 
     return render(request, 'boards/friends.html', {'posts': posts, 'p_range': p_range})
+
+
+# 부스 홍보 글쓰기 누르면
+def boothPromotionNew(request):
+    request.session['boothPromotionNew'] = str('boothPromotionNew')
+    return redirect('new')
+
+
+# 술 친구 글쓰기 누르면
+def friendsNew(request):
+    request.session['friendsNew'] = 'friendsNew'
+    return redirect('new')
+
+
+# 부스 홍보 입력 폼
+def boothPromotionCreate(request):
+
+    if request.method == 'POST':
+        form = BoothPromotionForm(request.POST, request.FILES)
+
+        if form.is_valid():
+
+            post = form.save(commit=False)
+
+            post.user = request.session.get('user')
+            post.profile = request.session.get('profile')
+
+            request.session['user'] = {}
+            request.session['profile'] = {}
+            request.session.modified = True
+
+            post.save()
+
+            return redirect('board')
+        else:
+            return redirect('board')
+    else:
+        form = BoothPromotionForm()
+        return render(request, 'boards/boardPromotionNew.html', {'form': form})
+
+    return redirect('board')
+
+
+# 술친구 입력 폼
+def friendsCreate(request):
+
+    if request.method == 'POST':
+        form = FriendsForm(request.POST, request.FILES)
+
+        if form.is_valid():
+
+            post = form.save(commit=False)
+
+            post.user = request.session.get('user')
+            post.profile = request.session.get('profile')
+
+            request.session['user'] = {}
+            request.session['profile'] = {}
+            request.session.modified = True
+
+            post.save()
+
+            return redirect('board')
+        else:
+            return redirect('board')
+    else:
+        form = FriendsForm()
+        return render(request, 'boards/friendsNew.html', {'form': form})
+
+    return redirect('board')
