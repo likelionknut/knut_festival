@@ -42,7 +42,7 @@ def detail(request, board_id):
 def board(request):
 
     boards_list = Board.objects.all().order_by('-created_at')
-    paginator = Paginator(boards_list, 5) # 게시물 5개를 기준으로 페이지네이션 전개
+    paginator = Paginator(boards_list, 6) # 게시물 5개를 기준으로 페이지네이션 전개
     page = request.GET.get('page', 1)        # request 된 페이지를 변수에 담음
     posts = paginator.get_page(page)
     page_range = 5                          # 5개의 페이지 블럭 (범위)
@@ -168,3 +168,6 @@ def circlesPromotion(request):
 # 술 친구
 def friends(request):
     return render(request, 'boards/friends.html')
+
+def tests(request):
+    return render(request, 'boards/board_test.html')
