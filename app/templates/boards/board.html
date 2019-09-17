@@ -34,7 +34,7 @@
                 <tr>
                     <th scope="row">{{ board.id }}</th>
                     <td>{{ board.user }}</td>
-                    <td><a href="{% url 'detail' board.id %}">{{form.tag}}{{ board.title }}</a></td>
+                    <td><a href="{% url 'detail' board.id %}">{{ board.title }}</a></td>
                     <td>{{ board.created_at|date:"y/m/d A h:i" }}</td>
                 </tr>
             </tbody>
