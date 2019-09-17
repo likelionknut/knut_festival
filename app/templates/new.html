@@ -10,30 +10,8 @@
 
 {% block content %}
 
-    <!-- start section navbar -->
-    <nav id="main-nav">
-        <div class="row">
-            <div class="container">
+    {% include 'boards/board_nav.html' %}
 
-                <div class="logo">
-                    <a href="{% url 'home' %}"><img src="{% static 'app/logo1.png' %}" alt="logo"> KNUT festival</a>
-                </div>
-
-
-                <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
-
-                <ul class="nav-menu list-unstyled">
-                    <li><a href="{% url 'home' %}" class="smoothScroll">Home</a></li>
-                    <li><a href="{% url 'home' %}#about" class="smoothScroll">About</a></li>
-                    <li><a href="{% url 'home' %}#portfolio" class="smoothScroll">Photo Zone</a></li>
-                    <li><a href="{% url 'home' %}#journal" class="smoothScroll">대중교통 시간표</a></li>
-                    <li><a href="{% url 'board' %}" class="smoothScroll">분실물 게시판</a></li>
-                </ul>
-
-            </div>
-        </div>
-    </nav>
-    <!-- End section navbar -->
     <br><br><br><br><br>
     <div class="container">
         <form method="POST" enctype="multipart/form-data">
