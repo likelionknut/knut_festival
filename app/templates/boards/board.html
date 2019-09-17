@@ -24,6 +24,7 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">주웠어요/잃어버렸어요(이름은 추후에 수정)</th>
                     <th scope="col">작성자</th>
                     <th scope="col">제목</th>
                     <th scope="col">날짜</th>
@@ -33,6 +34,7 @@
             <tbody>
                 <tr>
                     <th scope="row">{{ board.id }}</th>
+                    <td>{{ board.get_tag_display }}</td>
                     <td>{{ board.user }}</td>
                     <td><a href="{% url 'detail' board.id %}">{{ board.tag }}{{ board.title }}</a></td>
                     <td>{{ board.created_at|date:"y/m/d A h:i" }}</td>

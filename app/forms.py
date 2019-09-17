@@ -12,7 +12,7 @@ class BoardForm(forms.ModelForm):
     class Meta:
         model = Board
 
-        tag = forms.ChoiceField(choices=tag_choices)
+
 
         fields = ['title', 'tag', 'profile', 'user', 'body', 'photo',]
 
@@ -22,6 +22,7 @@ class BoardForm(forms.ModelForm):
             'title': forms.TextInput(
                 attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': '제목을 입력하세요.'}
             ),
+            'tag': forms.Select(),
             # 'user': forms.TextInput(
             #     attrs={'readonly': 'readonly'}
             # ),
