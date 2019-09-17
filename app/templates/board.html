@@ -59,16 +59,18 @@
                     <th scope="row">{{ board.id }}</th>
                     <td>{{ board.user }}</td>
                     <td><a href="{% url 'detail' board.id %}">{{ board.title }}</a></td>
-                    <td>{{ board.created_at }}</td>
+                    <td>{{ board.created_at|date:"y/m/d A h:i" }}</td>
                 </tr>
             </tbody>
             {% endfor %}
-            <!-- 게시물 댓글, *sns 인증 로그인*,게시물당 주웠어요,찾아주세요 태그, 제목값 일정이상 넘어가면 ... 으로, 작성자란에 설명(게시할시 카카오톡 별명으로) 구현해야함.-->
+            <!-- 게시물 댓글, *sns 인증 로그인*, 게시물당 주웠어요, 찾아주세요 태그, 제목값 일정이상 넘어가면 ... 으로, 작성자란에 설명(게시할시 카카오톡 별명으로) 구현해야함.-->
         </table>
 
+        <!-- login & logout section-->
         <div class="text-right">
             <a href="{% url 'new' %}"><input type="#" class="btn btn-outline-primary center" value="카카오 계정으로 글쓰기" /></a>
         </div>
+        <!-- login & logout section -->
 
         <!-- pagination section -->
         <div class="text-center">
@@ -88,6 +90,7 @@
                 </li>
             </ul>
         </div>
+        <!-- pagination section -->
     </div>
 </div>
 <!-- end section Board -->
