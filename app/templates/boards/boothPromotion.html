@@ -20,27 +20,19 @@
                 <caption>홍보 게시판</caption>
             </h2>
         </div>
-        <table class="table table-hover text-center" style="margin-left: 5%;">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">작성자</th>
-                    <th scope="col">제목</th>
-                    <th scope="col">날짜</th>
-                </tr>
-            </thead>
-            {% for board in posts %}
-            <tbody>
-                <tr>
-                    <th scope="row">{{ board.id }}</th>
-                    <td>{{ board.user }}</td>
-                    <td><a href="{% url 'detail' board.id %}">{{ board.title }}</a></td>
-                    <td>{{ board.created_at|date:"y/m/d A h:i" }}</td>
-                </tr>
-            </tbody>
-            {% endfor %}
-            <!-- 게시물 댓글, *sns 인증 로그인*, 게시물당 주웠어요, 찾아주세요 태그, 제목값 일정이상 넘어가면 ... 으로, 작성자란에 설명(게시할시 카카오톡 별명으로) 구현해야함.-->
-        </table>
+        {% for board in posts %}
+        <div class="card" style="width: 18rem; margin: 10px; display: inline-block;">
+            {% if board.photo %}
+            <img src="{{board.photo.url}}" class="card-img-top" alt="..." height="300" width="300">
+            {% endif %}
+            <div id="contents" class="card-body" style=" text-align:left;">
+                <h2 class="card-title">{{board.title}} <h5 style="font-size: 10">- {{board.get_tag_display}}</h5></h2>
+                <hr>
+                <p class="card-text"><img src="{{board.profile}}" height="25" width="25">  {{board.user}} - {{ board.created_at|date:"y/m/d A h:i" }}</p>
+                <a href="{% url 'detail' board.id %}"><button type="button" class="btn btn-outline-success">보러가기</button></a>
+            </div>
+        </div>
+        {% endfor %}
 
         <!-- login & logout section-->
         <div class="text-right">
