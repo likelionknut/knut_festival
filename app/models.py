@@ -20,6 +20,7 @@ class Board(models.Model):
     tag = models.CharField(max_length=2, choices=tag_choices)
     created_at = models.DateTimeField(auto_now_add=True)
     photo = models.ImageField(upload_to='images/', blank=True, null=True)
+    profile = models.CharField(max_length=150)
 
     def __str__(self):
         return self.title
