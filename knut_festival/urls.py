@@ -31,4 +31,7 @@ urlpatterns = [
     path('board/new/', app.views.new, name="new"),
     path('board/create/', app.views.create, name="create"),
     path('oauth/', app.views.oauth, name="oauth"),
+
+    path('board/circlesPromotion', app.views.circlesPromotion, name="circlesPromotion"),
+    path('board/friends', app.views.friends, name="friends"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

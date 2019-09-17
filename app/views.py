@@ -51,7 +51,7 @@ def board(request):
     end_block = start_block + page_range
     p_range = paginator.page_range[start_block:end_block]
 
-    return render(request, 'board.html', {'posts':posts, 'p_range':p_range})
+    return render(request, 'boards/board.html', {'posts':posts, 'p_range':p_range})
 
 # 글쓰기 버튼
 def new(request):
@@ -158,3 +158,11 @@ def oauth(request):
 
     # return render(request, 'new.html', {'form': form})
     return redirect('create')
+
+# 동아리 홍보
+def circlesPromotion(request):
+    return render(request, 'boards/circlesPromotion.html')
+
+# 술 친구
+def friends(request):
+    return render(request, 'boards/friends.html')
