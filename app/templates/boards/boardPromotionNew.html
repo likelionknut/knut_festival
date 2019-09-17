@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} 게시물 작성 {% endblock %}
+
+{% block javascriptHead %}
+    <script src="{% static 'app/js/board_main.js' %}"></script>
+
+{% endblock %}
+
+{% block content %}
+
+    {% include 'boards/board_nav.html' %}
+
+    <br><br><br><br><br>
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {#          <h4>제목: </h4>#}
+            {#          <input type="text" name="title">#}
+            {#          <br>#}
+            {#          <h4>글쓴이: </h4>#}
+            {#          <input type="text" name="user">#}
+            {#          <br>#}
+            {#          <h4>본문: </h4>#}
+            {#          <textarea cols=40 rows=10 name="body"></textarea>#}
+            {#          <br>#}
+            {#          <h4>사진 파일 : </h4>#}
+            {#          <input type="file" name="photo">#}
+            {#          <br>#}
+            {#          <input class="btn btn-dark" type="submit" value="제출하기">#}
+{#            {{ form.media }}#}
+            {{ form.as_p }}
+            <input class="btn btn-dark" type="submit" value="제출하기">
+        </form>
+    </div>
+
+{% endblock %}
+<br>
