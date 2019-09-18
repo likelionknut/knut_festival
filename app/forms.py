@@ -13,7 +13,7 @@ class BoardForm(forms.ModelForm):
     class Meta:
         model = Board
 
-        fields = ['title', 'tag', 'profile', 'user', 'body', 'photo',]
+        fields = ['title', 'tag', 'profile', 'user', 'body', 'photo', ]
 
         exclude = ['user', 'profile']
 
@@ -21,7 +21,9 @@ class BoardForm(forms.ModelForm):
             'title': forms.TextInput(
                 attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': '제목을 입력하세요.'}
             ),
-            'tag': forms.Select(),
+            'tag': forms.Select(
+                attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': '제목을 입력하세요.'}
+            ),
             # 'user': forms.TextInput(
             #     attrs={'readonly': 'readonly'}
             # ),
@@ -32,17 +34,20 @@ class BoardForm(forms.ModelForm):
             #     attrs={'class': 'custom-select'},
             # ),
             'photo': forms.FileInput(
-                attrs={'class': 'form-control', 'accept': 'image/*'}
+                attrs={'class': 'form-control',
+                       'accept': 'image/*',
+                       'style': 'border: 1px solid #ccc; display: inline-block; cursor: pointer;'}
             ),
 
         }
+
 
 # 부스 홍보 게시판
 class BoothPromotionForm(forms.ModelForm):
     class Meta:
         model = BoothPromotionBoard
 
-        fields = ['title', 'profile', 'user', 'body', 'photo',]
+        fields = ['title', 'profile', 'user', 'body', 'photo', ]
 
         exclude = ['user', 'profile']
 
@@ -60,7 +65,9 @@ class BoothPromotionForm(forms.ModelForm):
             #     attrs={'class': 'custom-select'},
             # ),
             'photo': forms.FileInput(
-                attrs={'class': 'form-control', 'accept': 'image/*'}
+                attrs={'class': 'form-control',
+                       'accept': 'image/*',
+                       'style': 'border: 1px solid #ccc; display: inline-block; cursor: pointer;'}
             ),
 
         }
@@ -71,7 +78,7 @@ class FriendsForm(forms.ModelForm):
     class Meta:
         model = FriendsBoard
 
-        fields = ['title', 'profile', 'user', 'body', 'photo',]
+        fields = ['title', 'profile', 'user', 'body', 'photo', ]
 
         exclude = ['user', 'profile']
 
@@ -89,7 +96,9 @@ class FriendsForm(forms.ModelForm):
             #     attrs={'class': 'custom-select'},
             # ),
             'photo': forms.FileInput(
-                attrs={'class': 'form-control', 'accept': 'image/*'}
+                attrs={'class': 'form-control',
+                       'accept': 'image/*',
+                       'style': 'border: 1px solid #ccc; display: inline-block; cursor: pointer;'}
             ),
 
         }
@@ -118,10 +127,15 @@ class FreeForm(forms.ModelForm):
             #     attrs={'class': 'custom-select'},
             # ),
             'photo': forms.FileInput(
-                attrs={'class': 'form-control', 'accept': 'image/*'}
+                attrs={'class': 'form-control-file',
+                       'accept': 'image/*',
+                       'style': 'border: 1px solid #ccc; display: inline-block; cursor: pointer;'}
             ),
             'video': forms.FileInput(
-                attrs={'class': 'form-control', 'accept': 'file_extension|audio/*|video/*|image/*|media_type'}
+                attrs={'class': 'form-control-file',
+                       'accept': 'file_extension|audio/*|video/*|image/*|media_type',
+                       # 'style': 'background-color: #ccc; border: 1px solid gray; padding: 6px 12px;'}
+                       'style': 'border: 1px solid #ccc; display: inline-block; cursor: pointer;'}
             )
 
         }
