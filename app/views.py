@@ -60,7 +60,8 @@ def new(request):
     login_request_uri = 'https://kauth.kakao.com/oauth/authorize?'
 
     client_id = 'd9079dbac88fca9754d091a7af0366ed'
-    redirect_uri = 'http://127.0.0.1:8000/oauth'
+    # redirect_uri = 'http://127.0.0.1:8000/oauth'
+    redirect_uri = 'http://http://ec2-15-164-28-194.ap-northeast-2.compute.amazonaws.com:8000/oauth'
 
     login_request_uri += 'client_id=' + client_id
     login_request_uri += '&redirect_uri=' + redirect_uri
