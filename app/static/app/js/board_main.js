@@ -79,7 +79,7 @@ $(document).ready(function() {
 
   $(function() {
     typed.typed({
-      strings: ["대 동 제", "9월 25일 ~ 26일", "with 멋쟁이사자처럼"],
+      strings: ["국 원 대 동 제", "9월 25일 ~ 26일", "with 멋쟁이사자처럼"],
       typeSpeed: 150,
       loop: true,
     });
