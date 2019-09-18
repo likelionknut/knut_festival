@@ -34,7 +34,7 @@ class BoardForm(forms.ModelForm):
             #     attrs={'class': 'custom-select'},
             # ),
             'photo': forms.FileInput(
-                attrs={'class': 'form-control',
+                attrs={'class': 'form-control-file',
                        'accept': 'image/*',
                        'style': 'border: 1px solid #ccc; display: inline-block; cursor: pointer;'}
             ),
@@ -65,7 +65,7 @@ class BoothPromotionForm(forms.ModelForm):
             #     attrs={'class': 'custom-select'},
             # ),
             'photo': forms.FileInput(
-                attrs={'class': 'form-control',
+                attrs={'class': 'form-control-file',
                        'accept': 'image/*',
                        'style': 'border: 1px solid #ccc; display: inline-block; cursor: pointer;'}
             ),
@@ -96,7 +96,7 @@ class FriendsForm(forms.ModelForm):
             #     attrs={'class': 'custom-select'},
             # ),
             'photo': forms.FileInput(
-                attrs={'class': 'form-control',
+                attrs={'class': 'form-control-file',
                        'accept': 'image/*',
                        'style': 'border: 1px solid #ccc; display: inline-block; cursor: pointer;'}
             ),
@@ -106,6 +106,7 @@ class FriendsForm(forms.ModelForm):
 
 # 자유 게시판
 class FreeForm(forms.ModelForm):
+
     class Meta:
         model = FreeBoard
 
@@ -139,3 +140,4 @@ class FreeForm(forms.ModelForm):
             )
 
         }
+
