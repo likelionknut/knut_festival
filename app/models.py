@@ -12,7 +12,7 @@ class Comment(models.Model):
 # 분실물 게시판
 class Board(models.Model):
     title = models.CharField(max_length=20)
-    user = models.CharField(max_length=10)
+    user = models.CharField(max_length=20)
     body = models.TextField()
 
     tag_choices = (
@@ -22,7 +22,7 @@ class Board(models.Model):
 
     tag = models.CharField(max_length=6, choices=tag_choices, default=1)
     created_at = models.DateTimeField(auto_now_add=True)
-    photo = models.ImageField(upload_to='images/', blank=True, null=True)
+    photo = models.ImageField(upload_to='board/images/', blank=True, null=True)
     profile = models.CharField(max_length=150)
 
     def __str__(self):
@@ -32,11 +32,11 @@ class Board(models.Model):
 # 부스 홍보 게시판
 class BoothPromotionBoard(models.Model):
     title = models.CharField(max_length=20)
-    user = models.CharField(max_length=10)
+    user = models.CharField(max_length=20)
     body = models.TextField()
 
     created_at = models.DateTimeField(auto_now_add=True)
-    photo = models.ImageField(upload_to='images/', blank=True, null=True)
+    photo = models.ImageField(upload_to='boothPromotionBoard/images/', blank=True, null=True)
     profile = models.CharField(max_length=150)
 
     def __str__(self):
@@ -46,12 +46,28 @@ class BoothPromotionBoard(models.Model):
 # 술 친구 게시판
 class FriendsBoard(models.Model):
     title = models.CharField(max_length=20)
-    user = models.CharField(max_length=10)
+    user = models.CharField(max_length=20)
     body = models.TextField()
 
     created_at = models.DateTimeField(auto_now_add=True)
-    photo = models.ImageField(upload_to='images/', blank=True, null=True)
+    photo = models.ImageField(upload_to='friends/images/', blank=True, null=True)
     profile = models.CharField(max_length=150)
 
     def __str__(self):
         return self.title
+
+
+# 자유 게시판
+class FreeBoard(models.Model):
+    title = models.CharField(max_length=20)
+    user = models.CharField(max_length=20)
+    body = models.TextField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    photo = models.ImageField(upload_to='freeBoard/images/', blank=True, null=True)
+    profile = models.CharField(max_length=150)
+    video = models.FileField(upload_to='freeBoard/videos/', blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
