@@ -3,19 +3,31 @@
     <font size="4">{{ board.user }}</font>
     <font size="2" color="gray"> - {{ board.created_at|date:"y/m/d A h:i" }}</font>
     <br><br><br>
-    <h1>{{ board.title }}</h1><br>
 
-    {{ board.body }}<br><br>
-    {% if board.photo %}
-        <img src="{{ board.photo.url }}">
-    {% endif %}
+    <div class="container">
 
-    <br><br>
-    {% if board.video %}
-        <video width='400' controls>
-            <source src='{{ board.video.url }}' type='video/mp4'>
-        </video>
-    {% endif %}
+        <h1>{{ board.title }}</h1><br><br>
+
+        <div class="card">
+        {{ board.body }}<br><br>
+
+
+        {% if board.photo %}
+            <div class="text-center">
+            <img style="min-width: 50%; max-width: 90%;"  src="{{ board.photo.url }}">
+            </div>
+        {% endif %}
+
+        <br><br>
+
+        {% if board.video %}
+            <div class="text-center">
+            <video style="min-width: 50%; max-width: 90%;" controls>
+                <source src='{{ board.video.url }}' type='video/mp4'>
+            </video>
+            </div>
+        {% endif %}</div>
+    </div>
 </div>
 <hr style="margin:3%">
 <br><br><br>
