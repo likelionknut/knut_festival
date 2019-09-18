@@ -237,12 +237,12 @@ def friends(request):
     end_block = start_block + page_range
     p_range = paginator.page_range[start_block:end_block]
 
-    return render(request, 'boards/friends.html', {'posts': posts, 'p_range': p_range})
+    return render(request, 'boards/friends/friends.html', {'posts': posts, 'p_range': p_range})
 
 
 def friendsDetail(request, board_id):
     board_detail = get_object_or_404(FriendsBoard, pk=board_id)
-    return render(request, 'boards/friendsDetail.html', {'board' : board_detail})
+    return render(request, 'boards/friends/friendsDetail.html', {'board' : board_detail})
 
 
 # 술 친구 글쓰기 누르면
@@ -275,7 +275,7 @@ def friendsCreate(request):
             return redirect('friends')
     else:
         form = FriendsForm()
-        return render(request, 'boards/friendsNew.html', {'form': form})
+        return render(request, 'boards/friends/friendsNew.html', {'form': form})
 
     return redirect('board')
 
