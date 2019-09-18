@@ -314,9 +314,9 @@ def freeCreate(request):
 
             post.save()
 
-            return redirect('friends')
+            return redirect('free')
         else:
-            return redirect('friends')
+            return redirect('free')
     else:
         form = FreeForm()
         return render(request, 'boards/freeNew.html', {'form': form})
