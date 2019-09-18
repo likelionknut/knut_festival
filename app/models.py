@@ -22,7 +22,7 @@ class Board(models.Model):
 
     tag = models.CharField(max_length=6, choices=tag_choices, default=1)
     created_at = models.DateTimeField(auto_now_add=True)
-    photo = models.ImageField(upload_to='board/images/', blank=True, null=True)
+    photo = models.ImageField(upload_to='board/images/%Y/%m/%d/%H/%M', blank=True, null=True)
     profile = models.CharField(max_length=150)
 
     def __str__(self):
@@ -36,7 +36,7 @@ class BoothPromotionBoard(models.Model):
     body = models.TextField()
 
     created_at = models.DateTimeField(auto_now_add=True)
-    photo = models.ImageField(upload_to='boothPromotionBoard/images/', blank=True, null=True)
+    photo = models.ImageField(upload_to='boothPromotionBoard/images/%Y/%m/%d/%H/%M', blank=True, null=True)
     profile = models.CharField(max_length=150)
 
     def __str__(self):
@@ -50,7 +50,7 @@ class FriendsBoard(models.Model):
     body = models.TextField()
 
     created_at = models.DateTimeField(auto_now_add=True)
-    photo = models.ImageField(upload_to='friends/images/', blank=True, null=True)
+    photo = models.ImageField(upload_to='friends/images/%Y/%m/%d/%H/%M', blank=True, null=True)
     profile = models.CharField(max_length=150)
 
     def __str__(self):
@@ -64,9 +64,9 @@ class FreeBoard(models.Model):
     body = models.TextField()
 
     created_at = models.DateTimeField(auto_now_add=True)
-    photo = models.ImageField(upload_to='freeBoard/images/', blank=True, null=True)
+    photo = models.ImageField(upload_to='free/images/%Y/%m/%d/%H/%M', blank=True, null=True)
     profile = models.CharField(max_length=150)
-    video = models.FileField(upload_to='freeBoard/videos/', blank=True, null=True)
+    video = models.FileField(upload_to='free/videos/%Y/%m/%d/%H/%M', blank=True, null=True)
 
     def __str__(self):
         return self.title
