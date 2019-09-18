@@ -37,7 +37,7 @@ def comment_write(request):
 # primary key 값을 부여해서 게시글 마다 고유한 번호를 가질수 있게 설계 (게시글 구분)
 def detail(request, board_id):
     board_detail = get_object_or_404(Board, pk=board_id)
-    return render(request, 'detail.html', {'board' : board_detail})
+    return render(request, 'boards/detail.html', {'board' : board_detail})
 
 
 def board(request):
