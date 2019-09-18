@@ -70,23 +70,6 @@
             </ul>
 
         </div>
-        {##}
-        {#            <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>#}
-        {##}
-        {##}
-        {#            <!-- 로그인 안하고 글쓰려고하면 로그인안내창 -->#}
-        {#            {% if user.is_authenticated %}#}
-        {#                <li><a href="{% url 'register' %}" class="lost">분실물등록</a></li>#}
-        {#            {% else %}#}
-        {#                <li><a href="#" onclick="alert('로그인 후 이용해주세요')">분실물등록</a></li>#}
-        {#            {% endif %}#}
-        {#            <li><a href="{% url 'lost' %}" class="lost">분실물 찾기</a></li>#}
-        {#            {% if user.is_authenticated %}#}
-        {#                <li><a href="/accounts/logout" class="smoothScroll">로그아웃</a></li>#}
-        {#            {% else %}#}
-        {#                <li><a href="{% provider_login_url 'google' %}" class="smoothScroll">로그인</a></li>#}
-        {#            {% endif %}#}
-        {#            </ul>#}
 
     </div>
 
@@ -121,31 +104,53 @@
 
 
 <!-- start section about us -->
-<div id="about" class="paddsection">
-    <div class="container">
-        <div class="row justify-content-between">
-
-            <div class="col-lg-4 ">
+<div id="about" class="">
+    <div class="container" style="text-align: center">
+        <div class="section-title text-center" style="margin-top: -10%">
+            <h2 style="font-family: 'Nanum Pen Script', 'cursive';">축제 정보</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-4" style="margin: 7%">
                 <div class="div-img-bg">
                     <div class="about-img">
-                        <img src="{% static 'app/대충대동제홍보사진.jpg' %}" class="img-responsive" alt="me">
+                        <img src="{% static 'app/포스터.jpg' %}" class="img-responsive" alt="me">
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-7">
+            <div class="col-lg-5" style="margin-bottom: 5%">
                 <div class="about-descr">
-
-                    <p class="p-heading">기존의 축제와는 다르다! 대동제! </p>
-                    <p class="separator">다양한 동아리의 퍼포먼스!<br>
-                        기대 이상의 학과 주점!<br>
-                        축제에서 빠질수 없는 푸드트럭!<br>
-                        <<= 이건 나중에 바꿔야하는 포스터!</p> 
-                    </div> 
-                </div> 
-            </div> 
-        </div> 
+                    <div class="bd-example">
+                        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="{% static 'app/9월25일.png' %}" width=70; height=500 class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-none d-md-block"></div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{% static 'app/9월26일.png' %}" width=70; height="500" class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-none d-md-block"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div> 
+</div> 
     <!-- end section about us -->
 
                             <!-- start section services -->
@@ -203,6 +208,11 @@
                                         </div>
 
                                     </div>
+                                    <br><br><br>
+                                    <video width="480" height="270" controls>
+                                        <source src="{% static 'app/2019국원대동제 홍보영상.mp4' %}" type="video/mp4">
+                        
+                                    </video>
 
                                 </div>
 
@@ -211,7 +221,7 @@
                             <br><br><br>
                             <div class="container">
                                 <div class="section-title text-center">
-                                    <h2>찾아가기</h2>
+                                    <h2 style="font-family: 'Nanum Pen Script', 'cursive';">찾아가기</h2>
                                 </div>
                             </div>
                             <div id="map" style="width:70%;height:400px;margin:0 auto;text-align:center"></div>
@@ -259,50 +269,90 @@
                                                 <ul class="nav list-unstyled" id="portfolio-flters">
                                                     <li class="filter filter-active" data-filter=".all">all</li>
                                                     <li class="filter" data-filter=".초대가수">초대 가수</li>
-                                                    <li class="filter" data-filter=".노천극장">노천극장은?!</li>
-                                                    <li class="filter" data-filter=".1부">1부 8시</li>
-                                                    <li class="filter" data-filter=".2부">2부 9시</li>
-                                                    <li class="filter" data-filter=".3부">3부 10시</li>
+                                                    <li class="filter" data-filter=".스페셜게스트">스페셜 게스트</li>
+                                                    <li class="filter" data-filter=".25일">25일 라인업</li>
+                                                    <li class="filter" data-filter=".26일">26일 라인업</li>
                                                 </ul>
 
                                             </div>
 
                                             <div class="portfolio-container">
 
-                                                <div
-                                                    class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 1부 webdesign">
-                                                    <a class="popup-img" href="{% static 'app/선미.jpg' %}">
-                                                        <img src="{% static 'app/선미.jpg' %}" alt="img">
+                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 스페셜게스트 25일">
+                                                    <a class="popup-img" href="{% static 'app/유병재11.jpg' %}">
+                                                        <img src="{% static 'app/유병재11.jpg' %}" alt="img">
                                                     </a>
                                                 </div>
 
-                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 노천극장 1부 3부">
-                                                    <a class="popup-img" href="{% static 'app/학교약도.PNG' %}">
-                                                        <img src="{% static 'app/학교약도.PNG' %}" alt="img">
+                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 스페셜게스트 25일">
+                                                    <a class="popup-img" href="{% static 'app/유병재22.jpg' %}">
+                                                        <img src="{% static 'app/유병재22.jpg' %}" alt="img">
                                                     </a>
                                                 </div>
 
-                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 2부 ">
-                                                    <a class="popup-img" href="{% static 'app/IU.jpg' %}">
-                                                        <img src="{% static 'app/IU.jpg' %}" alt="img">
+                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 25일 ">
+                                                    <a class="popup-img" href="{% static 'app/다듀11.png' %}">
+                                                        <img src="{% static 'app/다듀11.png' %}" alt="img">
                                                     </a>
                                                 </div>
 
-                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 노천극장 2부 3부">
-                                                    <a class="popup-img" href="{% static 'app/노천극장.jpg' %}">
-                                                        <img src="{% static 'app/노천극장.jpg' %}" alt="img">
+                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 25일">
+                                                    <a class="popup-img" href="{% static 'app/다듀22.jpg' %}">
+                                                        <img src="{% static 'app/다듀22.jpg' %}" alt="img">
                                                     </a>
                                                 </div>
 
-                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 3부">
-                                                    <a class="popup-img" href="{% static 'app/폴킴.jpg' %}">
-                                                        <img src="{% static 'app/폴킴.jpg' %}" alt="img">
+                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 26일">
+                                                    <a class="popup-img" href="{% static 'app/닐로11.jpg' %}">
+                                                        <img src="{% static 'app/닐로11.jpg' %}" alt="img">
                                                     </a>
                                                 </div>
 
-                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 노천극장 1부 2부">
-                                                    <a class="popup-img" href="{% static 'app/증캠축제.jpg' %}">
-                                                        <img src="{% static 'app/증캠축제.jpg' %}" alt="img">
+                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 26일">
+                                                    <a class="popup-img" href="{% static 'app/닐로22.jpg' %}">
+                                                        <img src="{% static 'app/닐로22.jpg' %}" alt="img">
+                                                    </a>
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 26일">
+                                                    <a class="popup-img" href="{% static 'app/헤이즈11.jpg' %}">
+                                                        <img src="{% static 'app/헤이즈11.jpg' %}" alt="img">
+                                                    </a>
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 26일">
+                                                    <a class="popup-img" href="{% static 'app/헤이즈22.jpg' %}">
+                                                        <img src="{% static 'app/헤이즈22.jpg' %}" alt="img">
+                                                    </a>
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 26일">
+                                                    <a class="popup-img" href="{% static 'app/헤이즈33.jpg' %}">
+                                                        <img src="{% static 'app/헤이즈33.jpg' %}" alt="img">
+                                                    </a>
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 스페셜게스트">
+                                                    <a class="popup-img" href="{% static 'app/도아11.jpg' %}">
+                                                        <img src="{% static 'app/도아11.jpg' %}" alt="img">
+                                                    </a>
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 스페셜게스트">
+                                                    <a class="popup-img" href="{% static 'app/도아22.jpg' %}">
+                                                        <img src="{% static 'app/도아22.jpg' %}" alt="img">
+                                                    </a>
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 스페셜게스트">
+                                                    <a class="popup-img" href="{% static 'app/김길중11.jpg' %}">
+                                                        <img src="{% static 'app/김길중11.jpg' %}" alt="img">
+                                                    </a>
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 스페셜게스트">
+                                                    <a class="popup-img" href="{% static 'app/김길중22.jpg' %}">
+                                                        <img src="{% static 'app/김길중22.jpg' %}" alt="img">
                                                     </a>
                                                 </div>
 
@@ -385,62 +435,7 @@
                                         </div>
 
                                         <!-- End section journal -->
-
-                                        <!-- 분실물 title rolling -->
-
-
-                                        <!-- start section contact -->
-                                        {##}
-                                        {#                <!--여기에 댓글기능 추가 -->#}
-                                        {#                <div class="col-md-12">#}
-                                        {#                    <div class="comments text-left padDiv mb-30">#}
-                                        {#                        <div class="entry-comments-item">#}
-                                        {#                            {% for comment in comments %}#}
-                                        {#                                <div class="entry-comments-body">#}
-                                        {#                                    <span class="entry-comments-author"><a href="#">{{ comment.user }}</a></span>#}
-                                        {#                                    <small>{{ comment.created_at }}</small>#}
-                                        {#                                    <p class="mb-10">{{ comment.text|linebreaks }}</p>#}
-                                        {#                                </div>#}
-                                        {#                            {% empty %}#}
-                                        {#                                <div class="comment-list">#}
-                                        {#                                    <p class="mb-10">작성된 댓글이 없습니다.</p>#}
-                                        {#                                </div>#}
-                                        {#                            {% endfor %}#}
-                                        {##}
-                                        {#                        </div>#}
-                                        {##}
-                                        {#                        <!-- 로그인안되있을때 댓글 쓰려고 하면 로그인안내창 띄움 -->#}
-                                        {#                        {% if user.is_authenticated %}#}
-                                        {#                            <form id="comment-form" action="{% url 'comment_write' %}" method="POST">#}
-                                        {#                                {% csrf_token %}#}
-                                        {#                                <input id="form_message" type="text" name="text" placeholder="댓글을 입력하세요">#}
-                                        {#                                <button type="submit">댓글 쓰기</button>#}
-                                        {#                            </form>#}
-                                        {#                        {% else %}#}
-                                        {#                            <form id="comment-form" action="{% url 'comment_write' %}" method="POST">#}
-                                        {#                                {% csrf_token %}#}
-                                        {#                                <input id="form_message" type="text" name="text" placeholder="댓글을 입력하세요">#}
-                                        {#                                <button type="button" onclick="alert('로그인 후 이용해주세요')">댓글 쓰기</button>#}
-                                        {#                            </form>#}
-                                        {#                        {% endif %}#}
-                                        {#                        <br><br>#}
-                                        {##}
-                                        {#                        <!-- 분실물 title rolling -->#}
-                                        {#                        <div class="notice">#}
-                                        {#                            <ul class="rolling">#}
-                                        {#                                {% for lost in losts %}#}
-                                        {#                                    <li>#}
-                                        {#                                        <p>{{ lost.title }}</p>#}
-                                        {#                                    </li>#}
-                                        {#                                {% endfor %}#}
-                                        {#                            </ul>#}
-                                        {#                        </div>#}
-                                        {##}
-                                        {#                    </div>#}
-                                        {#                </div>#}
-
-                                        <!-- start section contact -->
-
+                                        
                                     </div>
                                     <!-- End section journal -->
                                 </div>
