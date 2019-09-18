@@ -12,28 +12,6 @@ def home(request):
     boards_list = Board.objects.all().order_by('-created_at')
     return render(request, 'index.html', {'comments':comments, 'boards_list':boards_list})
 
-#
-# def comment_write(request):
-#     if request.method == 'POST':
-#         comments = Comment.objects.all()
-#         form = CommentForm(request.POST)
-#         if form.is_valid():
-#             comment = form.save(commit=False)
-#             user = request.user.username
-#             comment.user = user
-#             comment.save()
-#             return redirect('home')
-#     else:
-#         form = CommentForm()
-#         comments = Comment.objects.all()
-#
-#     return render(request, 'index.html', {'form':form, 'comments':comments})
-
-
-# def login(request):
-#     return render(request, 'index.html')
-
-
 def board(request):
     boards_list = Board.objects.all().order_by('-created_at')
     paginator = Paginator(boards_list, 6) # 게시물 5개를 기준으로 페이지네이션 전개
