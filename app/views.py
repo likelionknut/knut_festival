@@ -331,6 +331,6 @@ def freeCreate(request):
             return redirect('free')
     else:
         form = FreeForm()
-        return render(request, 'boards/friends/templates/boards/free/freeNew.html', {'form': form})
+        return render(request, 'boards/free/freeNew.html', {'form': form})
 
     return redirect('board')
