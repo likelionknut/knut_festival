@@ -9,6 +9,8 @@
 /*  General Styling
 /*-----------------------------------------------------------------------------------*/
 
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+
 body {
   background: #ffffff;
   color: #898989;
@@ -121,13 +123,14 @@ p {
 }
 
 .section-title {
-  font-family: 'Nanum Pen Script', 'cursive';
+  font-family: 'Nanum Pen Script', serif;
+  font-size: 50px;
   margin-bottom: 70px;
 }
 
 .section-title h2 {
-  font-family: 'Nanum Pen Script', 'cursive';
-  font-size: 25px;
+  font-family: 'Nanum Pen Script', serif;
+  font-size: 50px;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
