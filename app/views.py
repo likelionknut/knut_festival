@@ -295,12 +295,12 @@ def free(request):
     end_block = start_block + page_range
     p_range = paginator.page_range[start_block:end_block]
 
-    return render(request, 'boards/free.html', {'posts': posts, 'p_range': p_range})
+    return render(request, 'boards/friends/templates/boards/free/free.html', {'posts': posts, 'p_range': p_range})
 
 
 def freeDetail(request, board_id):
     board_detail = get_object_or_404(FreeBoard, pk=board_id)
-    return render(request, 'boards/freeDetail.html', {'board' : board_detail})
+    return render(request, 'boards/friends/templates/boards/free/freeDetail.html', {'board' : board_detail})
 
 
 def freeNew(request):
@@ -331,6 +331,6 @@ def freeCreate(request):
             return redirect('free')
     else:
         form = FreeForm()
-        return render(request, 'boards/freeNew.html', {'form': form})
+        return render(request, 'boards/friends/templates/boards/free/freeNew.html', {'form': form})
 
     return redirect('board')
