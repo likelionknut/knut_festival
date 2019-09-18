@@ -20,6 +20,9 @@
                     <caption>홍보 게시판</caption>
                 </h2>
             </div>
+            <div class="text-right" style="margin-right: 9%">
+                    <a href="{% url 'new' %}"><input type="button" class="btn btn-outline-primary center" value="카카오 계정으로 글쓰기" /></a>
+            </div> <br>
             {% for board in posts %}
             <div class="card" style="width: 18rem; margin: 10px; display: inline-block;">
                 {% if board.photo %}
@@ -38,13 +41,6 @@
                 </div>
             </div>
             {% endfor %}
-        
-
-        <!-- login & logout section-->
-        <div class="text-right">
-            <a href="{% url 'boothPromotionNew' %}"><input type="button" class="btn btn-outline-primary center" value="카카오 계정으로 글쓰기" /></a>
-        </div>
-        <!-- login & logout section -->
 
         <!-- pagination section -->
         <div class="text-center">

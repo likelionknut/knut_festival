@@ -20,6 +20,9 @@
                 <caption>분실물 게시판</caption>
             </h2>
         </div>
+        <div class="text-right" style="margin-right: 9%">
+                <a href="{% url 'new' %}"><input type="button" class="btn btn-outline-primary center" value="카카오 계정으로 글쓰기" /></a>
+        </div> <br>
             {% for board in posts %}
             <div class="card" style="width: 18rem; margin: 10px; display: inline-block;">
                 {% if board.photo %}
@@ -42,9 +45,7 @@
 
         <!-- login & logout section-->
         <br><br>
-        <div class="text-right">
-            <a href="{% url 'new' %}"><input type="button" class="btn btn-outline-primary center" value="카카오 계정으로 글쓰기" /></a>
-        </div> <br>
+
         <!-- login & logout section -->
 
 
