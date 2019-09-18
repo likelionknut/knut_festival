@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %} {{board.title}} {% endblock %}
+{% block title %} {{ board.title }} {% endblock %}
 
 {% block javascriptHead %}
     <script src="{% static 'app/js/board_main.js' %}"></script>
@@ -10,28 +10,49 @@
 
 {% block content %}
 
-{% include 'boards/board_nav.html' %}
+    {% include 'boards/board_nav.html' %}
 
     <br><br><br><br><br><br><br>
     <div class="container card w-75 border-secondary mb-3">
         <div class="card-body" style="margin:3%">
-            <img src="{{board.profile}}" height="50" width="50" style="border-radius: 50%">&nbsp;
-            <font size="4">{{board.user}}</font>
+            <img src="{{ board.profile }}" height="50" width="50" style="border-radius: 50%">&nbsp;
+            <font size="4">{{ board.user }}</font>
             <font size="2" color="gray"> - {{ board.created_at|date:"y/m/d A h:i" }}</font>
             <br><br><br>
-            <h1>{{board.title}}</h1><br>
-    
-            {{board.body}}<br><br>
+            <h1>{{ board.title }}</h1><br>
+
+            {{ board.body }}<br><br>
             {% if board.photo %}
-            <img src="{{board.photo.url}}">
+                <img src="{{ board.photo.url }}">
             {% endif %}
         </div>
         <hr style="margin:3%">
         <h2 style="margin:3%">댓글자리</h2><br><br><br>
         <div class="text-center">
-            <a href="{% url 'boothPromotion' %}"><input type="#" class="btn btn-outline-primary center" value="게시판으로" /></a>
-            <a href="{% url 'home' %}"><input type="#" class="btn btn-outline-primary center" value="홈으로" /></a>
+            <a href="{% url 'boothPromotion' %}"><input type="#" class="btn btn-outline-primary center" value="게시판으로"/></a>
+            <a href="{% url 'home' %}"><input type="#" class="btn btn-outline-primary center" value="홈으로"/></a>
         </div>
         <br><br>
+
+        <!-- 라이브리 시티 설치 코드 -->
+        <div id="lv-container" data-id="city" data-uid="MTAyMC80NjY5Ni8yMzIwNg==">
+            <script type="text/javascript">
+                (function (d, s) {
+                    var j, e = d.getElementsByTagName(s)[0];
+
+                    if (typeof LivereTower === 'function') {
+                        return;
+                    }
+
+                    j = d.createElement(s);
+                    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                    j.async = true;
+
+                    e.parentNode.insertBefore(j, e);
+                })(document, 'script');
+            </script>
+            <noscript> 라이브리 댓글 작성을 위해 JavaScript를 활성화 해주세요</noscript>
+        </div>
+        <!-- 시티 설치 코드 끝 -->
     </div>
 {% endblock %}
