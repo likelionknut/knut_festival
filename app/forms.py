@@ -32,7 +32,7 @@ class BoardForm(forms.ModelForm):
             #     attrs={'class': 'custom-select'},
             # ),
             'photo': forms.FileInput(
-                attrs={'class': 'form-control'}
+                attrs={'class': 'form-control', 'accept': 'image/*'}
             ),
 
         }
