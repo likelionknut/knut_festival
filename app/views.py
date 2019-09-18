@@ -12,32 +12,26 @@ def home(request):
     boards_list = Board.objects.all().order_by('-created_at')
     return render(request, 'index.html', {'comments':comments, 'boards_list':boards_list})
 
-
-def comment_write(request):
-    if request.method == 'POST':
-        comments = Comment.objects.all()
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            user = request.user.username
-            comment.user = user
-            comment.save()
-            return redirect('home')
-    else:
-        form = CommentForm()
-        comments = Comment.objects.all()
-
-    return render(request, 'index.html', {'form':form, 'comments':comments})
+#
+# def comment_write(request):
+#     if request.method == 'POST':
+#         comments = Comment.objects.all()
+#         form = CommentForm(request.POST)
+#         if form.is_valid():
+#             comment = form.save(commit=False)
+#             user = request.user.username
+#             comment.user = user
+#             comment.save()
+#             return redirect('home')
+#     else:
+#         form = CommentForm()
+#         comments = Comment.objects.all()
+#
+#     return render(request, 'index.html', {'form':form, 'comments':comments})
 
 
 # def login(request):
 #     return render(request, 'index.html')
-
-
-# primary key 값을 부여해서 게시글 마다 고유한 번호를 가질수 있게 설계 (게시글 구분)
-def detail(request, board_id):
-    board_detail = get_object_or_404(Board, pk=board_id)
-    return render(request, 'boards/detail.html', {'board' : board_detail})
 
 
 def board(request):
@@ -52,6 +46,12 @@ def board(request):
     p_range = paginator.page_range[start_block:end_block]
 
     return render(request, 'boards/board.html', {'posts':posts, 'p_range':p_range})
+
+
+# primary key 값을 부여해서 게시글 마다 고유한 번호를 가질수 있게 설계 (게시글 구분)
+def detail(request, board_id):
+    board_detail = get_object_or_404(Board, pk=board_id)
+    return render(request, 'boards/detail.html', {'board' : board_detail})
 
 
 # 글쓰기 버튼
@@ -164,6 +164,8 @@ def oauth(request):
         return redirect('create')
 
 
+########################
+## 동아리 홍보 게시판 ##
 # 동아리 홍보 게시판 메인
 def boothPromotion(request):
 
@@ -180,31 +182,14 @@ def boothPromotion(request):
     return render(request, 'boards/boothPromotion.html', {'posts': posts, 'p_range': p_range})
 
 
-# 술 친구 게시판 메인
-def friends(request):
-
-    boards_list = FriendsBoard.objects.all().order_by('-created_at')
-    paginator = Paginator(boards_list, 6)  # 게시물 5개를 기준으로 페이지네이션 전개
-    page = request.GET.get('page', 1)  # request 된 페이지를 변수에 담음
-    posts = paginator.get_page(page)
-    page_range = 5  # 5개의 페이지 블럭 (범위)
-    current_block = math.ceil(int(page) / page_range)
-    start_block = (current_block - 1) * page_range
-    end_block = start_block + page_range
-    p_range = paginator.page_range[start_block:end_block]
-
-    return render(request, 'boards/friends.html', {'posts': posts, 'p_range': p_range})
+def boothPromotionDetail(request, board_id):
+    board_detail = get_object_or_404(BoothPromotionBoard, pk=board_id)
+    return render(request, 'boards/boothPromotionDetail.html', {'board' : board_detail})
 
 
 # 부스 홍보 글쓰기 누르면
 def boothPromotionNew(request):
     request.session['boothPromotionNew'] = str('boothPromotionNew')
-    return redirect('new')
-
-
-# 술 친구 글쓰기 누르면
-def friendsNew(request):
-    request.session['friendsNew'] = str('friendsNew')
     return redirect('new')
 
 
@@ -237,6 +222,35 @@ def boothPromotionCreate(request):
     return redirect('board')
 
 
+########################
+## 술 친구 홍보 게시판 ##
+# 술 친구 게시판 메인
+def friends(request):
+
+    boards_list = FriendsBoard.objects.all().order_by('-created_at')
+    paginator = Paginator(boards_list, 6)  # 게시물 5개를 기준으로 페이지네이션 전개
+    page = request.GET.get('page', 1)  # request 된 페이지를 변수에 담음
+    posts = paginator.get_page(page)
+    page_range = 5  # 5개의 페이지 블럭 (범위)
+    current_block = math.ceil(int(page) / page_range)
+    start_block = (current_block - 1) * page_range
+    end_block = start_block + page_range
+    p_range = paginator.page_range[start_block:end_block]
+
+    return render(request, 'boards/friends.html', {'posts': posts, 'p_range': p_range})
+
+
+def friendsDetail(request, board_id):
+    board_detail = get_object_or_404(FriendsBoard, pk=board_id)
+    return render(request, 'boards/friendsDetail.html', {'board' : board_detail})
+
+
+# 술 친구 글쓰기 누르면
+def friendsNew(request):
+    request.session['friendsNew'] = str('friendsNew')
+    return redirect('new')
+
+
 # 술친구 입력 폼
 def friendsCreate(request):
 
@@ -266,16 +280,9 @@ def friendsCreate(request):
     return redirect('board')
 
 
-def boothPromotionDetail(request, board_id):
-    board_detail = get_object_or_404(BoothPromotionBoard, pk=board_id)
-    return render(request, 'boards/boothPromotionDetail.html', {'board' : board_detail})
-
-
-def friendsDetail(request, board_id):
-    board_detail = get_object_or_404(FriendsBoard, pk=board_id)
-    return render(request, 'boards/friendsDetail.html', {'board' : board_detail})
-
-
+########################
+## 자유 게시판 ##
+# 자유 게시판 메인
 def free(request):
 
     boards_list = FreeBoard.objects.all().order_by('-created_at')
@@ -289,6 +296,11 @@ def free(request):
     p_range = paginator.page_range[start_block:end_block]
 
     return render(request, 'boards/free.html', {'posts': posts, 'p_range': p_range})
+
+
+def freeDetail(request, board_id):
+    board_detail = get_object_or_404(BoothPromotionBoard, pk=board_id)
+    return render(request, 'boards/freeDetail.html', {'board' : board_detail})
 
 
 def freeNew(request):
@@ -322,7 +334,3 @@ def freeCreate(request):
         return render(request, 'boards/freeNew.html', {'form': form})
 
     return redirect('board')
-
-def freeDetail(request, board_id):
-    board_detail = get_object_or_404(BoothPromotionBoard, pk=board_id)
-    return render(request, 'boards/freeDetail.html', {'board' : board_detail})
