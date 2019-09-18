@@ -88,13 +88,14 @@
     <div class="container">
         <div class="socials-media text-center">
 
+            <!-- 아이콘으로 바로 공유하기 기능 구현 by 띵대표-->
             <ul class="list-unstyled">
-                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                <li><a href="#"><i class="ion-social-tumblr"></i></a></li>
-                <li><a href="#"><i class="ion-social-dribbble"></i></a></li>
+                <!-- 네이버 블로그 공유하기 -->
+                <li><a href="#" onclick="javascript:window.open('http://share.naver.com/web/shareView.nhn?url=' +encodeURIComponent(document.URL)+'&title='+encodeURIComponent(document.title), 'naversharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Naver" ><img src="{% static 'sns_blog.png' %}" width="40" alt="네이버 블로그 공유하기"></a></li>
+                <!-- 페이스북 공유하기 -->
+                <li><a href="#" onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=' +encodeURIComponent(document.URL)+'&t='+encodeURIComponent(document.title), 'facebooksharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Facebook" ><img src="{% static 'sns_face.png' %}" width="40" alt="페이스북 공유하기"></a></li>
+                <!-- 트위터 공유하기 -->
+                <li><a href="#" onclick="javascript:window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20' +encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Twitter" ><img src="{% static 'sns_tw.png' %}" width="40" alt="트위터 공유하기"></a></li>
             </ul>
 
         </div>
