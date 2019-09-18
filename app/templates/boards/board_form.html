@@ -12,7 +12,9 @@
 
     <br><br>
     {% if board.video %}
-        <source src='{{ MEDIA_URL }}{{ board.video }}' type='video/mp4'>
+        <video width='400' controls>
+            <source src='{{ board.video.url }}' type='video/mp4'>
+        </video>
     {% endif %}
 </div>
 <hr style="margin:3%">
