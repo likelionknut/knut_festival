@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from .models import Comment, Board, BoothPromotionBoard, FriendsBoard
-from .forms import CommentForm, BoardForm, BoothPromotionForm, FriendsForm
+from .models import Comment, Board, BoothPromotionBoard, FriendsBoard, FreeBoard
+from .forms import CommentForm, BoardForm, BoothPromotionForm, FriendsForm, FreeForm
 from django.core.paginator import Paginator
 import requests, math
 
@@ -153,6 +153,12 @@ def oauth(request):
 
         return redirect('friendsCreate')
 
+    elif request.session.get('freeNew') == 'freeNew':
+
+        request.session['freeNew'] = {}
+        request.session.modified = True
+
+        return redirect('freeCreate')
     else:
         request.session.modified = True
         return redirect('create')
@@ -268,3 +274,55 @@ def boothPromotionDetail(request, board_id):
 def friendsDetail(request, board_id):
     board_detail = get_object_or_404(FriendsBoard, pk=board_id)
     return render(request, 'boards/friendsDetail.html', {'board' : board_detail})
+
+
+def free(request):
+
+    boards_list = FreeBoard.objects.all().order_by('-created_at')
+    paginator = Paginator(boards_list, 5)  # 게시물 5개를 기준으로 페이지네이션 전개
+    page = request.GET.get('page', 1)  # request 된 페이지를 변수에 담음
+    posts = paginator.get_page(page)
+    page_range = 5  # 5개의 페이지 블럭 (범위)
+    current_block = math.ceil(int(page) / page_range)
+    start_block = (current_block - 1) * page_range
+    end_block = start_block + page_range
+    p_range = paginator.page_range[start_block:end_block]
+
+    return render(request, 'boards/free.html', {'posts': posts, 'p_range': p_range})
+
+
+def freeNew(request):
+    request.session['freeNew'] = str('freeNew')
+    return redirect('new')
+
+
+def freeCreate(request):
+
+    if request.method == 'POST':
+        form = FreeForm(request.POST, request.FILES)
+
+        if form.is_valid():
+
+            post = form.save(commit=False)
+
+            post.user = request.session.get('user')
+            post.profile = request.session.get('profile')
+
+            request.session['user'] = {}
+            request.session['profile'] = {}
+            request.session.modified = True
+
+            post.save()
+
+            return redirect('friends')
+        else:
+            return redirect('friends')
+    else:
+        form = FreeForm()
+        return render(request, 'boards/freeNew.html', {'form': form})
+
+    return redirect('board')
+
+def freeDetail(request, board_id):
+    board_detail = get_object_or_404(BoothPromotionBoard, pk=board_id)
+    return render(request, 'boards/freeDetail.html', {'board' : board_detail})

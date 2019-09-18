@@ -43,4 +43,9 @@ urlpatterns = [
     path('board/friendsCreate', app.views.friendsCreate, name="friendsCreate"),
     path('board/friends/<int:board_id>/', app.views.friendsDetail, name="friendsDetail"),
 
+    path('board/free', app.views.free, name="free"),
+    path('board/freeNew', app.views.freeNew, name="freeNew"),
+    path('board/freeCreate', app.views.freeCreate, name="freeCreate"),
+    path('board/free/<int:board_id>/', app.views.freeDetail, name="freeDetail"),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
