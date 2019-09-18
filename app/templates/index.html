@@ -104,7 +104,7 @@
 
 
 <!-- start section about us -->
-<div id="about" class="">
+<div id="about" class="" style="background-color:#f7f7f7;">
     <div class="container" style="text-align: center">
         <div class="section-title text-center" style="margin-top: -10%">
             <h2>축제 정보</h2>
@@ -154,7 +154,7 @@
     <!-- end section about us -->
 
                             <!-- start section services -->
-                            <div id="services">
+                            <div id="services" style="background-color:#f7f7f7;">
                                 <div class="container">
 
                                     <div class="services-carousel owl-theme">
@@ -209,54 +209,55 @@
 
                                     </div>
                                     <br><br><br>
-                                    <video width="480" height="270" controls>
-                                        <source src="{% static 'app/2019국원대동제 홍보영상.mp4' %}" type="video/mp4">
-                        
-                                    </video>
 
-                                </div>
 
-                            </div>
-                            <!-- end section services -->
-                            <br><br><br>
-                            <div class="container">
-                                <div class="section-title text-center">
-                                    <h2>찾아가기</h2>
+                                    <div class="text-center">
+                                        <video style="min-width: 50%; max-width: 80%;" controls>
+                                            <source src="{% static 'app/2019국원대동제 홍보영상.mp4' %}" type='video/mp4'>
+                                        </video>
+                                    </div>
                                 </div>
-                            </div>
-                            <div id="map" style="width:70%;height:400px;margin:0 auto;text-align:center"></div>
-                            <script type="text/javascript" src="{% static 'app/js/naver_map_api/map.js' %}"></script>
-
-                            <!-- start section auto rolling -->
-                            <br><br><br>
-                            <div class="container">
-                                <div class="section-title text-center">
-                                    <h2>혹시 제물건 못보셨나요..? (분실물 배너)</h2>
+                                <br><br><br><br><br>
+                                <div class="container " >
+                                    <div class="section-title text-center ">
+                                        <h2>장소</h2>
+                                    </div>
                                 </div>
-                                <div class="container card w-75 border-success mb-3 text-center" style="border:2px dashed; height:20%">
-                                    <div class="card-body">
-                                        <div class="notice">
-                                            <ul class="rolling" style="list-style: none">
-                                                {% for board in boards_list %}
-                                                <li>
-                                                    <p style="margin-right:5%">{{board.user}}님의 게시물 : <a
-                                                            href="{% url 'detail' board.id %}">{{board.title}}</a></p>
-                                                            <!-- title 길이 확 줄여야할듯. mobile 인터페이스에서 짤림 -->
-                                                </li>
-                                                {% endfor %}
-                                            </ul>
+                                <div id="map" style="width:70%;height:400px;margin:0 auto;text-align:center"></div>
+                                <script type="text/javascript" src="{% static 'app/js/naver_map_api/map.js' %}"></script>
+                                <br>
+                                <!-- start section auto rolling -->
+                                <div class="container"><br><br><br><br><br>
+                                    <div class="section-title text-center">
+                                        <h2>혹시 제물건 못보셨나요..? (분실물 배너)</h2>
+                                    </div>
+                                    <div class="container card w-75 border-success mb-3 text-center" style="border:2px dashed; height:20%">
+                                        <div class="card-body">
+                                            <div class="notice">
+                                                <ul class="rolling" style="list-style: none">
+                                                    {% for board in boards_list %}
+                                                    <li>
+                                                        <p style="margin-right:5%">{{board.user}}님의 게시물 : <a
+                                                                href="{% url 'detail' board.id %}">{{board.title}}</a></p>
+                                                                <!-- title 길이 확 줄여야할듯. mobile 인터페이스에서 짤림 -->
+                                                    </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- end section services -->
+
                             <!-- end section auto rolling -->
 
                             <!-- start section portfolio -->
-                            <div id="portfolio" class="text-center paddsection">
+                            <div id="portfolio" class="text-center paddsection" style="background-color:#f7f7f7;">
 
                                 <div class="container">
                                     <div class="section-title text-center">
-                                        <h2>Photo Zone</h2>
+                                        <h2>Lineup</h2>
                                     </div>
                                 </div>
 
@@ -280,79 +281,37 @@
 
                                                 <div class="col-lg-4 col-md-6 portfolio-thumbnail all 스페셜게스트 25일">
                                                     <a class="popup-img" href="{% static 'app/유병재11.jpg' %}">
-                                                        <img src="{% static 'app/유병재11.jpg' %}" alt="img">
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 스페셜게스트 25일">
-                                                    <a class="popup-img" href="{% static 'app/유병재22.jpg' %}">
-                                                        <img src="{% static 'app/유병재22.jpg' %}" alt="img">
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 25일 ">
-                                                    <a class="popup-img" href="{% static 'app/다듀11.png' %}">
-                                                        <img src="{% static 'app/다듀11.png' %}" alt="img">
+                                                        <img src="{% static 'app/유병재11.jpg' %}" alt="img"><br>유병재
                                                     </a>
                                                 </div>
 
                                                 <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 25일">
                                                     <a class="popup-img" href="{% static 'app/다듀22.jpg' %}">
-                                                        <img src="{% static 'app/다듀22.jpg' %}" alt="img">
+                                                        <img src="{% static 'app/다듀22.jpg' %}" alt="img"><br>다이나믹듀오
                                                     </a>
                                                 </div>
 
                                                 <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 26일">
                                                     <a class="popup-img" href="{% static 'app/닐로11.jpg' %}">
-                                                        <img src="{% static 'app/닐로11.jpg' %}" alt="img">
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 26일">
-                                                    <a class="popup-img" href="{% static 'app/닐로22.jpg' %}">
-                                                        <img src="{% static 'app/닐로22.jpg' %}" alt="img">
+                                                        <img src="{% static 'app/닐로11.jpg' %}" alt="img"><br>닐로
                                                     </a>
                                                 </div>
 
                                                 <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 26일">
                                                     <a class="popup-img" href="{% static 'app/헤이즈11.jpg' %}">
-                                                        <img src="{% static 'app/헤이즈11.jpg' %}" alt="img">
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 26일">
-                                                    <a class="popup-img" href="{% static 'app/헤이즈22.jpg' %}">
-                                                        <img src="{% static 'app/헤이즈22.jpg' %}" alt="img">
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 초대가수 26일">
-                                                    <a class="popup-img" href="{% static 'app/헤이즈33.jpg' %}">
-                                                        <img src="{% static 'app/헤이즈33.jpg' %}" alt="img">
+                                                        <img src="{% static 'app/헤이즈11.jpg' %}" alt="img"><br>Heize
                                                     </a>
                                                 </div>
 
                                                 <div class="col-lg-4 col-md-6 portfolio-thumbnail all 스페셜게스트">
                                                     <a class="popup-img" href="{% static 'app/도아11.jpg' %}">
-                                                        <img src="{% static 'app/도아11.jpg' %}" alt="img">
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 스페셜게스트">
-                                                    <a class="popup-img" href="{% static 'app/도아22.jpg' %}">
-                                                        <img src="{% static 'app/도아22.jpg' %}" alt="img">
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-lg-4 col-md-6 portfolio-thumbnail all 스페셜게스트">
-                                                    <a class="popup-img" href="{% static 'app/김길중11.jpg' %}">
-                                                        <img src="{% static 'app/김길중11.jpg' %}" alt="img">
+                                                        <img src="{% static 'app/도아11.jpg' %}" alt="img"><br>BJ도아
                                                     </a>
                                                 </div>
 
                                                 <div class="col-lg-4 col-md-6 portfolio-thumbnail all 스페셜게스트">
                                                     <a class="popup-img" href="{% static 'app/김길중22.jpg' %}">
-                                                        <img src="{% static 'app/김길중22.jpg' %}" alt="img">
+                                                        <img src="{% static 'app/김길중22.jpg' %}" alt="img"><br>김길중
                                                     </a>
                                                 </div>
 
@@ -366,7 +325,7 @@
 
 
                             <!-- start section journal -->
-                            <div id="journal" class="text-left paddsection">
+                            <div id="journal" class="text-left paddsection" style="background-color:#f7f7f7;">
 
                                 <div class="container">
                                     <div class="section-title text-center">
