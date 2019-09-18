@@ -60,7 +60,7 @@ class BoothPromotionForm(forms.ModelForm):
             #     attrs={'class': 'custom-select'},
             # ),
             'photo': forms.FileInput(
-                attrs={'class': 'form-control'}
+                attrs={'class': 'form-control', 'accept': 'image/*'}
             ),
 
         }
@@ -89,7 +89,7 @@ class FriendsForm(forms.ModelForm):
             #     attrs={'class': 'custom-select'},
             # ),
             'photo': forms.FileInput(
-                attrs={'class': 'form-control'}
+                attrs={'class': 'form-control', 'accept': 'image/*'}
             ),
 
         }
