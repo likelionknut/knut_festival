@@ -9,27 +9,19 @@
 {% endblock %}
 
 {% block content %}
-    
+
     {% include 'boards/board_nav.html' %}
 
     <div class="container">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {#          <h4>제목: </h4>#}
-            {#          <input type="text" name="title">#}
-            {#          <br>#}
-            {#          <h4>글쓴이: </h4>#}
-            {#          <input type="text" name="user">#}
-            {#          <br>#}
-            {#          <h4>본문: </h4>#}
-            {#          <textarea cols=40 rows=10 name="body"></textarea>#}
-            {#          <br>#}
-            {#          <h4>사진 파일 : </h4>#}
-            {#          <input type="file" name="photo">#}
-            {#          <br>#}
-            {#          <input class="btn btn-dark" type="submit" value="제출하기">#}
+            {% for field in form %}
+                <p>{{ field.help_text }}</p>
+                <p>{{ field }}</p>
+                <br>
+            {% endfor %}
 {#            {{ form.media }}#}
-            {{ form.as_p }}
+{#            {{ form.as_p }}#}
             <input class="btn btn-dark" type="submit" value="제출하기">
         </form>
     </div>

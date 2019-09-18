@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %} 게시물 작성 {% endblock %}
+{% block title %} 분실물 게시물 작성 {% endblock %}
 
 {% block javascriptHead %}
     <script src="{% static 'app/js/board_main.js' %}"></script>
@@ -15,21 +15,14 @@
     <div class="container">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {#          <h4>제목: </h4>#}
-            {#          <input type="text" name="title">#}
-            {#          <br>#}
-            {#          <h4>글쓴이: </h4>#}
-            {#          <input type="text" name="user">#}
-            {#          <br>#}
-            {#          <h4>본문: </h4>#}
-            {#          <textarea cols=40 rows=10 name="body"></textarea>#}
-            {#          <br>#}
-            {#          <h4>사진 파일 : </h4>#}
-            {#          <input type="file" name="photo">#}
-            {#          <br>#}
-            {#          <input class="btn btn-dark" type="submit" value="제출하기">#}
-{#            {{ form.media }}#}
-            {{ form.as_p }}
+            {% for field in form %}
+                <p>{{ field.help_text }}</p>
+                <p>{{ field }}</p>
+                <br>
+            {% endfor %}
+
+            {#            {{ form.media }}#}
+            {#            {{ form.as_p }}#}
             <input class="btn btn-dark" type="submit" value="제출하기">
         </form>
     </div>
