@@ -97,7 +97,7 @@ def create(request):
             return redirect('board')
     else:
         form = BoardForm()
-        return render(request, 'new.html', {'form': form})
+        return render(request, 'boards/new.html', {'form': form})
 
     return redirect('board')
 
