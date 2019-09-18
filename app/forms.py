@@ -17,28 +17,28 @@ class BoardForm(forms.ModelForm):
 
         exclude = ['user', 'profile']
 
+        help_texts = {
+            'title': '글 제목',
+            'tag': '주웠어요/잃어버렸어요',
+            'body': '본문 내용',
+            'photo': '사진 업로드',
+        }
+
         widgets = {
             'title': forms.TextInput(
                 attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': '제목을 입력하세요.'}
             ),
             'tag': forms.Select(
-                attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': '제목을 입력하세요.'}
+                attrs={'class': 'custom-select', 'placeholder': '제목을 입력하세요.'}
             ),
-            # 'user': forms.TextInput(
-            #     attrs={'readonly': 'readonly'}
-            # ),
             'body': forms.Textarea(
                 attrs={'class': 'form-control', 'cols': 80, 'rows': 20}
             ),
-            # 'author': forms.Select(
-            #     attrs={'class': 'custom-select'},
-            # ),
             'photo': forms.FileInput(
                 attrs={'class': 'form-control-file',
                        'accept': 'image/*',
                        'style': 'border: 1px solid #ccc; display: inline-block; cursor: pointer;'}
             ),
-
         }
 
 
@@ -51,25 +51,24 @@ class BoothPromotionForm(forms.ModelForm):
 
         exclude = ['user', 'profile']
 
+        help_texts = {
+            'title': '글 제목',
+            'body': '본문 내용',
+            'photo': '사진 업로드',
+        }
+
         widgets = {
             'title': forms.TextInput(
                 attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': '제목을 입력하세요.'}
             ),
-            # 'user': forms.TextInput(
-            #     attrs={'readonly': 'readonly'}
-            # ),
             'body': forms.Textarea(
                 attrs={'class': 'form-control', 'cols': 80, 'rows': 20}
             ),
-            # 'author': forms.Select(
-            #     attrs={'class': 'custom-select'},
-            # ),
             'photo': forms.FileInput(
                 attrs={'class': 'form-control-file',
                        'accept': 'image/*',
                        'style': 'border: 1px solid #ccc; display: inline-block; cursor: pointer;'}
             ),
-
         }
 
 
@@ -82,25 +81,24 @@ class FriendsForm(forms.ModelForm):
 
         exclude = ['user', 'profile']
 
+        help_texts = {
+            'title': '글 제목',
+            'body': '본문 내용',
+            'photo': '사진 업로드',
+        }
+
         widgets = {
             'title': forms.TextInput(
                 attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': '제목을 입력하세요.'}
             ),
-            # 'user': forms.TextInput(
-            #     attrs={'readonly': 'readonly'}
-            # ),
             'body': forms.Textarea(
                 attrs={'class': 'form-control', 'cols': 80, 'rows': 20}
             ),
-            # 'author': forms.Select(
-            #     attrs={'class': 'custom-select'},
-            # ),
             'photo': forms.FileInput(
                 attrs={'class': 'form-control-file',
                        'accept': 'image/*',
                        'style': 'border: 1px solid #ccc; display: inline-block; cursor: pointer;'}
             ),
-
         }
 
 
@@ -114,19 +112,20 @@ class FreeForm(forms.ModelForm):
 
         exclude = ['user', 'profile']
 
+        help_texts = {
+            'title': '글 제목',
+            'body': '본문 내용',
+            'photo': '사진 업로드',
+            'video': '동영상 업로드',
+        }
+
         widgets = {
             'title': forms.TextInput(
                 attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': '제목을 입력하세요.'}
             ),
-            # 'user': forms.TextInput(
-            #     attrs={'readonly': 'readonly'}
-            # ),
             'body': forms.Textarea(
                 attrs={'class': 'form-control', 'cols': 80, 'rows': 20}
             ),
-            # 'author': forms.Select(
-            #     attrs={'class': 'custom-select'},
-            # ),
             'photo': forms.FileInput(
                 attrs={'class': 'form-control-file',
                        'accept': 'image/*',
