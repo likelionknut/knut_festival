@@ -299,7 +299,7 @@ def free(request):
 
 
 def freeDetail(request, board_id):
-    board_detail = get_object_or_404(BoothPromotionBoard, pk=board_id)
+    board_detail = get_object_or_404(FreeBoard, pk=board_id)
     return render(request, 'boards/freeDetail.html', {'board' : board_detail})
 
 

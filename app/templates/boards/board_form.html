@@ -9,6 +9,11 @@
     {% if board.photo %}
         <img src="{{ board.photo.url }}">
     {% endif %}
+
+    <br><br>
+    {% if board.video %}
+        <source src='{{ MEDIA_URL }}{{ board.video }}' type='video/mp4'>
+    {% endif %}
 </div>
 <hr style="margin:3%">
 <br><br><br>
