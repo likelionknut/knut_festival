@@ -179,12 +179,12 @@ def boothPromotion(request):
     end_block = start_block + page_range
     p_range = paginator.page_range[start_block:end_block]
 
-    return render(request, 'boards/boothPromotion.html', {'posts': posts, 'p_range': p_range})
+    return render(request, 'boards/boothPromotion/boothPromotion.html', {'posts': posts, 'p_range': p_range})
 
 
 def boothPromotionDetail(request, board_id):
     board_detail = get_object_or_404(BoothPromotionBoard, pk=board_id)
-    return render(request, 'boards/boothPromotionDetail.html', {'board' : board_detail})
+    return render(request, 'boards/boothPromotion/boothPromotionDetail.html', {'board' : board_detail})
 
 
 # 부스 홍보 글쓰기 누르면
@@ -217,7 +217,7 @@ def boothPromotionCreate(request):
             return redirect('boothPromotion')
     else:
         form = BoothPromotionForm()
-        return render(request, 'boards/boothPromotionNew.html', {'form': form})
+        return render(request, 'boards/boothPromotion/boothPromotionNew.html', {'form': form})
 
     return redirect('board')
 
