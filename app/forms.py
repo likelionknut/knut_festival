@@ -93,3 +93,35 @@ class FriendsForm(forms.ModelForm):
             ),
 
         }
+
+
+# 자유 게시판
+class FreeForm(forms.ModelForm):
+    class Meta:
+        model = FreeBoard
+
+        fields = ['title', 'profile', 'user', 'body', 'photo', 'video']
+
+        exclude = ['user', 'profile']
+
+        widgets = {
+            'title': forms.TextInput(
+                attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': '제목을 입력하세요.'}
+            ),
+            # 'user': forms.TextInput(
+            #     attrs={'readonly': 'readonly'}
+            # ),
+            'body': forms.Textarea(
+                attrs={'class': 'form-control', 'cols': 80, 'rows': 20}
+            ),
+            # 'author': forms.Select(
+            #     attrs={'class': 'custom-select'},
+            # ),
+            'photo': forms.FileInput(
+                attrs={'class': 'form-control', 'accept': 'image/*'}
+            ),
+            'video': forms.FileInput(
+                attrs={'class': 'form-control', 'accept': 'file_extension|audio/*|video/*|image/*|media_type'}
+            )
+
+        }
