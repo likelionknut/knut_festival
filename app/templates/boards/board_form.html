@@ -10,18 +10,19 @@
 
         {{ board.body }}<br><br>
 
-
-        {% if board.photo %}
-            <img style="min-width: 50%; max-width: 90%;"  src="{{ board.photo.url }}">
-        {% endif %}
-
-        <br><br>
-
-        {% if board.video %}
-            <video style="min-width: 50%; max-width: 90%;" controls>
-                <source src='{{ board.video.url }}' type='video/mp4'>
-            </video>
-        {% endif %}
+        <div class="text-center">
+            {% if board.photo %}
+                <img style="min-width: 30%; max-width: 90%;" src="{{ board.photo.url }}">
+            {% endif %}
+        </div>
+        <br><br><br>
+        <div class="text-center">
+            {% if board.video %}
+                <video style="min-width: 30%; max-width: 90%;" controls>
+                    <source src='{{ board.video.url }}' type='video/mp4'>
+                </video>
+            {% endif %}
+        </div>
     </div>
 </div>
 <hr style="margin:3%">
