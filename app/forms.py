@@ -26,13 +26,13 @@ class BoardForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': '제목을 입력하세요.'}
+                attrs={'class': 'form-control', 'style': 'text-transform: none;', 'placeholder': '제목을 입력하세요.'}
             ),
             'tag': forms.Select(
                 attrs={'class': 'custom-select', 'placeholder': '제목을 입력하세요.'}
             ),
             'body': forms.Textarea(
-                attrs={'class': 'form-control', 'cols': 80, 'rows': 20}
+                attrs={'class': 'form-control', 'style': 'text-transform: none;', 'rows': 20}
             ),
             'photo': forms.FileInput(
                 attrs={'class': 'form-control-file',
@@ -59,10 +59,10 @@ class BoothPromotionForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': '제목을 입력하세요.'}
+                attrs={'class': 'form-control', 'style': 'text-transform: none;', 'placeholder': '제목을 입력하세요.'}
             ),
             'body': forms.Textarea(
-                attrs={'class': 'form-control', 'cols': 80, 'rows': 20}
+                attrs={'class': 'form-control', 'style': 'text-transform: none;', 'cols': 80, 'rows': 20}
             ),
             'photo': forms.FileInput(
                 attrs={'class': 'form-control-file',
@@ -89,10 +89,10 @@ class FriendsForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': '제목을 입력하세요.'}
+                attrs={'class': 'form-control', 'style': 'text-transform: none;', 'placeholder': '제목을 입력하세요.'}
             ),
             'body': forms.Textarea(
-                attrs={'class': 'form-control', 'cols': 80, 'rows': 20}
+                attrs={'class': 'form-control', 'style': 'text-transform: none;', 'cols': 80, 'rows': 20}
             ),
             'photo': forms.FileInput(
                 attrs={'class': 'form-control-file',
@@ -121,10 +121,10 @@ class FreeForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': '제목을 입력하세요.'}
+                attrs={'class': 'form-control', 'style': 'text-transform: none;', 'placeholder': '제목을 입력하세요.'}
             ),
             'body': forms.Textarea(
-                attrs={'class': 'form-control', 'cols': 80, 'rows': 20}
+                attrs={'class': 'form-control', 'style': 'text-transform: none;', 'cols': 80, 'rows': 20}
             ),
             'photo': forms.FileInput(
                 attrs={'class': 'form-control-file',
