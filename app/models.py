@@ -28,7 +28,7 @@ class Board(models.Model):
         ('no', '기존 사진을 지우지 않습니다.'),
         ('yes', '기존 사진을 지웁니다.')
     )
-    photo_delete_choices = models.CharField(max_length=20, choices=photo_delete_choices, default=1)
+    photo_delete = models.CharField(max_length=20, choices=photo_delete_choices, default=1, null=True)
     profile = models.CharField(max_length=150)
 
     def __str__(self):
