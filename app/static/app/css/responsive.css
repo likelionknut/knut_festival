@@ -2,23 +2,30 @@
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
 
-}
+} */
 
 /** Width between 992px to 1199px
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
-@media (min-width: 992px) and (max-width: 1199px) {
+/* @media (min-width: 992px) and (max-width: 1199px) {
   
-}
+} */
 
 /** Width between 768px to 991px
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  #header {
+    background: url("../메인_800.png") no-repeat scroll center center;
+    height: 100vh;
+    width: 100%;
+  }
+
   /* Navbar */
   nav {
     padding: 10px 15px;
@@ -89,7 +96,14 @@
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
+
+  #header {
+    background: url("../메인_767.png") no-repeat scroll center center;
+    height: 100vh;
+    width: 100%;
+  }
+
   /* Navbar */
   nav {
     padding: 20px 15px;
@@ -161,6 +175,13 @@
  */
 
 @media (max-width: 600px) {
+
+  #header {
+    background: url("../메인_600.png") no-repeat scroll center center;
+    height: 100vh;
+    width: 100%;
+  }
+
   /* Navbar */
   nav {
     padding: 20px 15px;
@@ -232,6 +253,13 @@
  */
 
 @media (max-width: 480px) {
+
+  #header {
+    background: url("../메인_480.png") no-repeat scroll center center;
+    height: 100vh;
+    width: 100%;
+  }
+
   /* Navbar */
   nav {
     padding: 20px 15px;
