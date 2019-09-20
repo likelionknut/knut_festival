@@ -350,12 +350,10 @@ def friendsCreate(request):
         form = FriendsForm()
         return render(request, 'boards/friends/friendsNew.html', {'form': form})
 
-    return redirect('board')
-
 
 # 술 친구 글 삭제
 def friendsDelete(request, board_id):
-    board_detail = get_object_or_404(Board, pk=board_id)
+    board_detail = get_object_or_404(FriendsBoard, pk=board_id)
     user_id = request.session.get('user_id')
     request.session['user'] = {}
     request.session['profile'] = {}
@@ -382,7 +380,7 @@ def friendsEditConfirm(request, board_id):
 
 # 글 수정
 def friendsEdit(request, board_id):
-    board_detail = get_object_or_404(Board, pk=board_id)
+    board_detail = get_object_or_404(FriendsBoard, pk=board_id)
 
     if request.method == 'POST':
         form = FriendsForm(request.POST, request.FILES, instance=board_detail)
@@ -399,7 +397,7 @@ def friendsEdit(request, board_id):
 
             post.save()
 
-            return redirect('detail', str(board_id))
+            return redirect('friendsDetail', str(board_id))
         else:
             return redirect('friends')
     else:
