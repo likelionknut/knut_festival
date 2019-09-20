@@ -1,9 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.utils import timezone
-# from .models import Comment, Board, BoothPromotionBoard, FriendsBoard, FreeBoard
 from .models import Comment, Board, FriendsBoard
-# from .forms import CommentForm, BoardForm, BoothPromotionForm, FriendsForm, FreeForm
-from .forms import CommentForm, BoardForm, FriendsForm, BoardEditForm
+from .forms import BoardForm, FriendsForm
 from django.core.paginator import Paginator
 import requests, math
 
@@ -94,7 +91,7 @@ def edit(request, board_id):
     board_detail = get_object_or_404(Board, pk=board_id)
 
     if request.method == 'POST':
-        form = BoardEditForm(request.POST, request.FILES, instance=board_detail)
+        form = BoardForm(request.POST, request.FILES, instance=board_detail)
 
         if form.is_valid():
             post = form.save(commit=False)
@@ -103,25 +100,13 @@ def edit(request, board_id):
             post.body = form.cleaned_data['body']
             post.photo = form.cleaned_data['photo']
 
-            # post = board_detail.save(commit=False)
-
-            # post.user = request.session.get('user')
-            # post.profile = request.session.get('profile')
-            # post.user_id = request.session.get('user_id')
-            #
-            # request.session['user'] = {}
-            # request.session['profile'] = {}
-            # request.session['user_id'] = {}
-            # request.session.modified = True
-
             post.save()
 
             return redirect('detail', str(board_id))
         else:
             return redirect('board')
     else:
-        # form = BoardForm(instance=board_detail)
-        form = BoardEditForm(instance=board_detail)
+        form = BoardForm(instance=board_detail)
 
         return render(request, 'boards/edit.html', {'form': form, 'board': board_detail})
 
