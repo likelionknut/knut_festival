@@ -104,6 +104,14 @@ def oauth(request):
     user_profile_info_uri = "https://kapi.kakao.com/v1/api/talk/profile?access_token="
     user_profile_info_uri += str(access_token)
 
+    user_all_data_uri = "https://kapi.kakao.com/v2/user/me?access_token="
+    user_all_data_uri += str(access_token)
+    user_all_data_uri_data = requests.get(user_all_data_uri)
+    user_all_json_data = user_all_data_uri_data.json()
+    user_id = user_all_json_data['id']
+    print(user_id)
+    request.session['user_id'] = user_id
+
     user_profile_info_uri_data = requests.get(user_profile_info_uri)
     user_json_data = user_profile_info_uri_data.json()
     nickName = user_json_data['nickName']
