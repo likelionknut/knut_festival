@@ -87,8 +87,12 @@ def create(request):
 # 글 삭제
 def delete(request, board_id):
     board_detail = get_object_or_404(Board, pk=board_id)
+    user_id = request.session.get('user_id')
+    request.session['user'] = {}
+    request.session['profile'] = {}
+    request.session['user_id'] = {}
 
-    if request.session.get('user_id') == board_detail.user_id:
+    if user_id == board_detail.user_id:
         board_detail.delete()
         return redirect('board')
     else:
@@ -122,6 +126,10 @@ def edit(request, board_id):
             post.body = form.cleaned_data['body']
             post.photo = form.cleaned_data['photo']
 
+            request.session['user'] = {}
+            request.session['profile'] = {}
+            request.session['user_id'] = {}
+
             post.save()
 
             return redirect('detail', str(board_id))
@@ -129,6 +137,7 @@ def edit(request, board_id):
             return redirect('board')
     else:
         form = BoardForm(instance=board_detail)
+
         if request.session.get('user_id') == board_detail.user_id:
             return render(request, 'boards/edit.html', {'form': form, 'board': board_detail})
         else:
