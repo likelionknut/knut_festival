@@ -33,12 +33,17 @@ def detail(request, board_id):
 
 # 글쓰기 버튼
 def new(request):
+    request.session['new'] = str('new')
+    return redirect('kakao')
+
+
+def kakao(request):
 
     login_request_uri = 'https://kauth.kakao.com/oauth/authorize?'
 
     client_id = 'd9079dbac88fca9754d091a7af0366ed'
     redirect_uri = 'http://127.0.0.1:8000/oauth'
-    # redirect_uri = 'http://ec2-15-164-28-194.ap-northeast-2.compute.amazonaws.com:8000/oauth'
+    # redirect_uri = 'https://knut.events/oauth'
 
     login_request_uri += 'client_id=' + client_id
     login_request_uri += '&redirect_uri=' + redirect_uri
@@ -156,19 +161,14 @@ def oauth(request):
     request.session['user'] = nickName
     request.session['profile'] = thumbnailURL
 
-    if request.session.get('boothPromotionNew') == 'boothPromotionNew':
-
-        request.session['boothPromotionNew'] = {}
-        request.session.modified = True
-
-        return redirect('boothPromotionCreate')
-
-    elif request.session.get('friendsNew') == 'friendsNew':
+    if request.session.get('friendsNew') == 'friendsNew':
 
         request.session['friendsNew'] = {}
         request.session.modified = True
 
         return redirect('friendsCreate')
+
+
 
     elif request.session.get('freeNew') == 'freeNew':
 
@@ -212,7 +212,7 @@ def oauth(request):
 # # 부스 홍보 글쓰기 누르면
 # def boothPromotionNew(request):
 #     request.session['boothPromotionNew'] = str('boothPromotionNew')
-#     return redirect('new')
+#     return redirect('kakao')
 # ################# 삭제 #################
 #
 #
@@ -273,7 +273,7 @@ def friendsDetail(request, board_id):
 # 술 친구 글쓰기 누르면
 def friendsNew(request):
     request.session['friendsNew'] = str('friendsNew')
-    return redirect('new')
+    return redirect('kakao')
 
 
 # 술친구 입력 폼
@@ -337,7 +337,7 @@ def friendsCreate(request):
 # ################# 삭제 #################
 # def freeNew(request):
 #     request.session['freeNew'] = str('freeNew')
-#     return redirect('new')
+#     return redirect('kakao')
 # ################# 삭제 #################
 #
 #
