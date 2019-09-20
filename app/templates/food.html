@@ -37,4 +37,36 @@
 </nav>
 <!-- End section navbar -->
 
+<!-- Start section Board -->
+<div id="board" class="paddsection" style="background-color: #f7f7f7;">
+    <div class="container" style="text-align: center">
+    <div class="section-title text-center" style="margin-top:5%;">
+        <h2>
+            <caption>주변 배달 음식점</caption>
+        </h2>
+    </div>
+
+    <!-- pagination section -->
+    <br><br>
+    <div class="text-center">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                {%if posts.has_previous%}
+                <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="Previous">&laquo;</a>
+                {%endif%}
+            </li>
+            {% for current_num in p_range %}
+            <li class="page-item"><a class="page-link" href="?page={{current_num}}">{{current_num}}</a></li>
+            {% endfor %}
+            <li class="page-item">
+                {%if posts.has_next%}
+                <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="Next">&raquo;</a>
+                {%endif%}
+            </li>
+        </ul>
+    </div>
+    <!-- pagination section -->
+
+<!-- End section Board -->
+
 {% endblock %}
