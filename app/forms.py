@@ -11,6 +11,8 @@ class CommentForm(forms.ModelForm):
 # 분실물 게시판
 class BoardForm(forms.ModelForm):
     class Meta:
+        abstract = True
+
         model = Board
 
         fields = ['title', 'tag', 'profile', 'user', 'body', 'photo', ]
@@ -35,23 +37,40 @@ class BoardForm(forms.ModelForm):
                 attrs={'class': 'form-control', 'style': 'text-transform: none;', 'rows': 20}
             ),
             'photo': forms.FileInput(
-                attrs={'class': 'form-control-file',
-                       'accept': 'image/*',
-                       'style': 'border: 1px solid #ccc; display: inline-block; cursor: pointer;'}
+                attrs={
+                    'class': 'form-control-file',
+                    'accept': 'image/*',
+                    'style': 'border: 1px solid #ccc; display: inline-block; cursor: pointer;'}
             ),
         }
 
 
-class BoardEditForm(BoardForm):
-    class Meta(BoardForm.Meta):
-        model = Board
-        fields = BoardForm.Meta.fields + ['photo_delete']
-        help_texts = BoardForm.Meta.help_texts.copy().update({'photo_delete': '기존 사진 삭제 여부'})
-        widgets = BoardForm.Meta.widgets.copy().update({
-            'photo_delete': forms.Select(
-                attrs={'class': 'custom-select', 'placeholder': '제목을 입력하세요.'}
-            )
-        })
+# class BoardEditForm(BoardForm):
+#     class Meta(BoardForm.Meta):
+#
+#         model = EditBoard
+#
+#         fields = BoardForm.Meta.fields.append('photo_delete_tag')
+#
+#         exclude = BoardForm.Meta.exclude
+#
+#         help_texts = BoardForm.Meta.help_texts.update({
+#             'photo_delete_tag': '기존 사진 삭제 여부',
+#         })
+#
+#         widgets = BoardForm.Meta.widgets.update({
+#             'photo_delete_tag': forms.Select(
+#                 attrs={'class': 'custom-select', 'placeholder': '제목을 입력하세요.'}
+#             )
+#         })
+#
+#         # fields = BoardForm.Meta.fields.copy().append('photo_delete')
+#         # help_texts = BoardForm.Meta.help_texts.copy().update({'photo_delete': '기존 사진 삭제 여부'})
+#         # widgets = BoardForm.Meta.widgets.copy().update({
+#         #     'photo_delete': forms.Select(
+#         #         attrs={'class': 'custom-select', 'placeholder': '제목을 입력하세요.'}
+#         #     )
+#         # })
 
 
 # ################# 삭제 #################
@@ -114,7 +133,6 @@ class FriendsForm(forms.ModelForm):
                        'style': 'border: 1px solid #ccc; display: inline-block; cursor: pointer;'}
             ),
         }
-
 
 # ################# 삭제 #################
 # # 자유 게시판
