@@ -63,9 +63,11 @@ def create(request):
 
             post.user = request.session.get('user')
             post.profile = request.session.get('profile')
+            post.user_id = request.session.get('user_id')
 
             request.session['user'] = {}
             request.session['profile'] = {}
+            request.session['user_id'] = {}
             request.session.modified = True
 
             post.save()
@@ -249,9 +251,11 @@ def friendsCreate(request):
 
             post.user = request.session.get('user')
             post.profile = request.session.get('profile')
+            post.user_id = request.session.get('user_id')
 
             request.session['user'] = {}
             request.session['profile'] = {}
+            request.session['user_id'] = {}
             request.session.modified = True
 
             post.save()
