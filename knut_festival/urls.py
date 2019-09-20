@@ -33,6 +33,7 @@ urlpatterns = [
     path('board/<int:board_id>/delete', app.views.delete, name="delete"),
     path('board/<int:board_id>/edit', app.views.edit, name="edit"),
 
+    path('kakao/', app.views.kakao, name="kakao"),
     path('oauth/', app.views.oauth, name="oauth"),
 
     # ################# 삭제 #################
