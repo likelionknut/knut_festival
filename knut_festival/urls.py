@@ -30,6 +30,8 @@ urlpatterns = [
     path('board/<int:board_id>/', app.views.detail, name="detail"),
     path('board/new/', app.views.new, name="new"),
     path('board/create/', app.views.create, name="create"),
+    path('board/<int:board_id>/delete', app.views.delete, name="delete"),
+    path('board/<int:board_id>/edit', app.views.edit, name="edit"),
 
     path('oauth/', app.views.oauth, name="oauth"),
 
@@ -44,6 +46,7 @@ urlpatterns = [
     path('board/friendsNew', app.views.friendsNew, name="friendsNew"),
     path('board/friendsCreate', app.views.friendsCreate, name="friendsCreate"),
     path('board/friends/<int:board_id>/', app.views.friendsDetail, name="friendsDetail"),
+    # path('board/friends/<int:board_id>/delete', app.views.friendsDelete, name="friendsDelete"),
 
     # ################# 삭제 #################
     # path('board/free', app.views.free, name="free"),
