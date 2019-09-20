@@ -339,6 +339,17 @@ def friendsCreate(request):
     return redirect('board')
 
 
+def friendsDeleteConfirm(request, board_id):
+    request.session['deleteConfirm'] = str('deleteConfirm')
+    request.session['board_id'] = str(board_id)
+    return redirect('kakao')
+
+
+def friendsEditConfirm(request, board_id):
+    request.session['editConfirm'] = str('editConfirm')
+    request.session['board_id'] = str(board_id)
+    return redirect('kakao')
+
 # ################# 삭제 #################
 # ########################
 # ## 자유 게시판 ##
