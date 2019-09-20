@@ -208,6 +208,20 @@ def oauth(request):
 
         return redirect('edit', str(request.session.get('board_id')))
 
+    elif request.session.get('friendsDeleteConfirm') == 'friendsDeleteConfirm':
+
+        request.session['friendsDeleteConfirm'] = {}
+        request.session.modified = True
+
+        return redirect('friendsDelete', str(request.session.get('board_id')))
+
+    elif request.session.get('friendsEditConfirm') == 'friendsEditConfirm':
+
+        request.session['friendsEditConfirm'] = {}
+        request.session.modified = True
+
+        return redirect('friendsEdit', str(request.session.get('board_id')))
+
     else:
         request.session.modified = True
         return redirect('board')
@@ -339,16 +353,63 @@ def friendsCreate(request):
     return redirect('board')
 
 
+# 술 친구 글 삭제
+def friendsDelete(request, board_id):
+    board_detail = get_object_or_404(Board, pk=board_id)
+    user_id = request.session.get('user_id')
+    request.session['user'] = {}
+    request.session['profile'] = {}
+    request.session['user_id'] = {}
+
+    if user_id == board_detail.user_id:
+        board_detail.delete()
+        return redirect('friends')
+    else:
+        return redirect('friends')
+
+
 def friendsDeleteConfirm(request, board_id):
-    request.session['deleteConfirm'] = str('deleteConfirm')
+    request.session['friendsDeleteConfirm'] = str('friendsDeleteConfirm')
     request.session['board_id'] = str(board_id)
     return redirect('kakao')
 
 
 def friendsEditConfirm(request, board_id):
-    request.session['editConfirm'] = str('editConfirm')
+    request.session['friendsEditConfirm'] = str('friendsEditConfirm')
     request.session['board_id'] = str(board_id)
     return redirect('kakao')
+
+
+# 글 수정
+def friendsEdit(request, board_id):
+    board_detail = get_object_or_404(Board, pk=board_id)
+
+    if request.method == 'POST':
+        form = FriendsForm(request.POST, request.FILES, instance=board_detail)
+
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.title = form.cleaned_data['title']
+            post.body = form.cleaned_data['body']
+            post.photo = form.cleaned_data['photo']
+
+            request.session['user'] = {}
+            request.session['profile'] = {}
+            request.session['user_id'] = {}
+
+            post.save()
+
+            return redirect('detail', str(board_id))
+        else:
+            return redirect('friends')
+    else:
+        form = FriendsForm(instance=board_detail)
+
+        if request.session.get('user_id') == board_detail.user_id:
+            return render(request, 'boards/friends/friendsEdit.html', {'form': form, 'board': board_detail})
+        else:
+            return redirect('friends')
+
 
 # ################# 삭제 #################
 # ########################
