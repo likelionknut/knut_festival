@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} 술 친구 게시물 수정 {% endblock %}
+
+{% block javascriptHead %}
+    <script src="{% static 'app/js/board_main.js' %}"></script>
+
+{% endblock %}
+
+{% block content %}
+
+    {% include 'boards/board_nav.html' %}
+
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form %}
+                {% if field.name == 'photo' %}
+                    <p>기존 사진</p>
+                    <hr>
+                    <div class="text-center">
+                        {% if board.photo %}
+                            <img style="min-width: 30%; max-width: 90%;" src="{{ board.photo.url }}">
+                            <br>
+                            {#                            <a href="{{ board.photo.url }}">이미지</a>#}
+                            <br>
+                            {#                            <p>{{ field.value }}</p>#}
+                        {% else %}
+                            <p>기존 사진이 없습니다.</p>
+                        {% endif %}
+                        <br><br>
+                        <hr>
+                    </div>
+                    <p>사진 변경</p>
+                    <p>{{ field }}</p>
+                    <br>
+                    <br><br><br>
+
+                {% else %}
+                    <p>{{ field.help_text }}</p>
+                    <p>{{ field }}</p>
+                    <br>
+                {% endif %}
+
+            {% endfor %}
+
+            {#            {{ form.media }}#}
+            {#            {{ form.as_p }}#}
+            <input class="btn btn-dark" type="submit" value="저장하기">
+        </form>
+        <br><br>
+        <div class="text-center">
+            <a href="{% url 'friends' %}"><input type="button" class="btn btn-outline-primary center" value="게시판으로"/></a>
+            <a href="{% url 'home' %}"><input type="button" class="btn btn-outline-primary center" value="홈으로"/></a>
+        </div>
+    </div>
+    <br><br>
+
+{% endblock %}
+<br>
