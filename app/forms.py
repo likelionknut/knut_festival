@@ -29,7 +29,7 @@ class BoardForm(forms.ModelForm):
                 attrs={'class': 'form-control', 'style': 'text-transform: none;', 'placeholder': '제목을 입력하세요.'}
             ),
             'tag': forms.Select(
-                attrs={'class': 'custom-select', 'placeholder': '제목을 입력하세요.'}
+                attrs={'class': 'custom-select'}
             ),
             'body': forms.Textarea(
                 attrs={'class': 'form-control', 'style': 'text-transform: none;', 'rows': 20}
@@ -39,6 +39,18 @@ class BoardForm(forms.ModelForm):
                        'accept': 'image/*',
                        'style': 'border: 1px solid #ccc; display: inline-block; cursor: pointer;'}
             ),
+        }
+
+
+class BoardEditForm(BoardForm):
+    class Meta(BoardForm.Meta):
+        model = Board
+        fields = BoardForm.Meta.fields + ('photo_delete')
+        help_texts = BoardForm.Meta.help_texts + {'photo_delete': '기존 사진 삭제 여부'}
+        widgets = BoardForm.Meta.widgets + {
+            'photo_delete': forms.Select(
+                attrs={'class': 'custom-select', 'placeholder': '제목을 입력하세요.'}
+            )
         }
 
 
