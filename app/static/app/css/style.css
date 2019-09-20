@@ -35,6 +35,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: 'Jua', sans-serif;
   margin: 0;
 }
 
@@ -128,13 +129,13 @@ p {
 }
 
 .section-title {
-  font-family: 'Nanum Pen Script', serif;
+  font-family: 'Jua', sans-serif;
   font-size: 50px;
   margin-bottom: 70px;
 }
 
 .section-title h2 {
-  font-family: 'Nanum Pen Script', serif;
+  font-family: 'Jua', sans-serif;
   font-size: 50px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -250,7 +251,7 @@ nav ul li a {
 /*-----------------------------------------------------------------------------------*/
 
 #header {
-  background: url("../background11.jpg") repeat scroll center center / cover;
+  background: url("../메인.png") no-repeat scroll center center;
   height: 100vh;
   width: 100%;
 }
@@ -474,13 +475,13 @@ nav ul li a {
 #journal,  #journal-blog {
   height: auto;
   width: 100%;
-  background: #f7f7f7;
+  background: ;
   padding-bottom: 60px;
   position: relative;
 }
 
 #journal-blog {
-  background: #fff;
+  background: 
   padding-bottom: 30px;
 }
 
@@ -518,7 +519,7 @@ nav ul li a {
 }
 
 .journal-block .journal-info .journal-txt h4 a:hover {
-  color: #b8a07e;
+  color: 
   -moz-transition: all 0.5s ease-in-out 0s;
   -ms-transition: all 0.5s ease-in-out 0s;
   -o-transition: all 0.5s ease-in-out 0s;
@@ -593,7 +594,7 @@ nav ul li a {
 /*-----------------------------------------------------------------------------------*/
 
 #footer {
-  background: #f7f7f7;
+  background: rgb(255,207,207);
   padding-top: 50px;
   padding-bottom: 50px;
 }
