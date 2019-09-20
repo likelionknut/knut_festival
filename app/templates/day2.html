@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Day 2 {% endblock %}
+
+{% block javascriptHead %}
+<!-- Template Main Javascript File -->
+<script src="{% static 'app/js/main.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<!-- start section navbar -->
+<nav id="main-nav">
+    <div class="row">
+        <div class="container">
+
+            <div class="logo">
+                <a href="{% url 'home' %}"><img src="{% static 'app/logo1.png' %}" alt="logo"> KNUT FESTIVAL</a>
+            </div>
+
+            <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
+
+            <ul class="nav-menu list-unstyled">
+                <li><a href="{% url 'day1' %}" class="smoothScroll">Day 1</a></li>
+                <li><a href="{% url 'day2' %}" class="smoothScroll">Day 2</a></li>
+                <li><a href="{% url 'map_traffic' %}" class="smoothScroll">지도·교통</a></li>
+                <li><a href="{% url 'friends' %}" class="smoothScroll">술 친구</a></li>
+                <li><a href="{% url 'board' %}" class="smoothScroll">분실물 게시판</a></li>
+                <li><a href="{% url 'food' %}" class="smoothScroll">배달정보</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+<!-- End section navbar -->
+<br><br><br><br><br><Br>
+<div class="container text-center" style="">
+    <div class="section-title text-center" style="">
+        <h2>9/25 둘째 날</h2>
+    </div>
+    <div class="card" style="width: 100%; display: inline-block; border-width: 4px; border-style: solid; border-color: black; border-radius: 2%">
+        <div class="card-body text-left" style="">
+            <br><h1 ><u>11:00 ~ 17:00</u> - 동아리 부스 및 낮 부스(2일차)</h1>
+            <h3>열정, 닭다리, 로타랙트, 세바스, 교통인, KTBS 동아리들이 이런거 저런거를 한다. (사진 넣으면 깔끔할듯, 이틀차!)</h3>
+            <br>
+            <br><h1 ><u>13:00 ~ 17:00</u>&nbsp;/&nbsp;<u>18:00 ~ 20:30</u> - 동아리 공연</h1>
+            <img width="300" height="auto" src="{% static 'app/국원가요제.jpg' %}">
+            <h3>국원가요제 리허설 및 공연이 있습니다! 제2의 음악대장이 탄생할수있을지?! 지켜봐주세요!( 어떤 닉네임의 가수가 나오는지, 곡명 알수있나? )</h3>
+            <br>
+            <br><h1 ><u>21:00 ~</u> - 닐로</h1>
+            <img width="300" height="auto" src="{% static 'app/닐로111.png' %}">
+            <h3>닐릴리닐릴리 닐리리맘보~~ 발라드계의 마스터피스 닐로가 왔습니다! (추가 수정 필요)</h3>
+            <br>
+            <br><h1><u>22:30 ~ 23:00</u> - Heize</h1>
+            <img width="300" height="auto" src="{% static 'app/헤이즈111.png' %}">
+            <h3>holy shit 헤이즈온대 얘들아 가자!! 뭐? 헤이즐넛커피냐고? 하하 드디어 정신이 나갔구나! (추가수정 필요)</h3>
+            <br><h1><u>23:00 ~ 01:30</u> - 작은무대 행사 및 오픈테이블</h1>
+            <h3>작은 무대 행사 및 오픈테이블 에 대한 정보가 1도없음 ( 정확하지 않더라도 예를들어 노천극장에서 작은 이벤트합니다! 정도라도 정보가 필요함 + 추가로 내용 더해야함. )</h3>
+            <br><br>
+        </div>
+    </div>
+</div>
+{% endblock %}

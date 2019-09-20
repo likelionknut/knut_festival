@@ -5,22 +5,22 @@
         <div class="container">
 
             <div class="logo">
-                <a href="{% url 'home' %}"><img src="{% static 'app/logo1.png' %}" alt="logo"> KNUT festival</a>
+                <a href="{% url 'home' %}"><img src="{% static 'app/logo1.png' %}" alt="logo"> KNUT FESTIVAL</a>
             </div>
 
 
             <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
 
             <ul class="nav-menu list-unstyled">
-                <li><a href="{% url 'home' %}" class="smoothScroll">Home</a></li>
-{#                <li><a href="{% url 'boothPromotion' %}" class="smoothScroll">부스 홍보</a></li>#}
+                <li><a href="{% url 'day1' %}" class="smoothScroll">Day 1</a></li>
+                <li><a href="{% url 'day2' %}" class="smoothScroll">Day 2</a></li>
+                <li><a href="{% url 'map_traffic' %}" class="smoothScroll">지도·교통</a></li>
                 <li><a href="{% url 'friends' %}" class="smoothScroll">술 친구</a></li>
                 <li><a href="{% url 'board' %}" class="smoothScroll">분실물 게시판</a></li>
-{#                <li><a href="{% url 'free' %}" class="smoothScroll">자유 게시판</a></li>#}
+                <li><a href="{% url 'food' %}" class="smoothScroll">배달정보</a></li>
             </ul>
 
         </div>
     </div>
 </nav>
 <!-- End section navbar -->
-<br><br><br><br><br>

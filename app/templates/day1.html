@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Day 1 {% endblock %}
+
+{% block javascriptHead %}
+<!-- Template Main Javascript File -->
+<script src="{% static 'app/js/main.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<!-- start section navbar -->
+<nav id="main-nav">
+    <div class="row">
+        <div class="container">
+
+            <div class="logo">
+                <a href="{% url 'home' %}"><img src="{% static 'app/logo1.png' %}" alt="logo"> KNUT FESTIVAL</a>
+            </div>
+
+            <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
+
+            <ul class="nav-menu list-unstyled">
+                <li><a href="{% url 'day1' %}" class="smoothScroll">Day 1</a></li>
+                <li><a href="{% url 'day2' %}" class="smoothScroll">Day 2</a></li>
+                <li><a href="{% url 'map_traffic' %}" class="smoothScroll">지도·교통</a></li>
+                <li><a href="{% url 'friends' %}" class="smoothScroll">술 친구</a></li>
+                <li><a href="{% url 'board' %}" class="smoothScroll">분실물 게시판</a></li>
+                <li><a href="{% url 'food' %}" class="smoothScroll">배달정보</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+<!-- End section navbar -->
+<br><br><br><br><br><Br>
+<div class="container text-center" style="">
+    <div class="section-title text-center" style="">
+        <h2>9/25 첫째 날</h2>
+    </div>
+    <div class="card" style="width: 100%; display: inline-block; border-width: 4px; border-style: solid; border-color: black; border-radius: 2%">
+        <div class="card-body text-left" style="">
+            <br><h1 ><u>11:00 ~ 17:00</u> - 동아리 부스 및 낮 부스</h1>
+            <h3>열정, 닭다리, 로타랙트, 세바스, 교통인, KTBS 동아리들이 이런거 저런거를 한다. (사진 넣으면 깔끔할듯)</h3>
+            <br>
+            <br><h1 ><u>13:00 ~ 17:00</u>&nbsp;/&nbsp;<u>18:00 ~ 20:30</u> - 동아리 공연</h1>
+            <h3>이런이런 동아리들이 와서 리허설 및 공연을 합니다! 포세이돈, 소리담 등등 노천극장에서 즐겨보세요! (이것도 사진있으면 좋음, 정보가 부족함 무슨동아리가 공연하는지?)</h3>
+            <br>
+            <br><h1 ><u>20:30 ~ 22:00</u> - 유병재(토크 콘서트)</h1>
+            <img width="300" height="auto" src="{% static 'app/유병재111.png' %}">
+            <h3 style=>유병재님의 토크콘서트를 진행합니다! 노천극장에서 즐겨보시죠! (유병재 토크콘서트 후기 참고하여 추가 , 어디서 하는지 정보필요)</h3>
+            <br>
+            <br><h1><u>22:00 ~ 23:00</u> - 다이나믹 듀오</h1>
+            <img width="300" height="auto" src="{% static 'app/다듀111.png' %}">
+            <h3>와 다이나믹듀오가 온다! (다듀 설명 추가, 어디서 하는지)</h3>
+            <br><h1><u>23:00 ~ 01:30</u> - 작은무대행사 및 오픈테이블</h1>
+            <h3>작은 무대 행사 및 오픈테이블 에 대한 정보가 1도없음 ( 정확하지 않더라도 예를들어 노천극장에서 작은 이벤트합니다! 정도라도 정보가 필요함 )</h3>
+            <br><br>
+        </div>
+    </div>
+</div>
+{% endblock %}

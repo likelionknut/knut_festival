@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} 지도 & 교통 {% endblock %}
+
+{% block javascriptHead %}
+<!-- Template Main Javascript File -->
+<script src="{% static 'app/js/main.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<!-- start section navbar -->
+<nav id="main-nav">
+    <div class="row">
+        <div class="container">
+
+            <div class="logo">
+                <a href="{% url 'home' %}"><img src="{% static 'app/logo1.png' %}" alt="logo"> KNUT FESTIVAL</a>
+            </div>
+
+            <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
+
+            <ul class="nav-menu list-unstyled">
+                <li><a href="{% url 'day1' %}" class="smoothScroll">Day 1</a></li>
+                <li><a href="{% url 'day2' %}" class="smoothScroll">Day 2</a></li>
+                <li><a href="{% url 'map_traffic' %}" class="smoothScroll">지도·교통</a></li>
+                <li><a href="{% url 'friends' %}" class="smoothScroll">술 친구</a></li>
+                <li><a href="{% url 'board' %}" class="smoothScroll">분실물 게시판</a></li>
+                <li><a href="{% url 'food' %}" class="smoothScroll">배달정보</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+<!-- End section navbar -->
+
+
+
+<!-- map section -->
+<br><br><br>
+<div class="container">
+    <div class="section-title text-center ">
+        <h2>장소</h2>
+    </div>
+</div>
+
+<div id="map" style="width:70%;height:400px;margin:0 auto;text-align:center"></div>
+<script type="text/javascript" src="{% static 'app/js/naver_map_api/map.js' %}"></script>
+<br>
+<!-- map section -->
+
+<!-- start section journal -->
+<div id="journal" class="text-left paddsection" style="background-color: rgb(255,207,207);">
+
+    <div class="container">
+        <div class="section-title text-center">
+            <h2>대중교통 시간표</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="journal-block">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="journal-info">
+
+                        <a class="popup-img" href="{% static 'app/터미널to교통대.png' %}"><img
+                                src="{% static 'app/터미널to교통대.png' %}" class="img-responsive"
+                                alt="img" height=500></a>
+
+                        <div class="journal-txt">
+
+                            <h4><a href="blog-single.html">터미널to교통대</a></h4>
+                            <p class="separator">터미널에서 교통대 가는 버스 시간표입니다
+                            </p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="journal-info">
+
+                        <a class="popup-img" href="{% static 'app/교통대to터미널.png' %}"><img
+                                src="{% static 'app/교통대to터미널.png' %}" class="img-responsive"
+                                alt="img" height=500></a>
+
+                        <div class="journal-txt">
+
+                            <h4><a href="#blog-single.html">교통대to터미널</a></h4>
+                            <p class="separator">교통대에서 터미널 가는 버스 시간표입니다
+                            </p>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="journal-info">
+
+                        <a class="popup-img" href="{% static 'app/999노선.jpg' %}"><img
+                                src="{% static 'app/999노선.jpg' %}" class="img-responsive"
+                                alt="img" height=500 width=300></a>
+
+                        <div class="journal-txt">
+
+                            <h4><a href="#blog-single.html">999노선</a></h4>
+                            <p class="separator">999노선입니다
+                            </p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- End section journal -->
+
+{% endblock %}

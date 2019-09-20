@@ -11,8 +11,7 @@
 {% block content %}
 
     {% include 'boards/board_nav.html' %}
-
-    <div class="container">
+    <div class="container" >
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}

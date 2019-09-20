@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} 배달 정보 {% endblock %}
+
+{% block javascriptHead %}
+<!-- Template Main Javascript File -->
+<script src="{% static 'app/js/main.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<!-- start section navbar -->
+<nav id="main-nav">
+    <div class="row">
+        <div class="container">
+
+            <div class="logo">
+                <a href="{% url 'home' %}"><img src="{% static 'app/logo1.png' %}" alt="logo"> KNUT FESTIVAL</a>
+            </div>
+
+            <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
+
+            <ul class="nav-menu list-unstyled">
+                <li><a href="{% url 'day1' %}" class="smoothScroll">Day 1</a></li>
+                <li><a href="{% url 'day2' %}" class="smoothScroll">Day 2</a></li>
+                <li><a href="{% url 'map_traffic' %}" class="smoothScroll">지도·교통</a></li>
+                <li><a href="{% url 'friends' %}" class="smoothScroll">술 친구</a></li>
+                <li><a href="{% url 'board' %}" class="smoothScroll">분실물 게시판</a></li>
+                <li><a href="{% url 'food' %}" class="smoothScroll">배달정보</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+<!-- End section navbar -->
+
+<!-- Start section Board -->
+<div id="board" class="paddsection" style="">
+    <div class="container" style="text-align: center">
+    <div class="section-title text-center" style="margin-top:5%;">
+        <h2>
+            <caption>주변 배달 음식점</caption>
+        </h2>
+    </div>
+
+    <!-- pagination section -->
+    <br><br>
+    <div class="text-center">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                {%if posts.has_previous%}
+                <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="Previous">&laquo;</a>
+                {%endif%}
+            </li>
+            {% for current_num in p_range %}
+            <li class="page-item"><a class="page-link" href="?page={{current_num}}">{{current_num}}</a></li>
+            {% endfor %}
+            <li class="page-item">
+                {%if posts.has_next%}
+                <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="Next">&raquo;</a>
+                {%endif%}
+            </li>
+        </ul>
+    </div>
+    <!-- pagination section -->
+
+<!-- End section Board -->
+
+{% endblock %}
