@@ -87,22 +87,28 @@ def create(request):
 # 글 삭제
 def delete(request, board_id):
     board_detail = get_object_or_404(Board, pk=board_id)
-    board_detail.delete()
-    return redirect('board')
+
+    if request.session.get('user_id') == board_detail.user_id:
+        board_detail.delete()
+        return redirect('board')
+    else:
+        return redirect('board')
 
 
 def deleteConfirm(request):
-    request.session['new'] = str('new')
+    request.session['deleteConfirm'] = str('deleteConfirm')
     return redirect('kakao')
 
 
-def editConfirm(request):
-    request.session['new'] = str('new')
+def editConfirm(request, board_id):
+    request.session['editConfirm'] = str('editConfirm')
+    request.session['board_id'] = str(board_id)
     return redirect('kakao')
 
 
 # 글 수정
 def edit(request, board_id):
+    # board_id = request.session.get('board_id')
     board_detail = get_object_or_404(Board, pk=board_id)
 
     if request.method == 'POST':
@@ -122,14 +128,15 @@ def edit(request, board_id):
             return redirect('board')
     else:
         form = BoardForm(instance=board_detail)
-
-        return render(request, 'boards/edit.html', {'form': form, 'board': board_detail})
+        if request.session.get('user_id') == board_detail.user_id:
+            return render(request, 'boards/edit.html', {'form': form, 'board': board_detail})
+        else:
+            return redirect('board')
 
 
 # 카카오톡 oauth
 def oauth(request):
     code = request.GET['code']
-    print('code = ' + str(code))
 
     client_id = request.session.get('client_id')
     redirect_uri = request.session.get('redirect_uri')
@@ -140,12 +147,9 @@ def oauth(request):
     access_token_request_uri += "&redirect_uri=" + redirect_uri
     access_token_request_uri += "&code=" + code
 
-    print(access_token_request_uri)
-
     access_token_request_uri_data = requests.get(access_token_request_uri)
     json_data = access_token_request_uri_data.json()
     access_token = json_data['access_token']
-    print(access_token)
 
     user_profile_info_uri = "https://kapi.kakao.com/v1/api/talk/profile?access_token="
     user_profile_info_uri += str(access_token)
@@ -155,7 +159,6 @@ def oauth(request):
     user_all_data_uri_data = requests.get(user_all_data_uri)
     user_all_json_data = user_all_data_uri_data.json()
     user_id = user_all_json_data['id']
-    print(user_id)
     request.session['user_id'] = user_id
 
     user_profile_info_uri_data = requests.get(user_profile_info_uri)
@@ -163,10 +166,6 @@ def oauth(request):
     nickName = user_json_data['nickName']
     profileImageURL = user_json_data['profileImageURL']
     thumbnailURL = user_json_data['thumbnailURL']
-
-    print("nickName = " + str(nickName))
-    print("profileImageURL = " + str(profileImageURL))
-    print("thumbnailURL = " + str(thumbnailURL))
 
     request.session['user'] = nickName
     request.session['profile'] = thumbnailURL
@@ -185,12 +184,19 @@ def oauth(request):
 
         return redirect('create')
 
-    elif request.session.get('new') == 'new':
+    elif request.session.get('deleteConfirm') == 'deleteConfirm':
 
-        request.session['new'] = {}
+        request.session['deleteConfirm'] = {}
         request.session.modified = True
 
-        return redirect('create')
+        return redirect('delete')
+
+    elif request.session.get('editConfirm') == 'editConfirm':
+
+        request.session['editConfirm'] = {}
+        request.session.modified = True
+
+        return redirect('edit', str(request.session.get('board_id')))
 
     else:
         request.session.modified = True
