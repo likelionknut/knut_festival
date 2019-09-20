@@ -24,6 +24,11 @@ class Board(models.Model):
     tag = models.CharField(max_length=6, choices=tag_choices, default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     photo = models.ImageField(upload_to='board/images/%Y/%m/%d/%H/%M', blank=True, null=True)
+    photo_delete_choices = (
+        ('no', '기존 사진을 지우지 않습니다.'),
+        ('yes', '기존 사진을 지웁니다.')
+    )
+    photo_delete_choices = models.CharField(max_length=20, choices=photo_delete_choices, default=1)
     profile = models.CharField(max_length=150)
 
     def __str__(self):
