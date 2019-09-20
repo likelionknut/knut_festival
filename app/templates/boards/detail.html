@@ -18,8 +18,8 @@
         <div class="text-center">
             <a href="{% url 'board' %}"><input type="button" class="btn btn-outline-primary center" value="게시판으로"/></a>
             <a href="{% url 'home' %}"><input type="button" class="btn btn-outline-primary center" value="홈으로"/></a>
-            <a href="{% url 'edit' board.id %}"><input type="button" class="btn btn-outline-primary center" value="글 수정"/></a>
-            <a href="{% url 'delete' board.id %}"><input type="button" class="btn btn-outline-primary center" value="글 삭제"/></a>
+            <a href="{% url 'editConfirm' board.id %}"><input type="button" class="btn btn-outline-primary center" value="글 수정"/></a>
+            <a href="{% url 'deleteConfirm' board.id %}"><input type="button" class="btn btn-outline-primary center" value="글 삭제"/></a>
         </div>
         <br><br>
 
