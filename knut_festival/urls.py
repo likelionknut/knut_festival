@@ -22,9 +22,16 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', app.views.home, name="home"),
+    path('day1/', app.views.day1, name="day1"),
+    path('day2/', app.views.day2, name="day2"),
+    path('map_traffic/', app.views.map_traffic, name="map_traffic"),
+    path('food/', app.views.food, name="food"),
+
+
     # path('1/', app.views.comment_write, name="comment_write"),
     # path('2/', app.views.login, name="login"),
     # path('accounts/', include('allauth.urls')),
+
 
     path('board/', app.views.board, name="board"),
     path('board/<int:board_id>/', app.views.detail, name="detail"),
