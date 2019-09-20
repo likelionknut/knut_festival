@@ -45,13 +45,13 @@ class BoardForm(forms.ModelForm):
 class BoardEditForm(BoardForm):
     class Meta(BoardForm.Meta):
         model = Board
-        fields = BoardForm.Meta.fields + ('photo_delete')
-        help_texts = BoardForm.Meta.help_texts + {'photo_delete': '기존 사진 삭제 여부'}
-        widgets = BoardForm.Meta.widgets + {
+        fields = BoardForm.Meta.fields + ['photo_delete']
+        help_texts = BoardForm.Meta.help_texts.copy().update({'photo_delete': '기존 사진 삭제 여부'})
+        widgets = BoardForm.Meta.widgets.copy().update({
             'photo_delete': forms.Select(
                 attrs={'class': 'custom-select', 'placeholder': '제목을 입력하세요.'}
             )
-        }
+        })
 
 
 # ################# 삭제 #################
