@@ -37,7 +37,12 @@ urlpatterns = [
     path('board/<int:board_id>/', app.views.detail, name="detail"),
     path('board/new/', app.views.new, name="new"),
     path('board/create/', app.views.create, name="create"),
+    path('board/<int:board_id>/delete', app.views.delete, name="delete"),
+    path('board/<int:board_id>/deleteConfirm', app.views.deleteConfirm, name="deleteConfirm"),
+    path('board/<int:board_id>/edit', app.views.edit, name="edit"),
+    path('board/<int:board_id>/editConfirm', app.views.editConfirm, name="editConfirm"),
 
+    path('kakao/', app.views.kakao, name="kakao"),
     path('oauth/', app.views.oauth, name="oauth"),
 
     # ################# 삭제 #################
@@ -51,6 +56,10 @@ urlpatterns = [
     path('board/friendsNew', app.views.friendsNew, name="friendsNew"),
     path('board/friendsCreate', app.views.friendsCreate, name="friendsCreate"),
     path('board/friends/<int:board_id>/', app.views.friendsDetail, name="friendsDetail"),
+    path('board/friends/<int:board_id>/delete', app.views.friendsDelete, name="friendsDelete"),
+    path('board/friends/<int:board_id>/deleteConfirm', app.views.friendsDeleteConfirm, name="friendsDeleteConfirm"),
+    path('board/friends/<int:board_id>/edit', app.views.friendsEdit, name="friendsEdit"),
+    path('board/friends/<int:board_id>/editConfirm', app.views.friendsEditConfirm, name="friendsEditConfirm"),
 
     # ################# 삭제 #################
     # path('board/free', app.views.free, name="free"),

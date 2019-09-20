@@ -19,6 +19,8 @@
         <div class="text-center">
             <a href="{% url 'friends' %}"><input type="button" class="btn btn-outline-primary center" value="게시판으로"/></a>
             <a href="{% url 'home' %}"><input type="button" class="btn btn-outline-primary center" value="홈으로"/></a>
+            <a href="{% url 'friendsEditConfirm' board.id %}"><input type="button" class="btn btn-outline-primary center" value="글 수정"/></a>
+            <a href="{% url 'friendsDeleteConfirm' board.id %}"><input type="button" class="btn btn-outline-primary center" value="글 삭제"/></a>
         </div>
 
         {% include 'boards/liveRe.html' %}

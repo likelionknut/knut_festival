@@ -29,6 +29,7 @@ class Board(models.Model):
     def __str__(self):
         return self.title
 
+
 # ################# 삭제 #################
 # # 부스 홍보 게시판
 # class BoothPromotionBoard(models.Model):
