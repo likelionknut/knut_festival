@@ -95,8 +95,9 @@ def delete(request, board_id):
         return redirect('board')
 
 
-def deleteConfirm(request):
+def deleteConfirm(request, board_id):
     request.session['deleteConfirm'] = str('deleteConfirm')
+    request.session['board_id'] = str(board_id)
     return redirect('kakao')
 
 
@@ -189,7 +190,7 @@ def oauth(request):
         request.session['deleteConfirm'] = {}
         request.session.modified = True
 
-        return redirect('delete')
+        return redirect('delete', str(request.session.get('board_id')))
 
     elif request.session.get('editConfirm') == 'editConfirm':
 
