@@ -62,11 +62,12 @@
             <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
 
             <ul class="nav-menu list-unstyled">
-                <li><a href="#header" class="smoothScroll">Home</a></li>
-                <li><a href="#about" class="smoothScroll">About</a></li>
-                <li><a href="#portfolio" class="smoothScroll">Photo Zone</a></li>
-                <li><a href="#journal" class="smoothScroll">대중교통 시간표</a></li>
+                <li><a href="{% url 'home' %}" class="smoothScroll">Home</a></li>
+                <li><a href="{% url 'day1' %}" class="smoothScroll">Day 1</a></li>
+                <li><a href="{% url 'day2' %}" class="smoothScroll">Day 2</a></li>
+                <li><a href="{% url 'map_traffic' %}" class="smoothScroll">지도&교통</a></li>
                 <li><a href="{% url 'board' %}" class="smoothScroll">게시판</a></li>
+                <li><a href="{% url 'food' %}" class="smoothScroll">배달정보</a></li>
             </ul>
 
         </div>
