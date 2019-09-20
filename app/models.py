@@ -29,20 +29,20 @@ class Board(models.Model):
     def __str__(self):
         return self.title
 
-
-# 부스 홍보 게시판
-class BoothPromotionBoard(models.Model):
-    title = models.CharField(max_length=20)
-    user = models.CharField(max_length=20)
-    body = models.TextField()
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    photo = models.ImageField(upload_to='boothPromotionBoard/images/%Y/%m/%d/%H/%M', blank=True, null=True)
-    profile = models.CharField(max_length=150)
-
-    def __str__(self):
-        return self.title
-
+# ################# 삭제 #################
+# # 부스 홍보 게시판
+# class BoothPromotionBoard(models.Model):
+#     title = models.CharField(max_length=20)
+#     user = models.CharField(max_length=20)
+#     body = models.TextField()
+#
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     photo = models.ImageField(upload_to='boothPromotionBoard/images/%Y/%m/%d/%H/%M', blank=True, null=True)
+#     profile = models.CharField(max_length=150)
+#
+#     def __str__(self):
+#         return self.title
+# ################# 삭제 #################
 
 # 술 친구 게시판
 class FriendsBoard(models.Model):
@@ -59,17 +59,18 @@ class FriendsBoard(models.Model):
         return self.title
 
 
-# 자유 게시판
-class FreeBoard(models.Model):
-    title = models.CharField(max_length=20)
-    user = models.CharField(max_length=20)
-    body = models.TextField()
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    photo = models.ImageField(upload_to='free/images/%Y/%m/%d/%H/%M', blank=True, null=True)
-    profile = models.CharField(max_length=150)
-    video = models.FileField(upload_to='free/videos/%Y/%m/%d/%H/%M', blank=True, null=True)
-
-    def __str__(self):
-        return self.title
-
+# ################# 삭제 #################
+# # 자유 게시판
+# class FreeBoard(models.Model):
+#     title = models.CharField(max_length=20)
+#     user = models.CharField(max_length=20)
+#     body = models.TextField()
+#
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     photo = models.ImageField(upload_to='free/images/%Y/%m/%d/%H/%M', blank=True, null=True)
+#     profile = models.CharField(max_length=150)
+#     video = models.FileField(upload_to='free/videos/%Y/%m/%d/%H/%M', blank=True, null=True)
+#
+#     def __str__(self):
+#         return self.title
+# ################# 삭제 #################

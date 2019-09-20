@@ -1,69 +1,69 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %} 자유 게시판 {% endblock %}
-
-{% block javascriptHead %}
-<script src="{% static 'app/js/board_main.js' %}"></script>
-
-{% endblock %}
-
-{% block content %}
-
-{% include 'boards/board_nav.html' %}
-
-<div id="board" class="paddsection">
-
-        <div class="container" style="text-align: center">
-            <div class="section-title text-center" style="margin-top:5%;">
-                <h2>
-                    <caption>자유 게시판</caption>
-                </h2>
-            </div>
-            <div class="text-right" style="margin-right: 9%">
-                    <a href="{% url 'freeNew' %}"><input type="button" class="btn btn-outline-primary center" value="카카오 계정으로 글쓰기" /></a>
-            </div> <br>
-            {% for board in posts %}
-            <div class="card" style="width: 18rem; margin: 10px; display: inline-block;">
-                {% if board.photo %}
-                <img src="{{board.photo.url}}" class="card-img-top" alt="..." height="300" width="300">
-                {% endif %}
-                <div id="contents" class="card-body" style=" text-align:left;">
-                    <h6><img src="{{board.profile}}" height="30" width="30" style="border-radius: 50%">&nbsp;{{board.user}}</h6>
-                    <font size="2" color="gray">{{ board.created_at|date:"y/m/d A h:i" }}</font>
-                    <hr>
-        
-                    <h3 class="card-title">{{board.title}}</h3>
-                    <div class="text-right">
-                        <a href="{% url 'freeDetail' board.id %}"><button type="button"
-                                class="btn btn-outline-success">보러가기</button></a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-
-        <!-- pagination section -->
-        <div class="text-center">
-            <ul class="pagination justify-content-center">
-                <li class="page-item">
-                    {%if posts.has_previous%}
-                    <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="Previous">&laquo;</a>
-                    {%endif%}
-                </li>
-                {% for current_num in p_range %}
-                <li class="page-item"><a class="page-link" href="?page={{current_num}}">{{current_num}}</a></li>
-                {% endfor %}
-                <li class="page-item">
-                    {%if posts.has_next%}
-                    <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="Next">&raquo;</a>
-                    {%endif%}
-                </li>
-            </ul>
-        </div>
-        <!-- pagination section -->
-    </div>
-</div>
-<!-- end section Board -->
-
-    
-{% endblock %}
+{#{% block title %} 자유 게시판 {% endblock %}#}
+{##}
+{#{% block javascriptHead %}#}
+{#<script src="{% static 'app/js/board_main.js' %}"></script>#}
+{##}
+{#{% endblock %}#}
+{##}
+{#{% block content %}#}
+{##}
+{#{% include 'boards/board_nav.html' %}#}
+{##}
+{#<div id="board" class="paddsection">#}
+{##}
+{#        <div class="container" style="text-align: center">#}
+{#            <div class="section-title text-center" style="margin-top:5%;">#}
+{#                <h2>#}
+{#                    <caption>자유 게시판</caption>#}
+{#                </h2>#}
+{#            </div>#}
+{#            <div class="text-right" style="margin-right: 9%">#}
+{#                    <a href="{% url 'freeNew' %}"><input type="button" class="btn btn-outline-primary center" value="카카오 계정으로 글쓰기" /></a>#}
+{#            </div> <br>#}
+{#            {% for board in posts %}#}
+{#            <div class="card" style="width: 18rem; margin: 10px; display: inline-block;">#}
+{#                {% if board.photo %}#}
+{#                <img src="{{board.photo.url}}" class="card-img-top" alt="..." height="300" width="300">#}
+{#                {% endif %}#}
+{#                <div id="contents" class="card-body" style=" text-align:left;">#}
+{#                    <h6><img src="{{board.profile}}" height="30" width="30" style="border-radius: 50%">&nbsp;{{board.user}}</h6>#}
+{#                    <font size="2" color="gray">{{ board.created_at|date:"y/m/d A h:i" }}</font>#}
+{#                    <hr>#}
+{#        #}
+{#                    <h3 class="card-title">{{board.title}}</h3>#}
+{#                    <div class="text-right">#}
+{#                        <a href="{% url 'freeDetail' board.id %}"><button type="button"#}
+{#                                class="btn btn-outline-success">보러가기</button></a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            {% endfor %}#}
+{##}
+{#        <!-- pagination section -->#}
+{#        <div class="text-center">#}
+{#            <ul class="pagination justify-content-center">#}
+{#                <li class="page-item">#}
+{#                    {%if posts.has_previous%}#}
+{#                    <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="Previous">&laquo;</a>#}
+{#                    {%endif%}#}
+{#                </li>#}
+{#                {% for current_num in p_range %}#}
+{#                <li class="page-item"><a class="page-link" href="?page={{current_num}}">{{current_num}}</a></li>#}
+{#                {% endfor %}#}
+{#                <li class="page-item">#}
+{#                    {%if posts.has_next%}#}
+{#                    <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="Next">&raquo;</a>#}
+{#                    {%endif%}#}
+{#                </li>#}
+{#            </ul>#}
+{#        </div>#}
+{#        <!-- pagination section -->#}
+{#    </div>#}
+{#</div>#}
+{#<!-- end section Board -->#}
+{##}
+{#    #}
+{#{% endblock %}#}

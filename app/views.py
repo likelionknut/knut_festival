@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from .models import Comment, Board, BoothPromotionBoard, FriendsBoard, FreeBoard
-from .forms import CommentForm, BoardForm, BoothPromotionForm, FriendsForm, FreeForm
+# from .models import Comment, Board, BoothPromotionBoard, FriendsBoard, FreeBoard
+from .models import Comment, Board, FriendsBoard
+# from .forms import CommentForm, BoardForm, BoothPromotionForm, FriendsForm, FreeForm
+from .forms import CommentForm, BoardForm, FriendsForm
 from django.core.paginator import Paginator
 import requests, math
 
@@ -152,62 +154,70 @@ def oauth(request):
         return redirect('create')
 
 
-########################
-## 동아리 홍보 게시판 ##
-# 동아리 홍보 게시판 메인
-def boothPromotion(request):
-
-    boards_list = BoothPromotionBoard.objects.all().order_by('-created_at')
-    paginator = Paginator(boards_list, 5)  # 게시물 5개를 기준으로 페이지네이션 전개
-    page = request.GET.get('page', 1)  # request 된 페이지를 변수에 담음
-    posts = paginator.get_page(page)
-    page_range = 5  # 5개의 페이지 블럭 (범위)
-    current_block = math.ceil(int(page) / page_range)
-    start_block = (current_block - 1) * page_range
-    end_block = start_block + page_range
-    p_range = paginator.page_range[start_block:end_block]
-
-    return render(request, 'boards/boothPromotion/boothPromotion.html', {'posts': posts, 'p_range': p_range})
-
-
-def boothPromotionDetail(request, board_id):
-    board_detail = get_object_or_404(BoothPromotionBoard, pk=board_id)
-    return render(request, 'boards/boothPromotion/boothPromotionDetail.html', {'board' : board_detail})
-
-
-# 부스 홍보 글쓰기 누르면
-def boothPromotionNew(request):
-    request.session['boothPromotionNew'] = str('boothPromotionNew')
-    return redirect('new')
-
-
-# 부스 홍보 입력 폼
-def boothPromotionCreate(request):
-
-    if request.method == 'POST':
-        form = BoothPromotionForm(request.POST, request.FILES)
-
-        if form.is_valid():
-
-            post = form.save(commit=False)
-
-            post.user = request.session.get('user')
-            post.profile = request.session.get('profile')
-
-            request.session['user'] = {}
-            request.session['profile'] = {}
-            request.session.modified = True
-
-            post.save()
-
-            return redirect('boothPromotion')
-        else:
-            return redirect('boothPromotion')
-    else:
-        form = BoothPromotionForm()
-        return render(request, 'boards/boothPromotion/boothPromotionNew.html', {'form': form})
-
-    return redirect('board')
+# ################# 삭제 #################
+# ########################
+# ## 동아리 홍보 게시판 ##
+# # 동아리 홍보 게시판 메인
+# def boothPromotion(request):
+#
+#     boards_list = BoothPromotionBoard.objects.all().order_by('-created_at')
+#     paginator = Paginator(boards_list, 5)  # 게시물 5개를 기준으로 페이지네이션 전개
+#     page = request.GET.get('page', 1)  # request 된 페이지를 변수에 담음
+#     posts = paginator.get_page(page)
+#     page_range = 5  # 5개의 페이지 블럭 (범위)
+#     current_block = math.ceil(int(page) / page_range)
+#     start_block = (current_block - 1) * page_range
+#     end_block = start_block + page_range
+#     p_range = paginator.page_range[start_block:end_block]
+#
+#     return render(request, 'boards/boothPromotion/boothPromotion.html', {'posts': posts, 'p_range': p_range})
+# ################# 삭제 #################
+#
+#
+# ################# 삭제 #################
+# def boothPromotionDetail(request, board_id):
+#     board_detail = get_object_or_404(BoothPromotionBoard, pk=board_id)
+#     return render(request, 'boards/boothPromotion/boothPromotionDetail.html', {'board' : board_detail})
+# ################# 삭제 #################
+#
+#
+# ################# 삭제 #################
+# # 부스 홍보 글쓰기 누르면
+# def boothPromotionNew(request):
+#     request.session['boothPromotionNew'] = str('boothPromotionNew')
+#     return redirect('new')
+# ################# 삭제 #################
+#
+#
+# ################# 삭제 #################
+# # 부스 홍보 입력 폼
+# def boothPromotionCreate(request):
+#
+#     if request.method == 'POST':
+#         form = BoothPromotionForm(request.POST, request.FILES)
+#
+#         if form.is_valid():
+#
+#             post = form.save(commit=False)
+#
+#             post.user = request.session.get('user')
+#             post.profile = request.session.get('profile')
+#
+#             request.session['user'] = {}
+#             request.session['profile'] = {}
+#             request.session.modified = True
+#
+#             post.save()
+#
+#             return redirect('boothPromotion')
+#         else:
+#             return redirect('boothPromotion')
+#     else:
+#         form = BoothPromotionForm()
+#         return render(request, 'boards/boothPromotion/boothPromotionNew.html', {'form': form})
+#
+#     return redirect('board')
+# ################# 삭제 #################
 
 
 ########################
@@ -270,57 +280,65 @@ def friendsCreate(request):
     return redirect('board')
 
 
-########################
-## 자유 게시판 ##
-# 자유 게시판 메인
-def free(request):
-
-    boards_list = FreeBoard.objects.all().order_by('-created_at')
-    paginator = Paginator(boards_list, 5)  # 게시물 5개를 기준으로 페이지네이션 전개
-    page = request.GET.get('page', 1)  # request 된 페이지를 변수에 담음
-    posts = paginator.get_page(page)
-    page_range = 5  # 5개의 페이지 블럭 (범위)
-    current_block = math.ceil(int(page) / page_range)
-    start_block = (current_block - 1) * page_range
-    end_block = start_block + page_range
-    p_range = paginator.page_range[start_block:end_block]
-
-    return render(request, 'boards/free/free.html', {'posts': posts, 'p_range': p_range})
-
-
-def freeDetail(request, board_id):
-    board_detail = get_object_or_404(FreeBoard, pk=board_id)
-    return render(request, 'boards/free/freeDetail.html', {'board' : board_detail})
-
-
-def freeNew(request):
-    request.session['freeNew'] = str('freeNew')
-    return redirect('new')
-
-
-def freeCreate(request):
-
-    if request.method == 'POST':
-        form = FreeForm(request.POST, request.FILES)
-
-        if form.is_valid():
-
-            post = form.save(commit=False)
-
-            post.user = request.session.get('user')
-            post.profile = request.session.get('profile')
-
-            request.session['user'] = {}
-            request.session['profile'] = {}
-            request.session.modified = True
-
-            post.save()
-
-            return redirect('free')
-        else:
-            return redirect('free')
-    else:
-        form = FreeForm()
-        return render(request, 'boards/free/freeNew.html', {'form': form})
-
-    return redirect('board')
+# ################# 삭제 #################
+# ########################
+# ## 자유 게시판 ##
+# # 자유 게시판 메인
+# def free(request):
+#
+#     boards_list = FreeBoard.objects.all().order_by('-created_at')
+#     paginator = Paginator(boards_list, 5)  # 게시물 5개를 기준으로 페이지네이션 전개
+#     page = request.GET.get('page', 1)  # request 된 페이지를 변수에 담음
+#     posts = paginator.get_page(page)
+#     page_range = 5  # 5개의 페이지 블럭 (범위)
+#     current_block = math.ceil(int(page) / page_range)
+#     start_block = (current_block - 1) * page_range
+#     end_block = start_block + page_range
+#     p_range = paginator.page_range[start_block:end_block]
+#
+#     return render(request, 'boards/free/free.html', {'posts': posts, 'p_range': p_range})
+# ################# 삭제 #################
+#
+#
+# ################# 삭제 #################
+# def freeDetail(request, board_id):
+#     board_detail = get_object_or_404(FreeBoard, pk=board_id)
+#     return render(request, 'boards/free/freeDetail.html', {'board' : board_detail})
+# ################# 삭제 #################
+#
+#
+# ################# 삭제 #################
+# def freeNew(request):
+#     request.session['freeNew'] = str('freeNew')
+#     return redirect('new')
+# ################# 삭제 #################
+#
+#
+# ################# 삭제 #################
+# def freeCreate(request):
+#
+#     if request.method == 'POST':
+#         form = FreeForm(request.POST, request.FILES)
+#
+#         if form.is_valid():
+#
+#             post = form.save(commit=False)
+#
+#             post.user = request.session.get('user')
+#             post.profile = request.session.get('profile')
+#
+#             request.session['user'] = {}
+#             request.session['profile'] = {}
+#             request.session.modified = True
+#
+#             post.save()
+#
+#             return redirect('free')
+#         else:
+#             return redirect('free')
+#     else:
+#         form = FreeForm()
+#         return render(request, 'boards/free/freeNew.html', {'form': form})
+#
+#     return redirect('board')
+# ################# 삭제 #################

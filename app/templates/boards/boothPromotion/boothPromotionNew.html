@@ -1,35 +1,35 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block title %} 게시물 작성 {% endblock %}
-
-{% block javascriptHead %}
-    <script src="{% static 'app/js/board_main.js' %}"></script>
-
-{% endblock %}
-
-{% block content %}
-
-    {% include 'boards/board_nav.html' %}
-
-    <div class="container">
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% for field in form %}
-                <p>{{ field.help_text }}</p>
-                <p>{{ field }}</p>
-                <br>
-            {% endfor %}
+{#{% extends "base.html" %}#}
+{#{% load static %}#}
+{##}
+{#{% block title %} 게시물 작성 {% endblock %}#}
+{##}
+{#{% block javascriptHead %}#}
+{#    <script src="{% static 'app/js/board_main.js' %}"></script>#}
+{##}
+{#{% endblock %}#}
+{##}
+{#{% block content %}#}
+{##}
+{#    {% include 'boards/board_nav.html' %}#}
+{##}
+{#    <div class="container">#}
+{#        <form method="POST" enctype="multipart/form-data">#}
+{#            {% csrf_token %}#}
+{#            {% for field in form %}#}
+{#                <p>{{ field.help_text }}</p>#}
+{#                <p>{{ field }}</p>#}
+{#                <br>#}
+{#            {% endfor %}#}
 {#            {{ form.media }}#}
 {#            {{ form.as_p }}#}
-            <input class="btn btn-dark" type="submit" value="제출하기">
-        </form>
-        <br><br>
-        <div class="text-center">
-            <a href="{% url 'boothPromotion' %}"><input type="button" class="btn btn-outline-primary center" value="게시판으로"/></a>
-            <a href="{% url 'home' %}"><input type="button" class="btn btn-outline-primary center" value="홈으로"/></a>
-        </div>
-    </div>
-
-{% endblock %}
-<br>
+{#            <input class="btn btn-dark" type="submit" value="제출하기">#}
+{#        </form>#}
+{#        <br><br>#}
+{#        <div class="text-center">#}
+{#            <a href="{% url 'boothPromotion' %}"><input type="button" class="btn btn-outline-primary center" value="게시판으로"/></a>#}
+{#            <a href="{% url 'home' %}"><input type="button" class="btn btn-outline-primary center" value="홈으로"/></a>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#{% endblock %}#}
+{#<br>#}

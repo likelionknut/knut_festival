@@ -33,19 +33,23 @@ urlpatterns = [
 
     path('oauth/', app.views.oauth, name="oauth"),
 
-    path('board/boothPromotion', app.views.boothPromotion, name="boothPromotion"),
-    path('board/boothPromotionNew', app.views.boothPromotionNew, name="boothPromotionNew"),
-    path('board/boothPromotionCreate', app.views.boothPromotionCreate, name="boothPromotionCreate"),
-    path('board/boothPromotion/<int:board_id>/', app.views.boothPromotionDetail, name="boothPromotionDetail"),
+    # ################# 삭제 #################
+    # path('board/boothPromotion', app.views.boothPromotion, name="boothPromotion"),
+    # path('board/boothPromotionNew', app.views.boothPromotionNew, name="boothPromotionNew"),
+    # path('board/boothPromotionCreate', app.views.boothPromotionCreate, name="boothPromotionCreate"),
+    # path('board/boothPromotion/<int:board_id>/', app.views.boothPromotionDetail, name="boothPromotionDetail"),
+    # ################# 삭제 #################
 
     path('board/friends', app.views.friends, name="friends"),
     path('board/friendsNew', app.views.friendsNew, name="friendsNew"),
     path('board/friendsCreate', app.views.friendsCreate, name="friendsCreate"),
     path('board/friends/<int:board_id>/', app.views.friendsDetail, name="friendsDetail"),
 
-    path('board/free', app.views.free, name="free"),
-    path('board/freeNew', app.views.freeNew, name="freeNew"),
-    path('board/freeCreate', app.views.freeCreate, name="freeCreate"),
-    path('board/free/<int:board_id>/', app.views.freeDetail, name="freeDetail"),
+    # ################# 삭제 #################
+    # path('board/free', app.views.free, name="free"),
+    # path('board/freeNew', app.views.freeNew, name="freeNew"),
+    # path('board/freeCreate', app.views.freeCreate, name="freeCreate"),
+    # path('board/free/<int:board_id>/', app.views.freeDetail, name="freeDetail"),
+    # ################# 삭제 #################
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
