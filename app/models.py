@@ -13,6 +13,7 @@ class Comment(models.Model):
 class Board(models.Model):
     title = models.CharField(max_length=20)
     user = models.CharField(max_length=20)
+    user_id = models.BigIntegerField(null=True)
     body = models.TextField()
 
     tag_choices = (
@@ -47,6 +48,7 @@ class BoothPromotionBoard(models.Model):
 class FriendsBoard(models.Model):
     title = models.CharField(max_length=20)
     user = models.CharField(max_length=20)
+    user_id = models.BigIntegerField(null=True)
     body = models.TextField()
 
     created_at = models.DateTimeField(auto_now_add=True)
