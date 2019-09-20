@@ -10,6 +10,11 @@
 /*-----------------------------------------------------------------------------------*/
 
 @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+/* font-family: 'Nanum Pen Script', cursive; */
+
+@import url('https://fonts.googleapis.com/css?family=Jua&display=swap');
+/* font-family: 'Jua', sans-serif; */
+
 
 body {
   background: #ffffff;
