@@ -91,6 +91,16 @@ def delete(request, board_id):
     return redirect('board')
 
 
+def deleteConfirm(request):
+    request.session['new'] = str('new')
+    return redirect('kakao')
+
+
+def editConfirm(request):
+    request.session['new'] = str('new')
+    return redirect('kakao')
+
+
 # 글 수정
 def edit(request, board_id):
     board_detail = get_object_or_404(Board, pk=board_id)
@@ -168,17 +178,23 @@ def oauth(request):
 
         return redirect('friendsCreate')
 
+    elif request.session.get('new') == 'new':
 
-
-    elif request.session.get('freeNew') == 'freeNew':
-
-        request.session['freeNew'] = {}
+        request.session['new'] = {}
         request.session.modified = True
 
-        return redirect('freeCreate')
+        return redirect('create')
+
+    elif request.session.get('new') == 'new':
+
+        request.session['new'] = {}
+        request.session.modified = True
+
+        return redirect('create')
+
     else:
         request.session.modified = True
-        return redirect('create')
+        return redirect('board')
 
 
 # ################# 삭제 #################
