@@ -11,8 +11,8 @@
 {% block content %}
 
     {% include 'boards/board_nav.html' %}
-
-    <div class="container card w-75 border-secondary mb-3" style="background-color: #f7f7f7;">
+    <br><br><br><br><br>
+    <div class="container card w-75 border-secondary mb-3" style="border-width:2px; border-color:black;">
 
         {% include 'boards/board_form.html' %}
 
@@ -20,7 +20,6 @@
             <a href="{% url 'friends' %}"><input type="button" class="btn btn-outline-primary center" value="게시판으로"/></a>
             <a href="{% url 'home' %}"><input type="button" class="btn btn-outline-primary center" value="홈으로"/></a>
         </div>
-        <br><br>
 
         {% include 'boards/liveRe.html' %}
     </div>
