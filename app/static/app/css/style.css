@@ -230,6 +230,7 @@ nav ul li a {
 
 .logo {
   float: left;
+  font-family: 'Jua', sans-serif;
 }
 
 .logo img {
@@ -648,4 +649,9 @@ nav ul li a {
 
 .credits {
   font-size: 13px;
+}
+
+.smoothScroll {
+  font-family: 'Jua', sans-serif;
+  font-size: 20px;
 }
