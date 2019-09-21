@@ -4426,6 +4426,7 @@ tbody.collapse.show {
 }
 
 .card {
+  background: rgb(255,207,207);
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5878,7 +5879,7 @@ button.close {
 .carousel-item.active,
 .carousel-item-next,
 .carousel-item-prev {
-  display: block;
+  /* display: block; */
 }
 
 .carousel-item-next,
