@@ -228,6 +228,9 @@ def oauth(request):
         return redirect('board')
 
 
+def kakaoLogout(request):
+    return render(request, 'asdfsafsd.html')
+
 # ################# 삭제 #################
 # ########################
 # ## 동아리 홍보 게시판 ##
