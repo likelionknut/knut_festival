@@ -27,6 +27,8 @@ urlpatterns = [
     path('map_traffic/', app.views.map_traffic, name="map_traffic"),
     path('food/', app.views.food, name="food"),
 
+    path('aboutus/', app.views.aboutus, name="aboutus"),
+
 
     # path('1/', app.views.comment_write, name="comment_write"),
     # path('2/', app.views.login, name="login"),
