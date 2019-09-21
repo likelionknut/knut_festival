@@ -9,7 +9,8 @@ import requests, math
 def home(request):
     comments = Comment.objects.all()
     boards_list = Board.objects.all().order_by('-created_at')
-    return render(request, 'index.html', {'comments':comments, 'boards_list':boards_list})
+    friends_list = FriendsBoard.objects.all().order_by('-created_at')
+    return render(request, 'index.html', {'comments':comments, 'boards_list':boards_list, 'friends_list':friends_list})
 
 def board(request):
     boards_list = Board.objects.all().order_by('-created_at')
