@@ -21,7 +21,7 @@
 @media (min-width: 769px) and (max-width: 1024px) {
 
   #header {
-    background: url("../메인_800.png") no-repeat scroll center center;
+    background: url("../880x2205.png") no-repeat scroll center center;
     height: 100vh;
     width: 100%;
   }
@@ -99,7 +99,7 @@
 @media (max-width: 768px) {
 
   #header {
-    background: url("../메인_767.png") no-repeat scroll center center;
+    background: url("../768x1024.png") no-repeat scroll center center;
     height: 100vh;
     width: 100%;
   }
@@ -177,7 +177,7 @@
 @media (max-width: 600px) {
 
   #header {
-    background: url("../메인_600.png") no-repeat scroll center center;
+    background: url("../411x731.png") no-repeat scroll center center;
     height: 100vh;
     width: 100%;
   }
@@ -255,7 +255,7 @@
 @media (max-width: 480px) {
 
   #header {
-    background: url("../메인_480.png") no-repeat scroll center center;
+    background: url("../360x640.png") no-repeat scroll center center;
     height: 100vh;
     width: 100%;
   }
@@ -330,6 +330,12 @@
  */
 
 @media (max-width: 320px) {
+
+  #header {
+    background: url("../320x568.png") no-repeat scroll center center;
+    height: 100vh;
+    width: 100%;
+  }
   /* Navbar */
   nav {
     padding: 20px 15px;
