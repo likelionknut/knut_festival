@@ -17,10 +17,11 @@
         {% include 'boards/board_form.html' %}
 
         <div class="text-center">
+            <a href="{% url 'editConfirm' board.id %}"><input type="button" class="btn btn-outline-primary center" value="수정"/></a>
+            <a href="{% url 'deleteConfirm' board.id %}"><input type="button" class="btn btn-outline-primary center" value="삭제"/></a><br><br>
             <a href="{% url 'board' %}"><input type="button" class="btn btn-outline-primary center" value="게시판으로"/></a>
             <a href="{% url 'home' %}"><input type="button" class="btn btn-outline-primary center" value="홈으로"/></a>
-            <a href="{% url 'editConfirm' board.id %}"><input type="button" class="btn btn-outline-primary center" value="글 수정"/></a>
-            <a href="{% url 'deleteConfirm' board.id %}"><input type="button" class="btn btn-outline-primary center" value="글 삭제"/></a>
+
         </div>
 
         {% include 'boards/liveRe.html' %}
