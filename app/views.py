@@ -484,3 +484,6 @@ def map_traffic(request):
 
 def food(request):
     return render(request, 'food.html')
+
+def aboutus(request):
+    return render(request, 'aboutus.html')
