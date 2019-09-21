@@ -20,48 +20,52 @@
                     <caption>술 친구 구해요</caption>
                 </h2>
             </div>
-            <div class="text-right" style="margin-right: 9%">
+            <div class="container" style="background-color:rgb(255,207,207); border-width: 4px; border-style: solid; border-color: rgb(212, 91, 152); border-radius: 2%;">
+                <br>
+                <div class="text-right" style="margin-right: 7.5%">
                     <a href="{% url 'friendsNew' %}"><input type="button" class="btn btn-outline-primary center" value="카카오 계정으로 글쓰기" style="border-width: 2px;"/></a>
-            </div> <br>
-            {% for board in posts %}
-            <div class="card" style="width: 18rem; margin: 10px; display: inline-block; border-width: 2px; border-color: black;">
-                {% if board.photo %}
-                <img src="{{board.photo.url}}" class="card-img-top" alt="..." height="300" width="300">
-                {% endif %}
-                <div id="contents" class="card-body" style=" text-align:left;">
-                    <h6><img src="{{board.profile}}" height="30" width="30" style="border-radius: 50%">&nbsp;{{board.user}}</h6>
-                    <font size="2" color="gray">{{ board.created_at|date:"y/m/d A h:i" }}</font>
-                    <hr>
-        
-                    <h3 class="card-title">{{board.title}}</h3>
-                    <div class="text-right">
-                        <a href="{% url 'friendsDetail' board.id %}"><button type="button"
-                                class="btn btn-outline-success" style="border-width: 2px;">보러가기</button></a>
+                </div> 
+                <br>
+                {% for board in posts %}
+                <div class="card" style="width: 18rem; margin: 10px; display: inline-block; border-width: 2px; border-color:rgb(212, 91, 152);">
+                    {% if board.photo %}
+                    <img src="{{board.photo.url}}" class="card-img-top" alt="..." height="300" width="300">
+                    {% endif %}
+                    <div id="contents" class="card-body" style=" text-align:left;">
+                        <h6><img src="{{board.profile}}" height="30" width="30" style="border-radius: 50%">&nbsp;{{board.user}}</h6>
+                        <font size="2" color="gray">{{ board.created_at|date:"y/m/d A h:i" }}</font>
+                        <hr>
+            
+                        <h3 class="card-title">{{board.title}}</h3>
+                        <div class="text-right">
+                            <a href="{% url 'friendsDetail' board.id %}"><button type="button"
+                                    class="btn btn-outline-success" style="border-width: 2px;">보러가기</button></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {% endfor %}
-        
-
-        <!-- pagination section -->
-        <div class="text-center">
-            <ul class="pagination justify-content-center">
-                <li class="page-item">
-                    {%if posts.has_previous%}
-                    <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="Previous">&laquo;</a>
-                    {%endif%}
-                </li>
-                {% for current_num in p_range %}
-                <li class="page-item"><a class="page-link" href="?page={{current_num}}">{{current_num}}</a></li>
                 {% endfor %}
-                <li class="page-item">
-                    {%if posts.has_next%}
-                    <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="Next">&raquo;</a>
-                    {%endif%}
-                </li>
-            </ul>
-        </div>
+            
+
+            <!-- pagination section -->
+            <div class="text-center">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        {%if posts.has_previous%}
+                        <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="Previous">&laquo;</a>
+                        {%endif%}
+                    </li>
+                    {% for current_num in p_range %}
+                    <li class="page-item"><a class="page-link" href="?page={{current_num}}">{{current_num}}</a></li>
+                    {% endfor %}
+                    <li class="page-item">
+                        {%if posts.has_next%}
+                        <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="Next">&raquo;</a>
+                        {%endif%}
+                    </li>
+                </ul>
+            </div>
         <!-- pagination section -->
+        </div>
     </div>
 </div>
 <!-- end section Board -->
