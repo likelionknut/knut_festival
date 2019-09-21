@@ -2,16 +2,16 @@
     <img src="{{ board.profile }}" height="50" width="50" style="border-radius: 50%">&nbsp;
     <font size="4">{{ board.user }}</font>
     <font size="2" color="gray"> - {{ board.created_at|date:"y/m/d A h:i" }}</font>
+
     <br><br><br>
 
     <div class="container">
+        <h1>{{ board.title }}</h1>
 
-        <h1>{{ board.title }}</h1><br><br>
+        <br><br>
 
-        {{ board.body }}<br><br><br><br><br><br>
+        {{ board.body }}<br><br><br><br>
 
-        <h4>Photo</h4>
-        <hr>
         <br><br>
         <div class="text-center">
             {% if board.photo %}
@@ -19,13 +19,13 @@
             {% endif %}
         </div>
         <br><br><br>
-        <div class="text-center">
+        <!-- <div class="text-center">
             {% if board.video %}
                 <video style="min-width: 30%; max-width: 90%;" controls>
                     <source src='{{ board.video.url }}' type='video/mp4'>
                 </video>
             {% endif %}
-        </div>
+        </div> -->
     </div>
 </div>
 <hr style="margin:3%">
