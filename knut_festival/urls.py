@@ -44,7 +44,7 @@ urlpatterns = [
 
     path('kakao/', app.views.kakao, name="kakao"),
     path('oauth/', app.views.oauth, name="oauth"),
-    path('kakaoLogout/', app.views.kakaoLogout, name="kakaoLogout"),
+    # path('kakaoLogout/', app.views.kakaoLogout, name="kakaoLogout"),
 
     # ################# 삭제 #################
     # path('board/boothPromotion', app.views.boothPromotion, name="boothPromotion"),
