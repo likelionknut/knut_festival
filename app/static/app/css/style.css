@@ -477,13 +477,11 @@ nav ul li a {
 #journal,  #journal-blog {
   height: auto;
   width: 100%;
-  background: ;
   padding-bottom: 60px;
   position: relative;
 }
 
 #journal-blog {
-  background: 
   padding-bottom: 30px;
 }
 
@@ -521,7 +519,6 @@ nav ul li a {
 }
 
 .journal-block .journal-info .journal-txt h4 a:hover {
-  color: 
   -moz-transition: all 0.5s ease-in-out 0s;
   -ms-transition: all 0.5s ease-in-out 0s;
   -o-transition: all 0.5s ease-in-out 0s;
