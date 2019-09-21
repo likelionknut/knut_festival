@@ -109,6 +109,7 @@ p {
 }
 
 .btn {
+  font-family:'Jua', sans-serif;
   background: #333;
   border: medium none;
   border-radius: 0;
