@@ -163,6 +163,7 @@ def oauth(request):
     json_data = access_token_request_uri_data.json()
     access_token = json_data['access_token']
 
+    print("access_token 1 = " + access_token)
     request.session[request.session.session_key + 'access_token'] = str(access_token)
 
     user_profile_info_uri = "https://kapi.kakao.com/v1/api/talk/profile?access_token="
@@ -231,8 +232,21 @@ def oauth(request):
         return redirect('board')
 
 
-def kakaoLogout(request):
-    return render(request, 'asdfsafsd.html')
+# def kakaoLogout(request):
+    # access_token = request.session.get(request.session.session_key + 'access_token')
+    #
+    # request.session[request.session.session_key + 'access_token'] = {}
+    # request.session.modified = True
+    #
+    # print("access_token = " + access_token)
+    #
+    # if access_token:
+        # redirect_uri = 'https://kapi.kakao.com/v1/user/logout?access_token=' + access_token
+        # return redirect(redirect_uri)
+        # return render(request, 'boards/kakaoLogout.html')
+    # else:
+    #     return render(request, 'asdfsafsd.html')
+    # return render(request, 'boards/kakaoLogout.html')
 
 # ################# 삭제 #################
 # ########################
