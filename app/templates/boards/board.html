@@ -20,12 +20,14 @@
                 <caption>분실물 게시판</caption>
             </h2>
         </div>
-        <div class="text-right" style="margin-right: 9%">
-            <a href="{% url 'new' %}"><input type="button" style="border-width: 2px;"class="btn btn-outline-primary center" value="카카오 계정으로 글쓰기" /></a>
-        </div> <br>
+        <div class="container" style="background-color:rgb(255,207,207); border-width: 4px; border-style: solid; border-color: rgb(212, 91, 152); border-radius: 2%;">
+            <br>
+            <div class="text-right" style="margin-right: 7.5%">
+                <a href="{% url 'new' %}"><input type="button" style="border-width: 2px;"class="btn btn-outline-primary center" value="카카오 계정으로 글쓰기" /></a>
+            </div> <br>
 
-        {% for board in posts %}
-            <div class="card" style="width: 18rem; margin: 10px; display: inline-block; border-width: 2px; border-color: black;">
+            {% for board in posts %}
+            <div class="card justify-content-center" style="width: 18rem; margin: 10px; display: inline-block; border-width: 2px; border-color:rgb(212, 91, 152);">
                 {% if board.photo %}
                 <img src="{{board.photo.url}}" class="card-img-top" alt="..." height="300" width="300">
                 {% endif %}
@@ -66,10 +68,9 @@
             <!-- pagination section -->
 
 
-            </div>
+        </div>
         </div>
     </div>
-</div>
 <!-- end section Board -->
 
 
