@@ -116,7 +116,6 @@ def editConfirm(request, board_id):
 
 # 글 수정
 def edit(request, board_id):
-    # board_id = request.session.get('board_id')
     board_detail = get_object_or_404(Board, pk=board_id)
 
     if request.method == 'POST':
@@ -174,7 +173,7 @@ def oauth(request):
     user_all_data_uri_data = requests.get(user_all_data_uri)
     user_all_json_data = user_all_data_uri_data.json()
     user_id = user_all_json_data['id']
-    request.session['user_id'] = user_id
+    request.session[request.session.session_key + 'user_id'] = user_id
 
     user_profile_info_uri_data = requests.get(user_profile_info_uri)
     user_json_data = user_profile_info_uri_data.json()
