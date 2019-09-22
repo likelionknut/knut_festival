@@ -8,10 +8,14 @@
 ***
 
 ## 📒 개요
-   #### 2019년도 국원대동제 "별 달은 밤"을 소개합니다. <br> 축제 시간표, 교내외 부스 소개 등 축제 정보 제공 <br>  술 친구, 분실물 게시판 등 운영
+   * 2019년도 국원대동제 "별 달은 밤"을 소개합니다.
+   * 축제 시간표, 교내외 부스 소개 등 축제 정보 제공
+   * 술 친구, 분실물 게시판 등 운영
 
 ## 🛠 기술스택
-#### Python/Django<br>Bootstrap Theme<br>Plain HTML/CSS/JS
+* Python/Django
+* Bootstrap Theme
+* Plain HTML/CSS/JS
     
 ## 🖼 스크린샷
 
