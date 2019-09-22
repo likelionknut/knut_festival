@@ -32,6 +32,10 @@
                 <img src="{{board.photo.url}}" class="card-img-top" alt="..." height="300" width="300">
                 {% endif %}
                 <div id="contents" class="card-body" style=" text-align:left;">
+                        <h3 class="card-title">{{board.title}}</h3>
+                        <font color="blue" face="기울임" size="3"><i style="font-family: 'Jua', sans-serif;">"{{board.get_tag_display}}"</i></font>
+                        <hr>
+
 {#                    <h6><img src="{{board.profile}}" height="30" width="30" style="border-radius: 50%">&nbsp;{{board.user}}</h6>#}
                     {% if board.profile %}
                         <h5><img src="{{board.profile.url}}" height="40" width="40" style="border-radius: 50%">&nbsp;{{board.user}}</h5>
@@ -39,10 +43,7 @@
                         <h5>{{board.user}}</h5>
                     {% endif %}
                     <font size="2" color="gray">{{ board.created_at|date:"y/m/d A h:i" }}</font>
-                    <hr>
-
-                    <h3 class="card-title">{{board.title}}</h3>
-                    <font color="blue" face="기울임" size="3"><i style="font-family: 'Jua', sans-serif;">"{{board.get_tag_display}}"</i></font>
+                    
                     <br><br>
                     <div class="text-right">
                         <a href="{% url 'detail' board.id %}"><button type="button" class="btn btn-outline-success" style="border-width: 2px;">보러가기</button></a>
