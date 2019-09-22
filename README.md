@@ -6,18 +6,18 @@
 
 ***
 
-### 개요
-    - 2019년도 국원대동제를 소개합니다.
+## 개요
+    - 2019년도 국원대동제 "별 다른 밤"을 소개합니다.
     - LikeLion at KNUT 7th
-    - 각종 축제 정보 제공!!!
+    - 축제 시간표, 교내외 부스 소개 등 축제 정보 제공
+    - 술 친구, 분실물 게시판 등 운영
 
-### 기술스택
-    - Django
-    - Python
+## 기술스택
+    - Python/Django
     - Bootstrap Theme
-    - Plain HTML/CSS/js
+    - Plain HTML/CSS/JS
     
-### 스크린샷
+## 스크린샷
 
 ***
 
