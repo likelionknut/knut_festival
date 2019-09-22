@@ -22,10 +22,12 @@
             {% endfor %}
 {#            {{ form.media }}#}
 {#            {{ form.as_p }}#}
-            <input class="btn btn-dark" type="submit" value="제출하기">
-        </form><br><br>
+            <div class="text-center">
+                <input class="btn btn-dark" type="submit" value="제출하기">
+            </div>  
+        </form><br><br><br>
         <div class="text-center">
-            <a href="{% url 'friends' %}"><input type="button" class="btn btn-outline-primary center" value="게시판으로"/></a>
+            <a href="{% url 'friends' %}"><input type="button" class="btn btn-outline-primary center" value="게시판으로"/></a>&nbsp;&nbsp;
             <a href="{% url 'home' %}"><input type="button" class="btn btn-outline-primary center" value="홈으로"/></a>
         </div>
     </div>

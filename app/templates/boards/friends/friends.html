@@ -30,7 +30,7 @@
                 <br>
                 {% for board in posts %}
                     <div class="card"
-                         style="width: 18rem; margin: 10px; display: inline-block; border-width: 2px; border-color:rgb(212, 91, 152);">
+                         style="width: 15rem; margin: 10px; display: inline-block; border-width: 2px; border-color:rgb(212, 91, 152);">
                         {% if board.photo %}
                             <img src="{{ board.photo.url }}" class="card-img-top" alt="..." height="300" width="300">
                         {% endif %}
@@ -45,7 +45,7 @@
                                 <h5>{{board.user}}</h5>
                             {% endif %}
                             <font size="2" color="gray">{{ board.created_at|date:"y/m/d A h:i" }}</font>
-
+                            <br><br>
                             <div class="text-right">
                                 <a href="{% url 'friendsDetail' board.id %}">
                                     <button type="button"
