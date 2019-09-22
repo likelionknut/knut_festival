@@ -11,6 +11,10 @@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148208975-1"></script>
+
+    <!-- 카카오톡 Javascript -->
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -93,6 +97,19 @@
 
         gtag('config', 'UA-148227649-1');
     </script>
+
+    <!-- 카카오톡 sendLink 구현 -->
+    <script type='text/javascript'>
+        //사용할 앱의 JavaScript 키를 설정해 주세요.
+        Kakao.init('b65e9b71e3f1035a5c467ddfc5500e23');
+        //카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+        function sendLink(){
+            Kakao.Link.sendCustom({
+                templateId: 18265 // 이 템플릿 아이디가 중요합니다
+            });
+        }
+    </script>
+
     {% block javascriptHead %}{% endblock %}
 
 </head>
@@ -112,13 +129,15 @@
             <!-- 아이콘으로 바로 공유하기 기능 구현 by 띵대표-->
             <ul class="list-unstyled">
                 <!-- 네이버 블로그 공유하기 -->
-                <li><a href="#" onclick="javascript:window.open('http://share.naver.com/web/shareView.nhn?url=' +encodeURIComponent(document.URL)+'&title='+encodeURIComponent(document.title), 'naversharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Naver" ><img style="border-radius: 50%" src="{% static 'sns_blog.png' %}" width="40" alt="네이버 블로그 공유하기"></a></li>
+                <li><a href="#" onclick="javascript:window.open('https://share.naver.com/web/shareView.nhn?url=' +encodeURIComponent(document.URL)+'&title='+encodeURIComponent(document.title), 'naversharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Naver" ><img style="border-radius: 50%" src="{% static 'sns_blog.png' %}" width="40" alt="네이버 블로그 공유하기"></a></li>
                 <!-- 페이스북 공유하기 -->
                 <li><a href="#" onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=' +encodeURIComponent(document.URL)+'&t='+encodeURIComponent(document.title), 'facebooksharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Facebook" ><img style="border-radius: 50%" src="{% static 'sns_face.png' %}" width="40" alt="페이스북 공유하기"></a></li>
                 <!-- 트위터 공유하기 -->
                 <li><a href="#" onclick="javascript:window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20' +encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Twitter" ><img style="border-radius: 50%" src="{% static 'sns_tw.png' %}" width="40" alt="트위터 공유하기"></a></li>
                 <!-- 카카오스토리 공유하기 -->
                 <li><a href="#" onclick="javascript:window.open('https://story.kakao.com/s/share?url=' +encodeURIComponent(document.URL), 'kakaostorysharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes, height=400,width=600');return false;" target="_blank" alt="Share on kakaostory"><img style="border-radius: 50%" src="{% static 'sns_kakao.png' %}" width="40" alt="카카오스토리 공유하기"></a></li>
+                <!-- 카카오톡 공유하기 -->
+                <!-- <li><a href="#" onclick="javascript:sendLink()" target="_blank" alt="Share on kakaotalk"><img style="border-radius: 50%" src="{% static 'sns_ka.png' %}" width="40" alt="카카오톡 공유하기"></a></li> -->
             </ul>
 
         </div>

@@ -16,18 +16,16 @@
         <div class="container">
 
             <div class="logo">
-                <a href="{% url 'home' %}"><img src="{% static 'app/logo1.png' %}" alt="logo" align="left">&nbsp;KNUT FESTIVAL<br>&nbsp;국원 대동제</a>
+                <a href="{% url 'home' %}" style="color:rgb(95, 82, 88);"><img src="{% static 'app/logo1.png' %}" alt="logo" align="left">&nbsp;KNUT FESTIVAL<br>&nbsp;국원 대동제</a>
             </div>
 
             <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
 
             <ul class="nav-menu list-unstyled">
-                <li><a href="{% url 'day1' %}" class="smoothScroll">Day-1</a></li>
-                <li><a href="{% url 'day2' %}" class="smoothScroll">Day-2</a></li>
+
                 <li><a href="{% url 'map_traffic' %}" class="smoothScroll">지도·교통</a></li>
                 <li><a href="{% url 'friends' %}" class="smoothScroll">술 친구 게시판</a></li>
                 <li><a href="{% url 'board' %}" class="smoothScroll">분실물 게시판</a></li>
-                <li><a href="{% url 'food' %}" class="smoothScroll">배달정보</a></li>
             </ul>
 
         </div>
@@ -47,11 +45,9 @@
     </div>
 </div>
 
-<div id="board" class="container" style="width: 90%; background-color:rgb(255,207,207); border-width: 4px; border-style: solid; border-color: rgb(212, 91, 152); border-radius: 2%;">
+<div id="board" class="container text-center" style="width: 90%; background-color:rgb(255,207,207); border-width: 4px; border-style: solid; border-color: rgb(212, 91, 152); border-radius: 2%;">
     <br>
-    <div class="container" id="map" style="width:100%;height:400px;margin:0 auto;text-align:center;">
-        <script type="text/javascript" src="{% static 'app/js/naver_map_api/map.js' %}"></script>
-    </div>
+    <img width="100%" height="auto" src="{% static 'app/약도1.png' %}">
     <br>
 </div>
 <!-- map section -->
