@@ -23,4 +23,8 @@
 * Bootstrap Theme
 * Plain HTML/CSS/JS
     
-
+## 🖥 정보
+* 페이스북 페이지 : https://www.facebook.com/likelionKNUT/
+* 네이버 블로그 : https://blog.naver.com/likelionknut
+* Email : likelionknut@gmail.com
+* 멋쟁이 사자처럼 at 한국교통대학교 : http://knut.likelion.org
