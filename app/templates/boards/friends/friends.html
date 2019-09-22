@@ -37,7 +37,8 @@
                         <div id="contents" class="card-body" style=" text-align:left;">
                             {#                        <h6><img src="{{board.profile}}" height="30" width="30" style="border-radius: 50%">&nbsp;{{board.user}}</h6>#}
                             {% if board.profile %}
-                                <img src="{{ board.profile.url }}" height="50" width="50" style="border-radius: 50%">
+{#                                <img src="{{ board.profile.url }}" height="50" width="50" style="border-radius: 50%">#}
+                                <h6><img src="{{board.profile.url}}" height="50" width="50" style="border-radius: 50%">&nbsp;{{board.user}}</h6>
                             {% endif %}
                             <font size="2" color="gray">{{ board.created_at|date:"y/m/d A h:i" }}</font>
                             <hr>
