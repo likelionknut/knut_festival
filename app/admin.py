@@ -31,7 +31,7 @@ class FriendsBoardAdmin(admin.ModelAdmin):
     fieldsets = [
         ('글 제목', {'fields': ['title']}),
         ('글 내용', {'fields': ['body']}),
-        ('사용자', {'fields': ['user', 'user_id', 'profile']}),
+        ('사용자', {'fields': ['user', 'user_id', 'profile_url', 'profile']}),
         ('사진', {'fields': ['photo']}),
     ]
 
