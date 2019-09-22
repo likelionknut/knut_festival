@@ -164,7 +164,6 @@ def oauth(request):
     json_data = access_token_request_uri_data.json()
     access_token = json_data['access_token']
 
-    print("access_token 1 = " + access_token)
     request.session[str(request.session.session_key) + 'access_token'] = str(access_token)
 
     user_profile_info_uri = "https://kapi.kakao.com/v1/api/talk/profile?access_token="
