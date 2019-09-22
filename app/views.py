@@ -493,17 +493,14 @@ def friendsEdit(request, board_id):
 #     return redirect('board')
 # ################# 삭제 #################
 
-def day1(request):
-    return render(request, 'day1.html')
+# def day1(request):
+#     return render(request, 'day1.html')
 
-def day2(request):
-    return render(request, 'day2.html')
+# def day2(request):
+#     return render(request, 'day2.html')
 
 def map_traffic(request):
     return render(request, 'map_traffic.html')
-
-def food(request):
-    return render(request, 'food.html')
 
 def aboutus(request):
     return render(request, 'aboutus.html')
