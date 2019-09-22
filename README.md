@@ -3,6 +3,10 @@
 
 ***
 
+![20190923_060945](https://user-images.githubusercontent.com/44333971/65394412-c7fdaf80-ddc8-11e9-8878-1d6376a060b9.png)
+
+***
+
 <p align="center">
 <img src="https://user-images.githubusercontent.com/44333971/65394257-3f7e0f80-ddc6-11e9-89a8-6d14d89b2923.jpg">
 </p>
@@ -19,10 +23,4 @@
 * Bootstrap Theme
 * Plain HTML/CSS/JS
     
-## 🖼 스크린샷
 
-***
-
-![knut_festival_2](https://user-images.githubusercontent.com/22811639/64709631-90058b00-d4f1-11e9-8e77-bc11777a33fc.jpg)
-
-***
