@@ -35,7 +35,7 @@ def detail(request, board_id):
 
 # 글쓰기 버튼
 def new(request):
-    request.session[request.session.session_key + 'new'] = str('new')
+    request.session[str(request.session.session_key) + 'new'] = str('new')
     return redirect('kakao')
 
 
@@ -52,8 +52,8 @@ def kakao(request):
     login_request_uri += '&redirect_uri=' + redirect_uri
     login_request_uri += '&response_type=code'
 
-    request.session[request.session.session_key + 'client_id'] = client_id
-    request.session[request.session.session_key + 'redirect_uri'] = redirect_uri
+    request.session[str(request.session.session_key) + 'client_id'] = client_id
+    request.session[str(request.session.session_key) + 'redirect_uri'] = redirect_uri
 
     return redirect(login_request_uri)
 
@@ -68,13 +68,13 @@ def create(request):
 
             post = form.save(commit=False)
 
-            post.user = request.session.get(request.session.session_key + 'user')
-            post.profile = request.session.get(request.session.session_key + 'profile')
-            post.user_id = request.session.get(request.session.session_key + 'user_id')
+            post.user = request.session.get(str(request.session.session_key) + 'user')
+            post.profile = request.session.get(str(request.session.session_key) + 'profile')
+            post.user_id = request.session.get(str(request.session.session_key) + 'user_id')
 
-            request.session[request.session.session_key + 'user'] = {}
-            request.session[request.session.session_key + 'profile'] = {}
-            request.session[request.session.session_key + 'user_id'] = {}
+            request.session[str(request.session.session_key) + 'user'] = {}
+            request.session[str(request.session.session_key) + 'profile'] = {}
+            request.session[str(request.session.session_key) + 'user_id'] = {}
             request.session.modified = True
 
             post.save()
@@ -90,10 +90,10 @@ def create(request):
 # 글 삭제
 def delete(request, board_id):
     board_detail = get_object_or_404(Board, pk=board_id)
-    user_id = request.session.get(request.session.session_key + 'user_id')
-    request.session[request.session.session_key + 'user'] = {}
-    request.session[request.session.session_key + 'profile'] = {}
-    request.session[request.session.session_key + 'user_id'] = {}
+    user_id = request.session.get(str(request.session.session_key) + 'user_id')
+    request.session[str(request.session.session_key) + 'user'] = {}
+    request.session[str(request.session.session_key) + 'profile'] = {}
+    request.session[str(request.session.session_key) + 'user_id'] = {}
 
     if user_id == board_detail.user_id:
         board_detail.delete()
@@ -103,14 +103,14 @@ def delete(request, board_id):
 
 
 def deleteConfirm(request, board_id):
-    request.session[request.session.session_key + 'deleteConfirm'] = str('deleteConfirm')
-    request.session[request.session.session_key + 'board_id'] = str(board_id)
+    request.session[str(request.session.session_key) + 'deleteConfirm'] = str('deleteConfirm')
+    request.session[str(request.session.session_key) + 'board_id'] = str(board_id)
     return redirect('kakao')
 
 
 def editConfirm(request, board_id):
-    request.session[request.session.session_key + 'editConfirm'] = str('editConfirm')
-    request.session[request.session.session_key + 'board_id'] = str(board_id)
+    request.session[str(request.session.session_key) + 'editConfirm'] = str('editConfirm')
+    request.session[str(request.session.session_key) + 'board_id'] = str(board_id)
     return redirect('kakao')
 
 
@@ -128,9 +128,9 @@ def edit(request, board_id):
             post.body = form.cleaned_data['body']
             post.photo = form.cleaned_data['photo']
 
-            request.session[request.session.session_key + 'user'] = {}
-            request.session[request.session.session_key + 'profile'] = {}
-            request.session[request.session.session_key + 'user_id'] = {}
+            request.session[str(request.session.session_key) + 'user'] = {}
+            request.session[str(request.session.session_key) + 'profile'] = {}
+            request.session[str(request.session.session_key) + 'user_id'] = {}
 
             post.save()
 
@@ -140,7 +140,7 @@ def edit(request, board_id):
     else:
         form = BoardForm(instance=board_detail)
 
-        if request.session.get(request.session.session_key + 'user_id') == board_detail.user_id:
+        if request.session.get(str(request.session.session_key) + 'user_id') == board_detail.user_id:
             return render(request, 'boards/edit.html', {'form': form, 'board': board_detail})
         else:
             return redirect('board')
@@ -150,8 +150,8 @@ def edit(request, board_id):
 def oauth(request):
     code = request.GET['code']
 
-    client_id = request.session.get(request.session.session_key + 'client_id')
-    redirect_uri = request.session.get(request.session.session_key + 'redirect_uri')
+    client_id = request.session.get(str(request.session.session_key) + 'client_id')
+    redirect_uri = request.session.get(str(request.session.session_key) + 'redirect_uri')
 
     access_token_request_uri = "https://kauth.kakao.com/oauth/token?grant_type=authorization_code&"
 
@@ -164,7 +164,7 @@ def oauth(request):
     access_token = json_data['access_token']
 
     print("access_token 1 = " + access_token)
-    request.session[request.session.session_key + 'access_token'] = str(access_token)
+    request.session[str(request.session.session_key) + 'access_token'] = str(access_token)
 
     user_profile_info_uri = "https://kapi.kakao.com/v1/api/talk/profile?access_token="
     user_profile_info_uri += str(access_token)
@@ -174,7 +174,7 @@ def oauth(request):
     user_all_data_uri_data = requests.get(user_all_data_uri)
     user_all_json_data = user_all_data_uri_data.json()
     user_id = user_all_json_data['id']
-    request.session[request.session.session_key + 'user_id'] = user_id
+    request.session[str(request.session.session_key) + 'user_id'] = user_id
 
     user_profile_info_uri_data = requests.get(user_profile_info_uri)
     user_json_data = user_profile_info_uri_data.json()
@@ -182,50 +182,50 @@ def oauth(request):
     profileImageURL = user_json_data['profileImageURL']
     thumbnailURL = user_json_data['thumbnailURL']
 
-    request.session[request.session.session_key + 'user'] = nickName
-    request.session[request.session.session_key + 'profile'] = thumbnailURL
+    request.session[str(request.session.session_key) + 'user'] = nickName
+    request.session[str(request.session.session_key) + 'profile'] = thumbnailURL
 
-    if request.session.get(request.session.session_key + 'friendsNew') == 'friendsNew':
+    if request.session.get(str(request.session.session_key) + 'friendsNew') == 'friendsNew':
 
-        request.session[request.session.session_key + 'friendsNew'] = {}
+        request.session[str(request.session.session_key) + 'friendsNew'] = {}
         request.session.modified = True
 
         return redirect('friendsCreate')
 
-    elif request.session.get(request.session.session_key + 'new') == 'new':
+    elif request.session.get(str(request.session.session_key) + 'new') == 'new':
 
-        request.session[request.session.session_key + 'new'] = {}
+        request.session[str(request.session.session_key) + 'new'] = {}
         request.session.modified = True
 
         return redirect('create')
 
-    elif request.session.get(request.session.session_key + 'deleteConfirm') == 'deleteConfirm':
+    elif request.session.get(str(request.session.session_key) + 'deleteConfirm') == 'deleteConfirm':
 
-        request.session[request.session.session_key + 'deleteConfirm'] = {}
+        request.session[str(request.session.session_key) + 'deleteConfirm'] = {}
         request.session.modified = True
 
-        return redirect('delete', str(request.session.get(request.session.session_key + 'board_id')))
+        return redirect('delete', str(request.session.get(str(request.session.session_key) + 'board_id')))
 
-    elif request.session.get(request.session.session_key + 'editConfirm') == 'editConfirm':
+    elif request.session.get(str(request.session.session_key) + 'editConfirm') == 'editConfirm':
 
-        request.session[request.session.session_key + 'editConfirm'] = {}
+        request.session[str(request.session.session_key) + 'editConfirm'] = {}
         request.session.modified = True
 
-        return redirect('edit', str(request.session.get(request.session.session_key + 'board_id')))
+        return redirect('edit', str(request.session.get(str(request.session.session_key) + 'board_id')))
 
-    elif request.session.get(request.session.session_key + 'friendsDeleteConfirm') == 'friendsDeleteConfirm':
+    elif request.session.get(str(request.session.session_key) + 'friendsDeleteConfirm') == 'friendsDeleteConfirm':
 
-        request.session[request.session.session_key + 'friendsDeleteConfirm'] = {}
+        request.session[str(request.session.session_key) + 'friendsDeleteConfirm'] = {}
         request.session.modified = True
 
-        return redirect('friendsDelete', str(request.session.get(request.session.session_key + 'board_id')))
+        return redirect('friendsDelete', str(request.session.get(str(request.session.session_key) + 'board_id')))
 
-    elif request.session.get(request.session.session_key + 'friendsEditConfirm') == 'friendsEditConfirm':
+    elif request.session.get(str(request.session.session_key) + 'friendsEditConfirm') == 'friendsEditConfirm':
 
-        request.session[request.session.session_key + 'friendsEditConfirm'] = {}
+        request.session[str(request.session.session_key) + 'friendsEditConfirm'] = {}
         request.session.modified = True
 
-        return redirect('friendsEdit', str(request.session.get(request.session.session_key + 'board_id')))
+        return redirect('friendsEdit', str(request.session.get(str(request.session.session_key) + 'board_id')))
 
     else:
         request.session.modified = True
@@ -339,7 +339,7 @@ def friendsDetail(request, board_id):
 
 # 술 친구 글쓰기 누르면
 def friendsNew(request):
-    request.session[request.session.session_key + 'friendsNew'] = str('friendsNew')
+    request.session[str(request.session.session_key) + 'friendsNew'] = str('friendsNew')
     return redirect('kakao')
 
 
@@ -353,13 +353,13 @@ def friendsCreate(request):
 
             post = form.save(commit=False)
 
-            post.user = request.session.get(request.session.session_key + 'user')
-            post.profile = request.session.get(request.session.session_key + 'profile')
-            post.user_id = request.session.get(request.session.session_key + 'user_id')
+            post.user = request.session.get(str(request.session.session_key) + 'user')
+            post.profile = request.session.get(str(request.session.session_key) + 'profile')
+            post.user_id = request.session.get(str(request.session.session_key) + 'user_id')
 
-            request.session[request.session.session_key + 'user'] = {}
-            request.session[request.session.session_key + 'profile'] = {}
-            request.session[request.session.session_key + 'user_id'] = {}
+            request.session[str(request.session.session_key) + 'user'] = {}
+            request.session[str(request.session.session_key) + 'profile'] = {}
+            request.session[str(request.session.session_key) + 'user_id'] = {}
             request.session.modified = True
 
             post.save()
@@ -375,10 +375,10 @@ def friendsCreate(request):
 # 술 친구 글 삭제
 def friendsDelete(request, board_id):
     board_detail = get_object_or_404(FriendsBoard, pk=board_id)
-    user_id = request.session.get(request.session.session_key + 'user_id')
-    request.session[request.session.session_key + 'user'] = {}
-    request.session[request.session.session_key + 'profile'] = {}
-    request.session[request.session.session_key + 'user_id'] = {}
+    user_id = request.session.get(str(request.session.session_key) + 'user_id')
+    request.session[str(request.session.session_key) + 'user'] = {}
+    request.session[str(request.session.session_key) + 'profile'] = {}
+    request.session[str(request.session.session_key) + 'user_id'] = {}
 
     if user_id == board_detail.user_id:
         board_detail.delete()
@@ -388,14 +388,14 @@ def friendsDelete(request, board_id):
 
 
 def friendsDeleteConfirm(request, board_id):
-    request.session[request.session.session_key + 'friendsDeleteConfirm'] = str('friendsDeleteConfirm')
-    request.session[request.session.session_key + 'board_id'] = str(board_id)
+    request.session[str(request.session.session_key) + 'friendsDeleteConfirm'] = str('friendsDeleteConfirm')
+    request.session[str(request.session.session_key) + 'board_id'] = str(board_id)
     return redirect('kakao')
 
 
 def friendsEditConfirm(request, board_id):
-    request.session[request.session.session_key + 'friendsEditConfirm'] = str('friendsEditConfirm')
-    request.session[request.session.session_key + 'board_id'] = str(board_id)
+    request.session[str(request.session.session_key) + 'friendsEditConfirm'] = str('friendsEditConfirm')
+    request.session[str(request.session.session_key) + 'board_id'] = str(board_id)
     return redirect('kakao')
 
 
@@ -412,9 +412,9 @@ def friendsEdit(request, board_id):
             post.body = form.cleaned_data['body']
             post.photo = form.cleaned_data['photo']
 
-            request.session[request.session.session_key + 'user'] = {}
-            request.session[request.session.session_key + 'profile'] = {}
-            request.session[request.session.session_key + 'user_id'] = {}
+            request.session[str(request.session.session_key) + 'user'] = {}
+            request.session[str(request.session.session_key) + 'profile'] = {}
+            request.session[str(request.session.session_key) + 'user_id'] = {}
 
             post.save()
 
@@ -424,7 +424,7 @@ def friendsEdit(request, board_id):
     else:
         form = FriendsForm(instance=board_detail)
 
-        if request.session.get(request.session.session_key + 'user_id') == board_detail.user_id:
+        if request.session.get(str(request.session.session_key) + 'user_id') == board_detail.user_id:
             return render(request, 'boards/friends/friendsEdit.html', {'form': form, 'board': board_detail})
         else:
             return redirect('friends')
