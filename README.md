@@ -8,7 +8,7 @@
 ***
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/44333971/65394257-3f7e0f80-ddc6-11e9-89a8-6d14d89b2923.jpg">
+<img src="https://user-images.githubusercontent.com/44333971/65394472-a650f800-ddc9-11e9-86a8-1ef08b1b8121.jpg">
 </p>
 
 ***
