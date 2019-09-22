@@ -44,8 +44,8 @@ def kakao(request):
     login_request_uri = 'https://kauth.kakao.com/oauth/authorize?'
 
     client_id = 'd9079dbac88fca9754d091a7af0366ed'
-    # redirect_uri = 'http://127.0.0.1:8000/oauth'
-    redirect_uri = 'http://172.30.1.1:8000/oauth'
+    redirect_uri = 'http://127.0.0.1:8000/oauth'
+    # redirect_uri = 'http://172.30.1.1:8000/oauth'
     # redirect_uri = 'https://knut.events/oauth'
 
     login_request_uri += 'client_id=' + client_id
@@ -68,13 +68,13 @@ def create(request):
 
             post = form.save(commit=False)
 
-            post.user = request.session.get(str(request.session.session_key) + 'user')
-            post.profile = request.session.get(str(request.session.session_key) + 'profile')
-            post.user_id = request.session.get(str(request.session.session_key) + 'user_id')
+            post.user = request.session.get(request.session.session_key + 'user')
+            post.profile_url = request.session.get(request.session.session_key + 'profile_url')
+            post.user_id = request.session.get(request.session.session_key + 'user_id')
 
-            request.session[str(request.session.session_key) + 'user'] = {}
-            request.session[str(request.session.session_key) + 'profile'] = {}
-            request.session[str(request.session.session_key) + 'user_id'] = {}
+            request.session[request.session.session_key + 'user'] = {}
+            request.session[request.session.session_key + 'profile_url'] = {}
+            request.session[request.session.session_key + 'user_id'] = {}
             request.session.modified = True
 
             post.save()
@@ -90,10 +90,11 @@ def create(request):
 # 글 삭제
 def delete(request, board_id):
     board_detail = get_object_or_404(Board, pk=board_id)
-    user_id = request.session.get(str(request.session.session_key) + 'user_id')
-    request.session[str(request.session.session_key) + 'user'] = {}
-    request.session[str(request.session.session_key) + 'profile'] = {}
-    request.session[str(request.session.session_key) + 'user_id'] = {}
+
+    user_id = request.session.get(request.session.session_key + 'user_id')
+    request.session[request.session.session_key + 'user'] = {}
+    request.session[request.session.session_key + 'profile_url'] = {}
+    request.session[request.session.session_key + 'user_id'] = {}
 
     if user_id == board_detail.user_id:
         board_detail.delete()
@@ -128,9 +129,9 @@ def edit(request, board_id):
             post.body = form.cleaned_data['body']
             post.photo = form.cleaned_data['photo']
 
-            request.session[str(request.session.session_key) + 'user'] = {}
-            request.session[str(request.session.session_key) + 'profile'] = {}
-            request.session[str(request.session.session_key) + 'user_id'] = {}
+            request.session[request.session.session_key + 'user'] = {}
+            request.session[request.session.session_key + 'profile_url'] = {}
+            request.session[request.session.session_key + 'user_id'] = {}
 
             post.save()
 
@@ -182,8 +183,8 @@ def oauth(request):
     profileImageURL = user_json_data['profileImageURL']
     thumbnailURL = user_json_data['thumbnailURL']
 
-    request.session[str(request.session.session_key) + 'user'] = nickName
-    request.session[str(request.session.session_key) + 'profile'] = thumbnailURL
+    request.session[request.session.session_key + 'user'] = nickName
+    request.session[request.session.session_key + 'profile_url'] = thumbnailURL
 
     if request.session.get(str(request.session.session_key) + 'friendsNew') == 'friendsNew':
 
@@ -353,13 +354,14 @@ def friendsCreate(request):
 
             post = form.save(commit=False)
 
-            post.user = request.session.get(str(request.session.session_key) + 'user')
-            post.profile = request.session.get(str(request.session.session_key) + 'profile')
-            post.user_id = request.session.get(str(request.session.session_key) + 'user_id')
+            post.user = request.session.get(request.session.session_key + 'user')
+            post.profile_url = request.session.get(request.session.session_key + 'profile_url')
+            post.user_id = request.session.get(request.session.session_key + 'user_id')
 
-            request.session[str(request.session.session_key) + 'user'] = {}
-            request.session[str(request.session.session_key) + 'profile'] = {}
-            request.session[str(request.session.session_key) + 'user_id'] = {}
+            request.session[request.session.session_key + 'user'] = {}
+            request.session[request.session.session_key + 'profile_url'] = {}
+            request.session[request.session.session_key + 'user_id'] = {}
+
             request.session.modified = True
 
             post.save()
@@ -375,10 +377,11 @@ def friendsCreate(request):
 # 술 친구 글 삭제
 def friendsDelete(request, board_id):
     board_detail = get_object_or_404(FriendsBoard, pk=board_id)
-    user_id = request.session.get(str(request.session.session_key) + 'user_id')
-    request.session[str(request.session.session_key) + 'user'] = {}
-    request.session[str(request.session.session_key) + 'profile'] = {}
-    request.session[str(request.session.session_key) + 'user_id'] = {}
+
+    user_id = request.session.get(request.session.session_key + 'user_id')
+    request.session[request.session.session_key + 'user'] = {}
+    request.session[request.session.session_key + 'profile_url'] = {}
+    request.session[request.session.session_key + 'user_id'] = {}
 
     if user_id == board_detail.user_id:
         board_detail.delete()
@@ -412,9 +415,9 @@ def friendsEdit(request, board_id):
             post.body = form.cleaned_data['body']
             post.photo = form.cleaned_data['photo']
 
-            request.session[str(request.session.session_key) + 'user'] = {}
-            request.session[str(request.session.session_key) + 'profile'] = {}
-            request.session[str(request.session.session_key) + 'user_id'] = {}
+            request.session[request.session.session_key + 'user'] = {}
+            request.session[request.session.session_key + 'profile_url'] = {}
+            request.session[request.session.session_key + 'user_id'] = {}
 
             post.save()
 

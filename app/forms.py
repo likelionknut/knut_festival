@@ -15,9 +15,9 @@ class BoardForm(forms.ModelForm):
 
         model = Board
 
-        fields = ['title', 'tag', 'profile', 'user', 'body', 'photo', ]
+        fields = ['title', 'tag', 'profile_url', 'user', 'body', 'photo', ]
 
-        exclude = ['user', 'profile']
+        exclude = ['user', 'profile_url']
 
         help_texts = {
             'title': '글 제목',
@@ -110,9 +110,9 @@ class FriendsForm(forms.ModelForm):
     class Meta:
         model = FriendsBoard
 
-        fields = ['title', 'profile', 'user', 'body', 'photo', ]
+        fields = ['title', 'profile_url', 'user', 'body', 'photo', ]
 
-        exclude = ['user', 'profile']
+        exclude = ['user', 'profile_url']
 
         help_texts = {
             'title': '글 제목',

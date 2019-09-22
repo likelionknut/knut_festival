@@ -14,7 +14,7 @@ class BoardAdmin(admin.ModelAdmin):
         ('글 제목', {'fields': ['title']}),
         ('주웠어요/잃어버렸어요', {'fields': ['tag']}),
         ('글 내용', {'fields': ['body']}),
-        ('사용자', {'fields': ['user', 'user_id', 'profile']}),
+        ('사용자', {'fields': ['user', 'user_id', 'profile_url', 'profile']}),
         ('사진', {'fields': ['photo']}),
     ]
 
@@ -31,7 +31,7 @@ class FriendsBoardAdmin(admin.ModelAdmin):
     fieldsets = [
         ('글 제목', {'fields': ['title']}),
         ('글 내용', {'fields': ['body']}),
-        ('사용자', {'fields': ['user', 'user_id', 'profile']}),
+        ('사용자', {'fields': ['user', 'user_id', 'profile_url', 'profile']}),
         ('사진', {'fields': ['photo']}),
     ]
 
