@@ -87,10 +87,21 @@ class FriendsBoard(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     photo = models.ImageField(upload_to='friends/images/%Y/%m/%d/%H/%M', blank=True, null=True)
-    profile = models.CharField(max_length=150)
+    # profile = models.CharField(max_length=150)
+    profile_url = models.URLField(null=True)
+    profile = models.ImageField(upload_to='friends/profile/%Y/%m/%d/%H/%M', null=True)
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if self.profile_url and not self.profile:
+            img_temp = NamedTemporaryFile(delete=True)
+            img_temp.write(urlopen(self.profile_url).read())
+            img_temp.flush()
+            # self.profile.save(f"image_{self.pk}", File(img_temp))
+            self.profile.save(os.path.basename(self.profile_url), File(img_temp))
+        super(FriendsBoard, self).save(*args, **kwargs)
 
 # ################# 삭제 #################
 # # 자유 게시판
