@@ -5,77 +5,123 @@
 
 {% block javascriptHead %}
     <!-- Template Main Javascript File -->
-    <script src="{% static 'app/js/main.js' %}"></script>
+    <script src="{% static 'app/js/board_main.js' %}"></script>
+    <style type="text/css">
+
+        @font-face {
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+            font-family: 'DungGeunMo';
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            background: #00027D !important;
+            font-family: 'DungGeunMo';
+            color: #F0F0F0;
+        }
+
+        .container_ex {
+            width: 940px;
+            margin: 10px auto;
+            padding: 20px;
+            border: 1px solid #bcbcbc;
+        }
+
+        .header {
+            padding: 20px;
+            margin-bottom: 20px;
+            /*border: 1px solid #bcbcbc;*/
+            background: #073394;
+        }
+
+        .content {
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar {
+            width: 100%;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            clear: both;
+            padding: 20px;
+        }
+
+    </style>
 {% endblock %}
 
 {% block content %}
-
+    <body>
     <!-- start section navbar -->
     <nav id="main-nav">
-        <div class="row">
-            <div class="container">
-
-                <div class="logo">
-                    <a href="{% url 'home' %}"><img src="{% static 'app/logo1.png' %}" alt="logo" align="left">&nbsp;KNUT
-                        FESTIVAL<br>&nbsp;국원 대동제</a>
+            <div class="row">
+                <div class="container">
+        
+                    <div class="logo">
+                        <a href="{% url 'home' %}" style="color:rgb(95, 82, 88);"><img src="{% static 'app/logo1.png' %}" alt="logo" align="left">&nbsp;KNUT FESTIVAL<br>&nbsp;국원 대동제</a>
+                    </div>
+        
+        
+                    <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
+        
+                    <ul class="nav-menu list-unstyled">
+                        <li><a href="{% url 'map_traffic' %}" class="smoothScroll">지도·교통</a></li>
+                        <li><a href="{% url 'friends' %}" class="smoothScroll">술 친구 게시판</a></li>
+                        <li><a href="{% url 'board' %}" class="smoothScroll">분실물 게시판</a></li>
+                    </ul>
+        
                 </div>
-
-                <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
-
-            <ul class="nav-menu list-unstyled">
-                <li><a href="{% url 'map_traffic' %}" class="smoothScroll">지도·교통</a></li>
-                <li><a href="{% url 'friends' %}" class="smoothScroll">술 친구 게시판</a></li>
-                <li><a href="{% url 'board' %}" class="smoothScroll">분실물 게시판</a></li>
-            </ul>
-
-
             </div>
-
-        </div>
-
-    </nav>
+        </nav>
     <!-- End section navbar -->
 
 
-
-    <br><br><br><br><br>
-    <div class="container">
-        <div class="section-title text-center">
-            <h2>About us</h2>
-        </div>
-    </div>
-
     <!-- start section journal -->
     <br><br><br><br>
-    <div class="container"
-         style="width: 90%; background-color:rgb(255,207,207); border-width: 4px; border-style: solid; border-color: rgb(212, 91, 152); border-radius: 2%;">
-        <img width="150" height="150" src="{% static 'app/헤이즈111.png' %}" style="border-radius:50%" align="bottom">
-        <h5 style="text-align:center">
-            조경록<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></h5>
-
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="tile-container">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card hovercard">
-                            <div class="cardheader"
-                                 style="background-image: url('https://image.shutterstock.com/image-photo/large-beautiful-drops-transparent-rain-260nw-668593321.jpg');"></div>
-                            <div class="avatar"><img alt="" src="/res/images/favicon.png"></div>
-                            <div class="info">
-                                <div class="title"><a target="_blank">김짱돌</a></div>
-                                <div class="desc"></div>
-                                <div class="desc"></div>
-                            </div>
-                            <div class="bottom"></div>
-                        </div>
-                    </div>
-                </div>
+    <div class="container text-center">
+        <div id="journal" class="container_ex text-center" >
+            <div class="header" style="text-align: center">
+                <h1 style="color: #F0F0F0; font-family: 'DungGeunMo';">LIKELION X KNUT</h1>
+                <h1 style="color: #F0F0F0; font-family: 'DungGeunMo';">멋쟁이 사자처럼 at 한국교통대학교</h1>
             </div>
-
-
+        
+            <div class="content" style="color: #F0F0F0; font-family: 'DungGeunMo';">
+                <h2 style="color: #F0F0F0; font-family: 'DungGeunMo';">🦁 멋쟁이 사자처럼이란?</h2>
+                <p style="color: #F0F0F0; font-family: 'DungGeunMo';">비전공자를 대상으로 프로그래밍을 가르치는 대학 연합 교육 단체<br>"멋쟁이 사자처럼"의 한국교통대학교 중앙 동아리입니다.</p>
+                <br>
+                <h2 style="color: #F0F0F0; font-family: 'DungGeunMo';">🎉축제 페이지 개발 인원</h2>
+                <h3 style="color: #F0F0F0; font-family: 'DungGeunMo';">*운영진*</h3>
+                <p style="color: #F0F0F0; font-family: 'DungGeunMo';">박상돈, 조경록, 명평윤, 임현석, 박주완</p>
+                <h3 style="color: #F0F0F0; font-family: 'DungGeunMo';">*멤버*</h3>
+                <p style="color: #F0F0F0; font-family: 'DungGeunMo';">김경민, 김경덕, 정시찬</p>
+            </div>
+        
+            <div class="content" style="color: #F0F0F0; font-family: 'DungGeunMo';">
+                <h4 style="color: #F0F0F0; font-family: 'DungGeunMo';">무엇을 배우죠?</h4>
+                    HTML<br>
+                    CSS<br>
+                    Python<br>
+                    Django<br>
+                    Javascript<br>
+                    REST API<br>
+                    React<br><br><br><br>
+                <h5 style="color: #F0F0F0; font-family: 'DungGeunMo';">어떤 활동을 하나요?</h4>
+                    정규 커리큘럼에 따른 중앙 온라인 강의<br>
+                    학교별 오프라인 세션<br>
+                    아이디어톤<br>
+                    해커톤<br>
+                    관련 봉사활동 및 해커톤<br>
+            </div>
+            <div class="footer">
+            </div>
         </div>
     </div>
-
+    </body>
     <!-- End section journal -->
+    {% block footer %} &nbsp;{% endblock %}
 
 {% endblock %}
