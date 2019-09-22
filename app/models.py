@@ -1,5 +1,9 @@
 from django.db import models
 from django.utils import timezone
+from urllib.request import urlopen
+from django.core.files import File
+import os
+from tempfile import NamedTemporaryFile
 
 
 # Create your models here.
@@ -24,10 +28,39 @@ class Board(models.Model):
     tag = models.CharField(max_length=6, choices=tag_choices, default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     photo = models.ImageField(upload_to='board/images/%Y/%m/%d/%H/%M', blank=True, null=True)
-    profile = models.CharField(max_length=150)
+    profile_url = models.URLField(null=True)
+    profile = models.ImageField(upload_to='board/profile/%Y/%m/%d/%H/%M', null=True)
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if self.profile_url and not self.profile:
+            img_temp = NamedTemporaryFile(delete=True)
+            img_temp.write(urlopen(self.profile_url).read())
+            img_temp.flush()
+            # self.profile.save(f"image_{self.pk}", File(img_temp))
+            self.profile.save(os.path.basename(self.profile_url), File(img_temp))
+        super(Board, self).save(*args, **kwargs)
+
+    # def get_remote_image(self):
+    #     if self.profile_url and not self.profile:
+    #         result = urllib.urlretrieve(self.profile_url)
+    #         self.profile.save(
+    #             os.path.basename(self.profile_url),
+    #             File(open(result[0]))
+    #         )
+    #         # self.save()
+
+    # def get_remote_image(self):
+    #     if self.profile_url:
+    #         # result = urllib.request.urlretrieve(self.profile_url, 'download.jpg')
+    #         urllib.request.urlretrieve(self.profile_url, 'E:\download.jpg')
+    #         # self.profile.save(
+    #         #     os.path.basename(self.profile_url),
+    #         #     File(open(result[0]))
+    #         # )
+    #         # self.save()
 
 
 # ################# 삭제 #################
@@ -58,7 +91,6 @@ class FriendsBoard(models.Model):
 
     def __str__(self):
         return self.title
-
 
 # ################# 삭제 #################
 # # 자유 게시판

@@ -68,13 +68,13 @@ def create(request):
 
             post = form.save(commit=False)
 
-            post.user = request.session.get(str(request.session.session_key) + 'user')
-            post.profile = request.session.get(str(request.session.session_key) + 'profile')
-            post.user_id = request.session.get(str(request.session.session_key) + 'user_id')
+            post.user = request.session.get(request.session.session_key + 'user')
+            post.profile_url = request.session.get(request.session.session_key + 'profile_url')
+            post.user_id = request.session.get(request.session.session_key + 'user_id')
 
-            request.session[str(request.session.session_key) + 'user'] = {}
-            request.session[str(request.session.session_key) + 'profile'] = {}
-            request.session[str(request.session.session_key) + 'user_id'] = {}
+            request.session[request.session.session_key + 'user'] = {}
+            request.session[request.session.session_key + 'profile_url'] = {}
+            request.session[request.session.session_key + 'user_id'] = {}
             request.session.modified = True
 
             post.save()
@@ -90,10 +90,11 @@ def create(request):
 # 글 삭제
 def delete(request, board_id):
     board_detail = get_object_or_404(Board, pk=board_id)
-    user_id = request.session.get(str(request.session.session_key) + 'user_id')
-    request.session[str(request.session.session_key) + 'user'] = {}
-    request.session[str(request.session.session_key) + 'profile'] = {}
-    request.session[str(request.session.session_key) + 'user_id'] = {}
+
+    user_id = request.session.get(request.session.session_key + 'user_id')
+    request.session[request.session.session_key + 'user'] = {}
+    request.session[request.session.session_key + 'profile_url'] = {}
+    request.session[request.session.session_key + 'user_id'] = {}
 
     if user_id == board_detail.user_id:
         board_detail.delete()
@@ -128,9 +129,9 @@ def edit(request, board_id):
             post.body = form.cleaned_data['body']
             post.photo = form.cleaned_data['photo']
 
-            request.session[str(request.session.session_key) + 'user'] = {}
-            request.session[str(request.session.session_key) + 'profile'] = {}
-            request.session[str(request.session.session_key) + 'user_id'] = {}
+            request.session[request.session.session_key + 'user'] = {}
+            request.session[request.session.session_key + 'profile_url'] = {}
+            request.session[request.session.session_key + 'user_id'] = {}
 
             post.save()
 
@@ -182,8 +183,8 @@ def oauth(request):
     profileImageURL = user_json_data['profileImageURL']
     thumbnailURL = user_json_data['thumbnailURL']
 
-    request.session[str(request.session.session_key) + 'user'] = nickName
-    request.session[str(request.session.session_key) + 'profile'] = thumbnailURL
+    request.session[request.session.session_key + 'user'] = nickName
+    request.session[request.session.session_key + 'profile_url'] = thumbnailURL
 
     if request.session.get(str(request.session.session_key) + 'friendsNew') == 'friendsNew':
 

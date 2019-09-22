@@ -15,9 +15,9 @@ class BoardForm(forms.ModelForm):
 
         model = Board
 
-        fields = ['title', 'tag', 'profile', 'user', 'body', 'photo', ]
+        fields = ['title', 'tag', 'profile_url', 'user', 'body', 'photo', ]
 
-        exclude = ['user', 'profile']
+        exclude = ['user', 'profile_url']
 
         help_texts = {
             'title': '글 제목',
