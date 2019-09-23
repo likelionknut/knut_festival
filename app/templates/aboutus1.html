@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} 만든 사람들 {% endblock %}
+
+{% block javascriptHead %}
+<!-- Template Main Javascript File -->
+<script src="{% static 'app/js/board_main.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<!-- start section navbar -->
+<nav id="main-nav">
+    <div class="row">
+        <div class="container">
+
+            <div class="logo">
+                <a href="{% url 'home' %}" style="color:rgb(95, 82, 88);"><img src="{% static 'app/logo1.png' %}" alt="logo" align="left">&nbsp;KNUT FESTIVAL<br>&nbsp;국원 대동제</a>
+            </div>
+
+            <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
+
+            <ul class="nav-menu list-unstyled">
+
+                <li><a href="{% url 'map_traffic' %}" class="smoothScroll">지도·교통</a></li>
+                <li><a href="{% url 'friends' %}" class="smoothScroll">술 친구 게시판</a></li>
+                <li><a href="{% url 'board' %}" class="smoothScroll">분실물 게시판</a></li>
+                <li><a href="{% url 'aboutus' %}" class="smoothScroll">About us</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+<!-- End section navbar -->
+
+
+
+<!-- map section -->
+<br><br><br><br><br>
+<div class="container">
+    <div class="section-title text-center">
+        <h2 style="font-size:40px; text-transform:none;">🦁Likelion X KNUT🦁<br>
+        멋쟁이 사자처럼 at 한국교통대학교</h2>
+    </div>
+</div>
+<div id="board" class="container text-center" style="width: 90%; background-color:rgb(255,207,207); border-width: 4px; border-style: solid; border-color: rgb(212, 91, 152); border-radius: 2%;">
+    <br><br>
+    <h2 style="font-size:40px;">👀만든 사람들👀</h2>
+    <br><br>
+    <div style="display: inline-block;">
+        <img src="{% static 'app/박상돈1.jpg' %}" width="150" height="150" style="margin: 0 15px 0 15px; border:4px dashed white; border-radius: 50%"><br><br>
+        <h3 class="text-center" style="display: inline">박상돈<br></h3>
+        <h5>
+        게시판 구현,<br>
+        서버 구축 및 배포<br>
+        </h5>
+    </div>
+    <div style="display: inline-block;">
+        <img src="{% static 'app/조경록1.jpg' %}" width="150" height="150" style="margin: 0 15px 0 15px; border:4px dashed white; border-radius: 50%"><br><br>
+        <h3 class="text-center" style="display: inline">조경록<br></h3>
+        <h5>
+        게시판 구현,<br>
+        UI/UX 설계 및 구현
+        </h5>
+    </div>
+    <div style="display: inline-block;">
+        <img src="{% static 'app/명평윤1.jpg' %}" width="150" height="150" style="margin: 0 15px 0 15px; border:4px dashed white; border-radius: 50%"><br><br>
+        <h3 class="text-center" style="display: inline">명평윤<br></h3>
+        <h5>
+        소셜 공유 기능 구현
+        </h5>
+    </div>
+    <div style="display: inline-block;">
+        <img src="{% static 'app/박주완.png' %}" width="150" height="150" style="margin: 0 15px 0 15px; border:4px dashed white; border-radius: 50%"><br><br>
+        <h3 class="text-center" style="display: inline">박주완<br></h3>
+        <h5>
+        동아리 부스 및<br>
+        이벤트 소개 디자인<br>
+        </h5>
+    </div>
+    <br><br><br>
+    <div style="display: inline-block;">
+        <img src="{% static 'app/김경민.jpg' %}" width="150" height="150" style="margin: 0 15px 0 15px; border:4px dashed white; border-radius: 50%"><br><br>
+        <h3 class="text-center" style="display: inline">김경민<br></h3>
+        <h5>
+        메인이미지,<br>
+        시간표 디자인<br>
+        </h5>
+    </div>
+    <div style="display: inline-block;">
+        <img src="{% static 'app/김경덕1.jpg' %}" width="150" height="150" style="margin: 0 15px 0 15px; border:4px dashed white; border-radius: 50%"><br><br>
+        <h3 class="text-center" style="display: inline">김경덕<br></h3>
+        <h5>
+        배너 구현,<br>
+        약도 디자인
+        </h5>
+    </div>
+    <div style="display: inline-block;">
+        <img src="{% static 'app/정시찬1.jpg' %}" width="150" height="150" style="margin: 0 15px 0 15px; border:4px dashed white; border-radius: 50%"><br><br>
+        <h3 class="text-center" style="display: inline">정시찬<br></h3>
+        <h5>
+        배너 구현,<br>
+        메인이미지 디자인
+        </h5>
+    </div>
+    <br><br><br><br>
+    <div style="margin: 20px; text-align: left;">
+        <h2>🦁멋쟁이 사자처럼이란?</h2>
+        <h4>비전공자를 대상으로 프로그래밍을 가르치는 대학 연합 교육단체이며, 전국 대학별로 '멋쟁이 사자처럼'의 이름으로 활동하고 있습니다.</h4>
+        <br><br>
+        <h2>👩🏻‍💻무슨 활동을 하나요?</h2>
+        <h4>운영진들이 멤버들에게 개발에 필요한 기술스택을 가르치며, 각종 대외활동(대학 연합 해커톤, 코딩 봉사활동, 컨퍼런스 등)에 참여할 수 있는 기회를 제공합니다.</h4>
+        <br><br>
+        <h2>📚기술스택</h2>
+        <h4>
+            <ul>
+                <li>Python/Django</li>
+                <li>Bootstrap Theme</li>
+                <li>Plain HTML/CSS/JS</li>
+                <li>REST API</li>
+            </ul>
+        </h4>
+        <br>
+        <h2>💬More Info...</h2>
+        <h4>
+            <ul>
+                <li>Github : <a style="word-break:break-all;" href="https://github.com/likelionknut/knut_festival">https://github.com/likelionknut/knut_festival</a></li>
+                <li>페이스북 페이지 : <a style="word-break:break-all;" href="https://www.facebook.com/likelionKNUT">https://www.facebook.com/likelionKNUT</a></li>
+                <li>네이버 블로그 : <a style="word-break:break-all;" href="https://blog.naver.com/likelionknut">https://blog.naver.com/likelionknut</a></li>
+                <li>멋쟁이 사자처럼 at 한국교통대학교 : <a style="word-break:break-all;" href="http://knut.likelion.org">http://knut.likelion.org</a></li>
+                <li>Official Email : <a style="word-break:break-all;" href="mailto: likelionknut@gmail.com">likelionknut@gmail.com</a></li>
+            </ul>
+        </h4>
+    </div>
+</div>
+<!-- map section -->
+
+{% endblock %}
