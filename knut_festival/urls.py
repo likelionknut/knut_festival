@@ -40,8 +40,11 @@ urlpatterns = [
     path('board/<int:board_id>/deleteConfirm', app.views.deleteConfirm, name="deleteConfirm"),
     path('board/<int:board_id>/edit', app.views.edit, name="edit"),
     path('board/<int:board_id>/editConfirm', app.views.editConfirm, name="editConfirm"),
+
     path('board/editFailed/', app.views.editFailed, name="editFailed"),
     path('board/deleteFailed/', app.views.deleteFailed, name="deleteFailed"),
+
+    path('board/deleteSuccess/', app.views.deleteSuccess, name="deleteSuccess"),
 
     path('kakao/', app.views.kakao, name="kakao"),
     path('oauth/', app.views.oauth, name="oauth"),
