@@ -51,6 +51,8 @@
                                          style="border-radius: 50%">&nbsp;{{ board.user }}</h5>
                             {% endif %}
                             <font size="2" color="gray">{{ board.created_at|date:"y/m/d A h:i" }}</font>
+                            <br>
+                            <font size="2" color="gray">조회수 : {{ board.page_counter }}</font>
 
                             <br><br>
                             <div class="text-right">
