@@ -98,7 +98,7 @@ def delete(request, board_id):
 
     if user_id == board_detail.user_id:
         board_detail.delete()
-        return redirect('board')
+        return redirect('deleteSuccess')
     else:
         return redirect('deleteFailed')
 
@@ -121,6 +121,14 @@ def editConfirm(request, board_id):
 
 def editFailed(request):
     return render(request, 'boards/editFailed.html')
+
+
+def deleteSuccess(request):
+    return render(request, 'boards/deleteFailed.html')
+
+
+def editSuccess(request):
+    return render(request, 'boards/editSuccess.html')
 
 
 # 글 수정
@@ -392,7 +400,7 @@ def friendsDelete(request, board_id):
 
     if user_id == board_detail.user_id:
         board_detail.delete()
-        return redirect('friends')
+        return redirect('deleteSuccess')
     else:
         return redirect('deleteFailed')
 
