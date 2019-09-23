@@ -98,9 +98,13 @@ def delete(request, board_id):
 
     if user_id == board_detail.user_id:
         board_detail.delete()
-        return redirect('board')
+        return redirect('deleteSuccess')
     else:
-        return redirect('board')
+        return redirect('deleteFailed')
+
+
+def deleteFailed(request):
+    return render(request, 'boards/deleteFailed.html')
 
 
 def deleteConfirm(request, board_id):
@@ -113,6 +117,18 @@ def editConfirm(request, board_id):
     request.session[str(request.session.session_key) + 'editConfirm'] = str('editConfirm')
     request.session[str(request.session.session_key) + 'board_id'] = str(board_id)
     return redirect('kakao')
+
+
+def editFailed(request):
+    return render(request, 'boards/editFailed.html')
+
+
+def deleteSuccess(request):
+    return render(request, 'boards/deleteFailed.html')
+
+
+def editSuccess(request):
+    return render(request, 'boards/editSuccess.html')
 
 
 # 글 수정
@@ -144,7 +160,7 @@ def edit(request, board_id):
         if request.session.get(str(request.session.session_key) + 'user_id') == board_detail.user_id:
             return render(request, 'boards/edit.html', {'form': form, 'board': board_detail})
         else:
-            return redirect('board')
+            return redirect('editFailed')
 
 
 # 카카오톡 oauth
@@ -384,9 +400,9 @@ def friendsDelete(request, board_id):
 
     if user_id == board_detail.user_id:
         board_detail.delete()
-        return redirect('friends')
+        return redirect('deleteSuccess')
     else:
-        return redirect('friends')
+        return redirect('deleteFailed')
 
 
 def friendsDeleteConfirm(request, board_id):
@@ -429,7 +445,7 @@ def friendsEdit(request, board_id):
         if request.session.get(str(request.session.session_key) + 'user_id') == board_detail.user_id:
             return render(request, 'boards/friends/friendsEdit.html', {'form': form, 'board': board_detail})
         else:
-            return redirect('friends')
+            return redirect('editFailed')
 
 
 # ################# 삭제 #################
