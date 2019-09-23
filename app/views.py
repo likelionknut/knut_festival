@@ -103,7 +103,7 @@ def delete(request, board_id):
         return redirect('deleteFailed')
 
 
-def deleteFailed(request, board_id):
+def deleteFailed(request):
     return render(request, 'boards/deleteFailed.html')
 
 
@@ -119,8 +119,9 @@ def editConfirm(request, board_id):
     return redirect('kakao')
 
 
-def editFailed(request, board_id):
+def editFailed(request):
     return render(request, 'boards/editFailed.html')
+
 
 # 글 수정
 def edit(request, board_id):
@@ -393,7 +394,7 @@ def friendsDelete(request, board_id):
         board_detail.delete()
         return redirect('friends')
     else:
-        return redirect('friends')
+        return redirect('deleteFailed')
 
 
 def friendsDeleteConfirm(request, board_id):
@@ -436,7 +437,7 @@ def friendsEdit(request, board_id):
         if request.session.get(str(request.session.session_key) + 'user_id') == board_detail.user_id:
             return render(request, 'boards/friends/friendsEdit.html', {'form': form, 'board': board_detail})
         else:
-            return redirect('friends')
+            return redirect('editFailed')
 
 
 # ################# 삭제 #################
