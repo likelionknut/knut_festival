@@ -25,8 +25,7 @@ SECRET_KEY = 'wsu%*(k2sb)^)6xwg%il9k#^6oozx!64^kucbu$ya4=)to3t*b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'ec2-15-164-28-194.ap-northeast-2.compute.amazonaws.com', '15.164.28.194', '172.30.1.1', 'knut.events', 'dev.knut.events']
-
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'ec2-15-164-28-194.ap-northeast-2.compute.amazonaws.com', '15.164.28.194', '172.30.1.1', 'knut.events', 'dev.knut.events', '192.168.0.9']
 
 # Application definition
 
