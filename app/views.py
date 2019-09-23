@@ -72,9 +72,14 @@ def create(request):
             post.profile_url = request.session.get(request.session.session_key + 'profile_url')
             post.user_id = request.session.get(request.session.session_key + 'user_id')
 
-            request.session[request.session.session_key + 'user'] = {}
-            request.session[request.session.session_key + 'profile_url'] = {}
-            request.session[request.session.session_key + 'user_id'] = {}
+            # request.session[request.session.session_key + 'user'] = {}
+            # request.session[request.session.session_key + 'profile_url'] = {}
+            # request.session[request.session.session_key + 'user_id'] = {}
+
+            del request.session[request.session.session_key + 'user']
+            del request.session[request.session.session_key + 'profile_url']
+            del request.session[request.session.session_key + 'user_id']
+
             request.session.modified = True
 
             post.save()
@@ -92,9 +97,13 @@ def delete(request, board_id):
     board_detail = get_object_or_404(Board, pk=board_id)
 
     user_id = request.session.get(request.session.session_key + 'user_id')
-    request.session[request.session.session_key + 'user'] = {}
-    request.session[request.session.session_key + 'profile_url'] = {}
-    request.session[request.session.session_key + 'user_id'] = {}
+    # request.session[request.session.session_key + 'user'] = {}
+    # request.session[request.session.session_key + 'profile_url'] = {}
+    # request.session[request.session.session_key + 'user_id'] = {}
+
+    del request.session[request.session.session_key + 'user']
+    del request.session[request.session.session_key + 'profile_url']
+    del request.session[request.session.session_key + 'user_id']
 
     if user_id == board_detail.user_id:
         board_detail.delete()
@@ -145,9 +154,13 @@ def edit(request, board_id):
             post.body = form.cleaned_data['body']
             post.photo = form.cleaned_data['photo']
 
-            request.session[request.session.session_key + 'user'] = {}
-            request.session[request.session.session_key + 'profile_url'] = {}
-            request.session[request.session.session_key + 'user_id'] = {}
+            # request.session[request.session.session_key + 'user'] = {}
+            # request.session[request.session.session_key + 'profile_url'] = {}
+            # request.session[request.session.session_key + 'user_id'] = {}
+
+            del request.session[request.session.session_key + 'user']
+            del request.session[request.session.session_key + 'profile_url']
+            del request.session[request.session.session_key + 'user_id']
 
             post.save()
 
@@ -203,42 +216,51 @@ def oauth(request):
 
     if request.session.get(str(request.session.session_key) + 'friendsNew') == 'friendsNew':
 
-        request.session[str(request.session.session_key) + 'friendsNew'] = {}
+        # request.session[str(request.session.session_key) + 'friendsNew'] = {}
+        del request.session[request.session.session_key + 'friendsNew']
+
         request.session.modified = True
 
         return redirect('friendsCreate')
 
     elif request.session.get(str(request.session.session_key) + 'new') == 'new':
 
-        request.session[str(request.session.session_key) + 'new'] = {}
+        # request.session[str(request.session.session_key) + 'new'] = {}
+        del request.session[request.session.session_key + 'new']
         request.session.modified = True
 
         return redirect('create')
 
     elif request.session.get(str(request.session.session_key) + 'deleteConfirm') == 'deleteConfirm':
 
-        request.session[str(request.session.session_key) + 'deleteConfirm'] = {}
+        # request.session[str(request.session.session_key) + 'deleteConfirm'] = {}
+        del request.session[request.session.session_key + 'deleteConfirm']
         request.session.modified = True
 
         return redirect('delete', str(request.session.get(str(request.session.session_key) + 'board_id')))
 
     elif request.session.get(str(request.session.session_key) + 'editConfirm') == 'editConfirm':
 
-        request.session[str(request.session.session_key) + 'editConfirm'] = {}
+        # request.session[str(request.session.session_key) + 'editConfirm'] = {}
+        del request.session[request.session.session_key + 'editConfirm']
         request.session.modified = True
 
         return redirect('edit', str(request.session.get(str(request.session.session_key) + 'board_id')))
 
     elif request.session.get(str(request.session.session_key) + 'friendsDeleteConfirm') == 'friendsDeleteConfirm':
 
-        request.session[str(request.session.session_key) + 'friendsDeleteConfirm'] = {}
+        # request.session[str(request.session.session_key) + 'friendsDeleteConfirm'] = {}
+        del request.session[str(request.session.session_key) + 'friendsDeleteConfirm']
+
         request.session.modified = True
 
         return redirect('friendsDelete', str(request.session.get(str(request.session.session_key) + 'board_id')))
 
     elif request.session.get(str(request.session.session_key) + 'friendsEditConfirm') == 'friendsEditConfirm':
 
-        request.session[str(request.session.session_key) + 'friendsEditConfirm'] = {}
+        # request.session[str(request.session.session_key) + 'friendsEditConfirm'] = {}
+        del request.session[str(request.session.session_key) + 'friendsEditConfirm']
+
         request.session.modified = True
 
         return redirect('friendsEdit', str(request.session.get(str(request.session.session_key) + 'board_id')))
@@ -373,9 +395,13 @@ def friendsCreate(request):
             post.profile_url = request.session.get(request.session.session_key + 'profile_url')
             post.user_id = request.session.get(request.session.session_key + 'user_id')
 
-            request.session[request.session.session_key + 'user'] = {}
-            request.session[request.session.session_key + 'profile_url'] = {}
-            request.session[request.session.session_key + 'user_id'] = {}
+            # request.session[request.session.session_key + 'user'] = {}
+            # request.session[request.session.session_key + 'profile_url'] = {}
+            # request.session[request.session.session_key + 'user_id'] = {}
+
+            del request.session[request.session.session_key + 'user']
+            del request.session[request.session.session_key + 'profile_url']
+            del request.session[request.session.session_key + 'user_id']
 
             request.session.modified = True
 
@@ -394,9 +420,13 @@ def friendsDelete(request, board_id):
     board_detail = get_object_or_404(FriendsBoard, pk=board_id)
 
     user_id = request.session.get(request.session.session_key + 'user_id')
-    request.session[request.session.session_key + 'user'] = {}
-    request.session[request.session.session_key + 'profile_url'] = {}
-    request.session[request.session.session_key + 'user_id'] = {}
+    # request.session[request.session.session_key + 'user'] = {}
+    # request.session[request.session.session_key + 'profile_url'] = {}
+    # request.session[request.session.session_key + 'user_id'] = {}
+
+    del request.session[request.session.session_key + 'user']
+    del request.session[request.session.session_key + 'profile_url']
+    del request.session[request.session.session_key + 'user_id']
 
     if user_id == board_detail.user_id:
         board_detail.delete()
@@ -430,9 +460,13 @@ def friendsEdit(request, board_id):
             post.body = form.cleaned_data['body']
             post.photo = form.cleaned_data['photo']
 
-            request.session[request.session.session_key + 'user'] = {}
-            request.session[request.session.session_key + 'profile_url'] = {}
-            request.session[request.session.session_key + 'user_id'] = {}
+            # request.session[request.session.session_key + 'user'] = {}
+            # request.session[request.session.session_key + 'profile_url'] = {}
+            # request.session[request.session.session_key + 'user_id'] = {}
+
+            del request.session[request.session.session_key + 'user']
+            del request.session[request.session.session_key + 'profile_url']
+            del request.session[request.session.session_key + 'user_id']
 
             post.save()
 
