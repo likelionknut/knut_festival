@@ -505,4 +505,4 @@ def map_traffic(request):
     return render(request, 'map_traffic.html')
 
 def aboutus(request):
-    return render(request, 'aboutus.html')
+    return render(request, 'aboutus1.html')
