@@ -35,14 +35,17 @@
                             <img src="{{ board.photo.url }}" class="card-img-top" alt="..." height="300" width="300">
                         {% endif %}
                         <div id="contents" class="card-body" style=" text-align:left;">
-                                <h3 class="card-title">{{board.title}}</h3>
-                                <hr>
+                            <h3 class="card-title">{{ board.title }}</h3>
+                            <hr>
                             {#                        <h6><img src="{{board.profile}}" height="30" width="30" style="border-radius: 50%">&nbsp;{{board.user}}</h6>#}
                             {% if board.profile %}
-{#                                <img src="{{ board.profile.url }}" height="50" width="50" style="border-radius: 50%">#}
-                                <h5><img src="{{board.profile.url}}" height="40" width="40" style="border-radius: 50%">&nbsp;{{board.user}}</h5>
+                                {#                                <img src="{{ board.profile.url }}" height="50" width="50" style="border-radius: 50%">#}
+                                <h5><img src="{{ board.profile.url }}" height="40" width="40"
+                                         style="border-radius: 50%">&nbsp;{{ board.user }}</h5>
                             {% else %}
-                                <h5>{{board.user}}</h5>
+                                <h5><img src="{% static 'app/img/kakao_default_image/profile_default.png' %}"
+                                         height="40" width="40"
+                                         style="border-radius: 50%">&nbsp;{{ board.user }}</h5>
                             {% endif %}
                             <font size="2" color="gray">{{ board.created_at|date:"y/m/d A h:i" }}</font>
                             <br><br>
