@@ -30,6 +30,7 @@ class Board(models.Model):
     photo = models.ImageField(upload_to='board/images/%Y/%m/%d/%H/%M', blank=True, null=True)
     profile_url = models.URLField(null=True)
     profile = models.ImageField(upload_to='board/profile/%Y/%m/%d/%H/%M', null=True)
+    page_counter = models.BigIntegerField(default=0)
 
     def __str__(self):
         return self.title
@@ -90,6 +91,7 @@ class FriendsBoard(models.Model):
     # profile = models.CharField(max_length=150)
     profile_url = models.URLField(null=True)
     profile = models.ImageField(upload_to='friends/profile/%Y/%m/%d/%H/%M', null=True)
+    page_counter = models.BigIntegerField(default=0)
 
     def __str__(self):
         return self.title
