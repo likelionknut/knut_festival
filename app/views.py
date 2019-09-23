@@ -100,7 +100,11 @@ def delete(request, board_id):
         board_detail.delete()
         return redirect('board')
     else:
-        return redirect('board')
+        return redirect('deleteFailed')
+
+
+def deleteFailed(request, board_id):
+    return render(request, 'boards/deleteFailed.html')
 
 
 def deleteConfirm(request, board_id):
@@ -114,6 +118,9 @@ def editConfirm(request, board_id):
     request.session[str(request.session.session_key) + 'board_id'] = str(board_id)
     return redirect('kakao')
 
+
+def editFailed(request, board_id):
+    return render(request, 'boards/editFailed.html')
 
 # 글 수정
 def edit(request, board_id):
@@ -144,7 +151,7 @@ def edit(request, board_id):
         if request.session.get(str(request.session.session_key) + 'user_id') == board_detail.user_id:
             return render(request, 'boards/edit.html', {'form': form, 'board': board_detail})
         else:
-            return redirect('board')
+            return redirect('editFailed')
 
 
 # 카카오톡 oauth
