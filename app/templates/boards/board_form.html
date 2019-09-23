@@ -1,9 +1,10 @@
+{% load static %}
 <div class="card-body" style="margin:3% ;">
 {#    <img src="{{ board.profile }}" height="50" width="50" style="border-radius: 50%">&nbsp;#}
     {% if board.profile %}
         <img src="{{ board.profile.url }}" height="50" width="50" style="border-radius: 50%">&nbsp;
     {% else %}
-        카카오톡 프로필 이미지가 없습니다.
+        <img src="{% static 'app/img/kakao_default_image/profile_default.png' %}" height="50" width="50" style="border-radius: 50%">
     {% endif %}
     <h5 style="display: inline">{{ board.user }}</h5>
     <font size="2" color="gray"> - {{ board.created_at|date:"y/m/d A h:i" }}</font>
