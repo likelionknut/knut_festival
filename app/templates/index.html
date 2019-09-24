@@ -150,6 +150,29 @@
     </div>
 </div><br><br><br><br><br><br>
 
+<!-- start section auto rolling -->
+<div class="container">
+    <div class="section-title text-center">
+        <h2 style="font-size:40px;">🍻술친구 구함🍻</h2>
+    </div>
+    <div class="container card w-75 mb-3 text-center" style="border:2px dashed; height:20%; border-color: rgb(212, 91, 152);">
+        <div class="card-body">
+            <div class="notice">
+                <ul class="rolling" style="list-style: none">
+                    {% for friend in friends_list %}
+                    <li>
+                        <p style="margin-right:5%"><a
+                                href="{% url 'friendsDetail' friend.id %}">{{friend.title}}</a></p>
+                                <!-- title 길이 확 줄여야할듯. mobile 인터페이스에서 짤림 -->
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div><br><br><br><br><br>
+<!-- end section services -->
+
 <div class="section-title text-center">
     <h2 style="font-size:40px;">🙋🏻‍♂️동아리 부스🙋🏻</h2>
 </div>
@@ -275,48 +298,7 @@
                                     </div> -->
                                 <br><br><br>
 
-                                <!-- start section auto rolling -->
-                                <div class="container">
-                                    <div class="section-title text-center">
-                                        <h2 style="font-size:40px;">🤦🏻‍♀️분실물 배너🤦🏻‍♂️</h2>
-                                    </div>
-                                    <div class="container card w-75 mb-3 text-center" style="border:2px dashed; height:20%; border-color: rgb(212, 91, 152);">
-                                        <div class="card-body">
-                                            <div class="notice">
-                                                <ul class="rolling" style="list-style: none">
-                                                    {% for board in boards_list %}
-                                                    <li>
-                                                        <p style="margin-right:5%"><a
-                                                                href="{% url 'detail' board.id %}">{{board.title}}</a></p>
-                                                                <!-- title 길이 확 줄여야할듯. mobile 인터페이스에서 짤림 -->
-                                                    </li>
-                                                    {% endfor %}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><br><br><br><br><br>
-                                <div class="container">
-                                    <div class="section-title text-center">
-                                        <h2 style="font-size:40px;">🍻술친구 배너🍻</h2>
-                                    </div>
-                                    <div class="container card w-75 mb-3 text-center" style="border:2px dashed; height:20%; border-color: rgb(212, 91, 152);">
-                                        <div class="card-body">
-                                            <div class="notice">
-                                                <ul class="rolling" style="list-style: none">
-                                                    {% for board in friends_list %}
-                                                    <li>
-                                                        <p style="margin-right:5%"><a
-                                                                href="{% url 'friendsDetail' board.id %}">{{board.title}}</a></p>
-                                                                <!-- title 길이 확 줄여야할듯. mobile 인터페이스에서 짤림 -->
-                                                    </li>
-                                                    {% endfor %}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <!-- end section services -->
+
 
                             <!-- end section auto rolling -->
 
