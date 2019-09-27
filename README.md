@@ -28,3 +28,9 @@
 * 네이버 블로그 : https://blog.naver.com/likelionknut
 * Email : likelionknut@gmail.com
 * 멋쟁이 사자처럼 at 한국교통대학교 : http://knut.likelion.org
+
+## 🌎 9.23 ~ 9.26 Unique visitors by Google Analytics
+
+![캡처](https://user-images.githubusercontent.com/36228833/65754080-40f36300-e14b-11e9-9154-c5c52f9485d9.PNG)
+
+![캡처2](https://user-images.githubusercontent.com/36228833/65754093-45b81700-e14b-11e9-8d87-046657bcf3e6.PNG)
