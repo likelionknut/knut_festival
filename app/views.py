@@ -46,7 +46,7 @@ def kakao(request):
 
     login_request_uri = 'https://kauth.kakao.com/oauth/authorize?'
 
-    client_id = 'd9079dbac88fca9754d091a7af0366ed'
+    client_id = 'f31ec63cefe0ed07d1992d82c03a5fe4'
     redirect_uri = 'http://127.0.0.1:8000/oauth'
     # redirect_uri = 'http://172.30.1.1:8000/oauth'
     # redirect_uri = 'https://knut.events/oauth'
