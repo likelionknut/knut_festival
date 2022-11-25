@@ -1,6 +1,8 @@
 # 한국교통대학교 축제페이지🎉
 #### (Made by 🦁멋쟁이 사자처럼 at 한국교통대학교)
 
+Mirror link: https://knut-festival-2019.loopback.kr
+
 ***
 
 ![20190923_060945](https://user-images.githubusercontent.com/44333971/65394412-c7fdaf80-ddc8-11e9-8878-1d6376a060b9.png)
